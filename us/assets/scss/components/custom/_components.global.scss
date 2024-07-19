@@ -1,0 +1,473 @@
+:root {
+  --spacing-unit: 8px;
+  --spacing-unit-sm: 7px;
+}
+
+html {
+  // font-size: 16px;
+  // @media (min-width: $screen-medium) {
+  //   font-size: 16px;
+  // }
+  // @media (min-width: $screen-large) {
+  //   font-size: 16px;
+  //   background-color: red;
+  // }
+  // background-color:green;
+}
+
+// $buttonSize-default-fontSize:           15px;
+
+//typography
+
+// .h3{
+//   font-size:18px;
+//   @media (min-width: $screen-medium) {
+//     font-size:24px;
+//   }
+//   @media (min-width: $screen-large) {
+//     font-size:28px;
+//   }
+// }
+*:focus {
+  outline-color: transparent !important;
+  outline-style: none !important;
+  outline-width: 0px !important;
+}
+
+a {
+  color: $clr-grey-light-sixteen;
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
+}
+
+/*** iPhone and iOS Form Input Zoom Fixes ***/
+/* Fix Input Zoom on devices older than iPhone 5: */
+@media screen and (device-aspect-ratio: 2/3) {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"] {
+    font-size: 16px;
+  }
+}
+
+/* Fix Input Zoom on iPhone 5, 5C, 5S, iPod Touch 5g */
+@media screen and (device-aspect-ratio: 40/71) {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"] {
+    font-size: 1rem;
+  }
+}
+
+/* Fix Input Zoom on iPhone 6, iPhone 6s, iPhone 7  */
+@media screen and (device-aspect-ratio: 375/667) {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"] {
+    font-size: 1rem;
+  }
+}
+
+/* Fix Input Zoom on iPhone 6 Plus, iPhone 6s Plus, iPhone 7 Plus, iPhone 8, iPhone X, XS, XS Max  */
+@media screen and (device-aspect-ratio: 9/16) {
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"] {
+    font-size: 1rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  line-height: 1.2;
+}
+
+h1,
+.h1 {
+  font-size: remCalc(38px);
+}
+
+@media (max-width: 1261px) {
+  h1,
+  .h1 {
+    font-size: calc(1.375rem + 1.5vw);
+  }
+}
+
+h2,
+.h2 {
+  font-size: remCalc(30px);
+}
+
+@media (max-width: 1261px) {
+  h2,
+  .h2 {
+    font-size: calc(1.2rem + 0.9vw);
+  }
+}
+
+h3,
+.h3 {
+  font-size: rem-calc(24px);
+}
+
+@media (max-width: 1261px) {
+  h3,
+  .h3 {
+    font-size: calc(0.9rem + 0.6vw);
+  }
+}
+
+h4,
+.h4 {
+  font-size: remCalc(20px);
+}
+
+@media (max-width: 1261px) {
+  h4,
+  .h4 {
+    font-size: calc(0.8rem + 0.3vw);
+  }
+}
+
+h5,
+.h5 {
+  font-size: remCalc(18px);
+}
+
+h6,
+.h6 {
+  font-size: remCalc(12px);
+  // background-color: red;
+}
+
+.fs-1\/3{
+  font-size: 1.3rem!important;
+}
+
+h5,
+h6 {
+  text-transform: none;
+}
+
+//global
+
+body {
+  // padding-top: remCalc(167px);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0.08em;
+  padding-top: 103px;
+  padding-top: 92px;
+  @media (min-width: $screen-medium) {
+    padding-top: 0;
+  }
+}
+
+.body {
+  margin-top: 0;
+  margin-bottom: 0;
+
+  // @media (min-width: $screen-medium) {
+  //   font-size: 16px;
+  // }
+}
+
+input,
+select {
+  font-size: 100%;
+}
+
+strong,
+b {
+  // font-family: "ZurichBT-Bold";
+  font-weight: 700;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+
+  &-ninety {
+    max-width: 90%;
+  }
+  &--forty {
+    max-width: 40%;
+    @media (min-width: $screen-mini-large) {
+      max-width: 70%;
+    }
+    @media (min-width: $screen-large) {
+      max-width: 40%;
+    }
+  }
+
+  &--fifty {
+    max-width: 50%;
+  }
+}
+
+.c-mainsite-wrapper {
+  width: 100%;
+}
+
+.container {
+  // padding:0 1.5rem;
+  padding: 0 calc(var(--spacing-unit) * 4);
+  max-width: 100%;
+  @media (max-width: $screen-medium-down) {
+    padding: 0 15px;
+    max-width: 100%;
+  }
+}
+
+.row--custom-four {
+  @media (max-width: $screen-medium-down) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.col--custom-four {
+  @media (max-width: $screen-medium-down) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.clearcontent {
+  &::after,
+  &::before {
+    display: none;
+  }
+}
+
+.page {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// .page-content, .page-content--full{
+//   padding-left: 0;
+//   padding-right: 0;
+// }
+//custom grid
+
+.row--custom-one {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+}
+
+.col--custom-one {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+// .row--custom-two {
+//   margin-left: -1.5rem;
+//   margin-right: -1.5rem;
+// }
+
+// .col--custom-two {
+//   padding-left: 1.5rem;
+//   padding-right: 1.5rem;
+// }
+
+.row--custom-three {
+  @media (min-width: $screen-large) {
+    margin-left: remCalc(-25px);
+    margin-right: remCalc(-25px);
+  }
+}
+
+.pl-custom-one {
+  padding-left: 3rem;
+  padding-right: 3rem;
+}
+
+.col--custom-three {
+  @media (min-width: $screen-large) {
+    padding-left: remCalc(25px);
+    padding-right: remCalc(25px);
+  }
+}
+
+.icon-svg-full {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.clr-pink {
+  color: $clr-pink-bright-one !important;
+}
+
+.link__pink {
+  color: $clr-pink-bright-one;
+  text-decoration: none;
+}
+
+.link-grey {
+  color: $clr-grey-dark-two;
+  text-decoration: none;
+}
+
+.alertBox--custom-one {
+  background-color: transparent;
+  border-color: transparent;
+  color: $clr-grey-dark-two;
+}
+
+.alertBox-message--custom-one {
+  line-height: 1.5;
+  gap: 8px;
+}
+
+.alertBox-icon--custom-one {
+  vertical-align: top;
+
+  .icon {
+    width: remCalc(40px);
+    height: remCalc(40px);
+
+    // background-color: black;
+    @media (min-width: $screen-medium) {
+      width: remCalc(50px);
+      height: remCalc(50px);
+    }
+  }
+}
+
+.pt-1-xs-only {
+  // background-color: red;
+  @media (max-width: $screen-medium-down) {
+    padding-top: 0.6rem !important;
+  }
+}
+
+.icn--andmine {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+}
+
+.page-content--404 {
+  @media (min-width: $screen-medium) {
+    width: 100%;
+  }
+  @media (min-width: $screen-large) {
+    width: 66.66667%;
+  }
+}
+
+#zoid-paypal-buttons-uid_8b5d49f9e6_mtm6mzg6mzq,
+.paypal-buttons.paypal-buttons-context-iframe {
+  height: 40px !important;
+}
+
+.common-block__wrapper {
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  width: 100%;
+}
+
+.input-group > .custom-file,
+.input-group > .custom-select,
+.input-group > .form-input,
+.input-group > .form-input-plaintext {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+  margin-bottom: 0;
+  border: 1px black solid;
+  height: auto;
+}
+
+.input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label,
+.input-group:not(.has-validation) > .custom-file:not(:last-child) .custom-file-label::after,
+.input-group:not(.has-validation) > .custom-select:not(:last-child),
+.input-group:not(.has-validation) > .form-input:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group-append,
+.input-group-prepend {
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.input-group-append {
+  margin-left: -1px;
+}

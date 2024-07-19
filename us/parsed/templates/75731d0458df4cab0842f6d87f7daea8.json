@@ -1,0 +1,1 @@
+{"components/header/link-partial-outfit":"{{#if name 'Shop by Trend'}}\n{{#each children}}\n<li class=\"navPage-subMenu-item\">\n  <a href=\"{{url}}\" class=\"navPage-subMenu-action navPages-action\">{{name}}</a>\n</li>\n{{/each}}\n{{/if}}\n"}

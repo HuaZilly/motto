@@ -1,0 +1,30 @@
+<div class="form-field aa" data-product-attribute="set-rectangle" role="radiogroup" aria-labelledby="rectangle-group-label">
+
+    {{#each gql.data.site.product.variants.edges}}
+        {{#each node.options.edges}}
+            {{#each node.values.edges}}
+
+                <input
+                    class="form-radio"
+                    type="radio"
+                    id="attribute_rectangle__{{../node.entityId}}_{{node.entityId}}"
+                    name="attribute[{{../node.entityId}}]"
+                    value="{{node.entityId}}" 
+                    
+                    {{#if ../node.isRequired}}required{{/if}}
+                    >
+                
+                <label class="form-option form-option--custom mb-0" for="attribute_rectangle__{{../node.entityId}}_{{node.entityId}}" data-product-attribute-value="{{node.entityId}}">
+                    <span class="form-option-variant">{{node.label}}</span>
+                </label>
+
+
+
+            {{/each}}
+        {{/each}}
+    {{/each}}
+
+</div>
+
+
+

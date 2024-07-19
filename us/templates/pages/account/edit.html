@@ -1,0 +1,23 @@
+{{inject 'passwordRequirements' settings.password_requirements}} {{#partial "page"}}
+<div class="container">
+  <div class="common-block form-block uuu">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="page pagelist--row accountlist--row pb-0">
+      <aside class="page-sidebar page-sidebar--custom" id="faceted-search-container">
+        <h3 class="page-sidebar__title">{{lang 'account.settings.heading' }}</h3>
+        {{> components/account/navigation account_page='settings'}}
+      </aside>
+
+      <main class="page-content product-listing pb-0">
+        <div class="account-body">
+          <div class="account-content account-content--w-50">
+            {{#if forms.edit_account.error}} {{> components/common/alert/alert-error forms.edit_account.error}} {{/if}} {{#if
+            forms.edit_account.success}} {{> components/common/alert/alert-success forms.edit_account.success}} {{/if}} {{>
+            components/account/edit-account}}
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{{/partial}} {{> layout/base}}

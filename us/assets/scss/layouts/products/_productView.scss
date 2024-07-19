@@ -1,0 +1,102 @@
+// =============================================================================
+// PRODUCT VIEW (CSS)
+// =============================================================================
+
+
+// Product view layout
+// -----------------------------------------------------------------------------
+
+.productView {
+    @include grid-row($behavior: "nest");
+    margin-left: -(spacing("base"));
+    margin-right: -(spacing("base"));
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @include breakpoint("medium") {
+        display: block;
+    }
+
+    .modal & {
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+}
+
+.mz-expanded-view-open {
+    .mz-expand {
+        .mz-figure {
+            > img {
+                transition: transform 0ms cubic-bezier(0.1, 0.1, 0.8, 0.5) 0.2s !important;
+                opacity: 1 !important;
+            }
+        }
+    }
+}
+
+.c-mainsite-wrapper .product-dtl-page .productView__media-wrapper .MagicZoomGallery .mz-no-zoom > img {
+    transition: transform 0ms cubic-bezier(0.1, 0.1, 0.8, 0.5) 0.2s !important;
+    opacity: 1 !important;
+}
+
+
+.productView--quickView {
+    .socialLinks-item--print {
+        display: none;
+    }
+}
+
+.productView-images {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+
+    @include breakpoint("medium") {
+        width: grid-calc(6, $total-columns);
+    }
+}
+
+.productView-details {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+
+    @include breakpoint("medium") {
+        clear: right;
+        float: right;
+        width: grid-calc(6, $total-columns);
+    }
+
+    .productView--quickView & {
+        position: relative;
+    }
+
+    &.product-data {
+        order: -1;
+    }
+}
+
+.productView-description {
+    @include grid-column(12);
+    padding-left: spacing("base");
+    padding-right: spacing("base");
+    position: relative;
+    z-index: 1;
+
+    .productView-title {
+        border-bottom: container("border");
+        margin-bottom: spacing("base");
+        padding-left: spacing("base");
+        padding-right: spacing("base");
+    }
+
+    .productView-description {
+        @include breakpoint("medium") {
+            clear: both;
+            float: none;
+            width: 100%;
+        }
+    }
+}

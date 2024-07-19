@@ -1,0 +1,340 @@
+{{!--#if banners.bottom}}
+    {{#if settings.data_tag_enabled}}
+        <div class="banners aa" data-banner-location="bottom">
+            {{#each (limit banners.bottom_metadata 1)}}
+                <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-name="{{this.banner-name}}">
+                    <div data-event-type="promotion-click">
+                        {{{this.content}}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <div class="banners cc" data-banner-location="bottom">
+            <div class="banner">
+                {{{limit banners.bottom 1}}}
+            </div>
+        </div>
+    {{/if}}
+
+{{/if--}}
+<footer class="footer" role="contentinfo">
+    <h2 class="footer-title-sr-only">{{lang 'footer.title'}}</h2>
+    <div class="container">
+        {{!--#if theme_settings.social_icon_placement_bottom '!==' 'bottom_none'}}
+            <article class="footer-info-col
+                footer-info-col--social
+                footer-info-col--{{#if theme_settings.social_icon_placement_bottom '===' 'bottom_left'}}left{{else}}right{{/if}}"
+                data-section-type="footer-webPages">
+                    <h4 class="footer-info-heading">{{lang 'social.connect'}}</h4>
+                    {{> components/common/social-links}}
+            </article>
+        {{/if--}}
+      
+        <section class="row row--custom-one">
+            <div class="col-12 col-lg-4 col--custom-one">
+                <article class="
+                footer-info-col--social"
+                data-section-type="footer-webPages">
+                    <!-- <h4 class="footer-info-heading">{{lang 'social.connect'}}</h4> -->
+                    {{> components/common/social-links}}
+                </article>
+                  
+                <article class=" footer-info-col--newsletter text-start" data-section-type="newsletterSubscription">
+                    {{#if settings.show_newsletter_box}}
+                        {{> components/common/subscription-form}}
+                    {{/if}}
+                    {{> components/common/payment-icons}}
+                </article>
+            </div>
+            <div class="col-12 col-lg-8 col--custom-one">
+                <ul class="accordion accordion--footer list-unstyled row row--custom-one" data-accordion="myAccordionGroup">
+                   
+                   
+                        <li class=" footer-info-col--accordion col-md-4 col--custom-one" data-section-type="footer-webPages">
+                            {{#each pages}}
+                                {{#if name '==' "Useful Information"}}
+                                    <!-- <a href="#panel1c" class="footer-info-heading footer-info-heading--accordion h4">{{lang 'footer.navigate'}}
+                                        <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                                    </a> -->
+                                    <a href="#panel1c" class="footer-info-heading footer-info-heading--accordion h4">{{name}}
+                                        <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                                    </a>
+                                {{/if}}
+                            {{/each}}
+                          <ul id="panel1c" class="footer-info__content content  d-md-block">
+                            {{#each pages}}
+                                {{#if name '==' "Useful Information"}}
+                                    <li>
+                                        <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                    </li>
+                                    {{#each children}}
+                                        <li>
+                                            <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                        </li>
+                                    {{/each}}
+                                {{/if}}
+                            {{/each}}
+                          </ul>
+                        </li>
+                        <li class=" footer-info-col--accordion col-md-4 col--custom-one" data-section-type="footer-categories">
+                            <a href="#panel2c"  class="footer-info-heading footer-info-heading--accordion h4">Account
+                                <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                            </a>
+                            <ul id="panel2c" class="footer-info__content content d-md-block">
+                                {{#if customer}}
+                                    <li>
+                                        <a class=" footer-info__list d-inline-block"
+                                            href="{{urls.auth.logout}}"
+                                            aria-label="{{lang 'common.logout'}}"
+                                            >
+                                                {{lang 'common.logout'}}
+                                        </a>   
+                                    </li>
+                                {{else}}
+                                    <li>
+                                        <a class=" footer-info__list d-inline-block"
+                                            href="{{urls.auth.login}}"
+                                            aria-label="{{lang 'common.login'}}"
+                                            >
+                                                {{lang 'common.login'}}
+                                            </a>
+                                            {{#if settings.account_creation_enabled}}
+                                            /
+                                                <a class=" footer-info__list d-inline-block"
+                                                href="{{urls.auth.create_account}}"
+                                                aria-label="{{lang 'common.sign_up'}}"
+                                                >
+                                                    {{lang 'common.sign_up'}}
+                                                </a>
+                                            {{/if}}     
+                                    </li>
+                                {{/if}}
+                                <li>
+                                    <a class="footer-info__list" href="{{urls.account.wishlists.all}}" aria-label="{{lang 'account.mobile_nav.wishlists'}}" >
+                                        {{lang 'account.mobile_nav.wishlists'}}
+                                    </a>
+                                </li>
+                                {{#each pages}}
+                                    {{#if name '==' "Sign Up to become a VIP"}}
+                                        <li>
+                                            <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                        </li>
+                                    {{/if}}
+                                {{/each}}
+
+                            </ul>
+                            <hr class="footer-info-col__seperator">
+                            <a href="#panel2cc"  class="footer-info-heading footer-info-heading--accordion h4">Payment
+                                <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                                </a>
+                                
+                                <ul id="panel2cc" class="footer-info__content content d-md-block">
+                                {{#each pages}}
+                                {{#if name '==' "Buy Now, Pay Later"}}
+                                <li>
+                                <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                </li>
+                                {{/if}}
+                                {{#if name '==' "zipPay"}}
+                                <li>
+                                <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                </li>
+                                {{/if}}
+                                {{/each}}
+                                </ul>
+                     
+                        </li>
+                        
+                        <li class=" footer-info-col--accordion col-md-4 col--custom-one" data-section-type="footer-categories">
+                            <a href="#panel3c"  class="footer-info-heading footer-info-heading--accordion h4">About Motto
+                                <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                            </a>
+                             <ul id="panel3c" class="footer-info__content content  d-md-block">
+                          
+                             <!--   <li><a class="footer-info__list"  href="/store-locations/">Store Locations</a></li>
+                                <li><a class="footer-info__list"  href="/wholesale-enquiries/">Wholesale Enquiries</a></li>
+                                li><a class="footer-info__list"  href="/our-stories/">Our Stories</a></li
+                                <li><a class="footer-info__list"  href="/careers/">Careers</a></li>
+                                <li><a class="footer-info__list"  href="/charity-motto/">Charity &amp; Motto </a></li>
+                                <li><a class="footer-info__list"  href="/party-plan/">Party Plan</a></li>
+                              --> 
+                            
+                                {{#each pages}}
+                                    {{#if name '==' "Blog"}}
+                                        <li>
+                                            <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                        </li>
+                                    {{/if}}
+                                    {{#if name '==' "Insta Shop"}}
+                                        <li>
+                                            <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                        </li>
+                                    {{/if}}
+                                    {{#if name '==' "Motto Information"}}
+                                        <li>
+                                            <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                        </li>
+                                        {{#each children}}
+                                            <li>
+                                                <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                                            </li>
+                                        {{/each}}
+                                    {{/if}}
+                                {{/each}}
+                            </ul> 
+                        </li>
+                     
+                </ul>
+              
+    
+               
+    
+                {{!--#and theme_settings.shop_by_brand_show_footer shop_by_brand.length}}
+                <article class="footer-info-col footer-info-col--small" data-section-type="footer-brands">
+                    <h4 class="footer-info-heading">{{lang 'footer.brands'}}</h4>
+                    <ul class="footer-info-list">
+                        {{#each shop_by_brand}}
+                            <li>
+                                <a href="{{url}}">{{name}}</a>
+                            </li>
+                        {{/each}}
+                        <li><a href="{{urls.brands}}">{{lang 'common.view_all'}}</a></li>
+                    </ul>
+                </article>
+                {{/and--}}
+    
+                {{#if settings.address}}
+                <article class="footer-info-col footer-info-col--small d-none" data-section-type="storeInfo">
+                    <h4 class="footer-info-heading">{{lang 'footer.info'}}</h4>
+                    <address>{{nl2br settings.address}}</address>
+                    {{#if settings.phone_number}}
+                        <strong>{{lang 'footer.call_us' phone_number=settings.phone_number}}</strong>
+                    {{/if}}
+                </article>
+                {{/if}}
+    
+            </div>
+        </section>
+    
+        {{#if theme_settings.geotrust_ssl_common_name}}
+            <div class="footer-geotrust-ssl-seal">
+                {{> components/common/geotrust-ssl-seal}}
+            </div>
+        {{/if}}
+        {{#if settings.paypal_commerce_credit_message}}
+        <div class="footer-copyright">
+            <p class="paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</p>
+        </div>
+        {{/if}}
+        <!-- {{!-- #if theme_settings.show_powered_by}}
+            <div class="footer-copyright">
+                <p class="powered-by ss">{{lang 'footer.powered_by'}} <a href="https://www.bigcommerce.com?utm_source=merchant&amp;utm_medium=poweredbyBC" rel="nofollow">BigCommerce</a></p>
+            </div>
+        {{/if --}} -->
+        {{#if theme_settings.show_copyright_footer}}
+            <div class="footer-copyright">
+                <p class="powered-by vv">&copy; {{moment format="YYYY"}} {{settings.store_name}} <br>
+                <a class="branding_link" href="https://www.andmine.com/" title="Andmine.com | Digital Agency Melbourne, Australia" target="_blank" rel="noopener"><span class="text">Digital Agency Melbourne, Australia</span><span class="branding-logos-wrap"><img width="9" class="branding_image_logo" style="margin:0 2px 0 4px;" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCAzMzkuMyAzNDAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMzOS4zIDM0MDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNDQjIwMjY7fQo8L3N0eWxlPgo8ZyBpZD0iWE1MSURfNDJfIj4KCTxnIGlkPSJYTUxJRF81MV8iPgoJCTxwYXRoIGlkPSJYTUxJRF81OF8iIGNsYXNzPSJzdDAiIGQ9Ik0zMDQuNSwzMTkuMmMwLTIuMiwwLjQtNC4zLDEuMi02LjJjMC44LTEuOSwyLTMuNiwzLjQtNWMxLjQtMS40LDMuMS0yLjUsNS0zLjQKCQkJYzEuOS0wLjgsNC0xLjIsNi4yLTEuMmMyLjIsMCw0LjMsMC40LDYuMiwxLjJjMS45LDAuOCwzLjYsMiw1LDMuNGMxLjQsMS40LDIuNiwzLjEsMy40LDVjMC44LDEuOSwxLjIsNCwxLjIsNi4yCgkJCWMwLDIuMi0wLjQsNC4zLTEuMiw2LjJjLTAuOCwxLjktMiwzLjYtMy40LDVjLTEuNCwxLjQtMy4xLDIuNi01LDMuNGMtMS45LDAuOC00LDEuMi02LjIsMS4yYy0yLjIsMC00LjItMC40LTYuMi0xLjIKCQkJYy0xLjktMC44LTMuNi0yLTUtMy40Yy0xLjQtMS40LTIuNi0zLjEtMy40LTVDMzA0LjksMzIzLjQsMzA0LjUsMzIxLjQsMzA0LjUsMzE5LjJ6IE0zMDcuMSwzMTkuMmMwLDEuOCwwLjMsMy42LDEsNS4yCgkJCWMwLjcsMS42LDEuNiwzLDIuOCw0LjJjMS4yLDEuMiwyLjYsMi4xLDQuMiwyLjhjMS42LDAuNywzLjMsMSw1LjIsMWMxLjgsMCwzLjYtMC4zLDUuMi0xYzEuNi0wLjcsMy0xLjYsNC4yLTIuOAoJCQljMS4yLTEuMiwyLjEtMi42LDIuOC00LjJjMC43LTEuNiwxLTMuMywxLTUuMmMwLTEuOC0wLjMtMy42LTEtNS4yYy0wLjctMS42LTEuNi0zLTIuOC00LjJjLTEuMi0xLjItMi42LTIuMS00LjItMi44CgkJCWMtMS42LTAuNy0zLjMtMS01LjItMWMtMS44LDAtMy42LDAuMy01LjIsMWMtMS42LDAuNy0zLDEuNi00LjIsMi44Yy0xLjIsMS4yLTIuMSwyLjYtMi44LDQuMgoJCQlDMzA3LjUsMzE1LjYsMzA3LjEsMzE3LjMsMzA3LjEsMzE5LjJ6IE0zMTUuMSwzMTJoNi4xYzAuOSwwLDEuNywwLDIuNCwwLjNjMC43LDAuMywxLjEsMC42LDEuNSwxYzAuOCwwLjgsMSwxLjgsMSwzLjF2MAoJCQljMCwxLjItMC4xLDIuMS0wLjgsMi44Yy0wLjcsMC43LTEuNCwxLjEtMi40LDEuNGw0LDUuM2gtM2wtMy41LTVoLTMuNHY1aC0yVjMxMnogTTMyMSwzMTljMC45LDAsMS43LTAuMiwyLjItMC42CgkJCWMwLjUtMC40LDAuOS0xLDAuOS0xLjd2LTAuMWMwLTEuNi0xLjItMi42LTMuMS0yLjZoLTMuOXY1SDMyMXoiLz4KCTwvZz4KCTxnIGlkPSJYTUxJRF80M18iPgoJCTxwYXRoIGlkPSJYTUxJRF80NF8iIGNsYXNzPSJzdDAiIGQ9Ik0zMzkuMSwxMTZsMC4yLTY3TDI5MC41LDBoLTY2LjRsLTUxLjIsNTEuNEwxMjEuOSwwSDU3LjVMOS4xLDQ3djY4bDUwLjEsNTAuMkwwLjMsMjI0TDAsMjkyCgkJCWw0Ny43LDQ4SDExNmw1OS01OWw1OSw1OWg2My4ydi00M2gtNDUuNmwtNDYuNi00Ni43TDMzOS4xLDExNnogTTc0LjcsNDNIMTA0bDY5LDY4LjdMMjQyLDQzaDMxbDI0LjEsMjMuNnYzMi4ybC0xMjIsMTIxLjkKCQkJTDUyLjEsOTcuOFY2NS41TDc0LjcsNDN6IE05OC4xLDI5N0g2NS40bC0yMi4zLTIyLjZ2LTMyLjFsNDYuNS00Ni45bDU1LjIsNTUuMkw5OC4xLDI5N3oiLz4KCTwvZz4KPC9nPgo8L3N2Zz4K" alt="Digital Agency Melbourne, Australia"></span></a>
+                </p>
+            </div>
+        {{/if}}
+        
+        <!-- <div class="footer-copyright">
+            <p class="powered-by">Site by <a href="https://www.andmine.com" target="_blank">AndMine.com</a></p>
+        </div> -->
+        
+    </div>
+</footer>
+
+
+<!-- load more colors products -->
+<div id="load-more-colors" class="modal modal--default" data-reveal>
+    <button type="button" class="button--close" data-reveal-close aria-label="Close modal">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="modal-content">
+        <h4 class="modal__title text-uppercase text-center font-weight-bold mt-0">ALSO AVAILABLE IN</h4>
+        <div class="modal__product-list loadingMoreColors">
+
+    
+        </div>
+        <div id="loaderimageMoreColor" class="loadingOverlay" style="display: none;;position: relative !important; top: 22px!important;"></div>
+    </div>
+</div>
+
+<!-- Add to Cart -->
+<div id="add-from-size" class="modal modal--default modal--sizes" data-reveal>
+    <button type="button" class="button--close" data-reveal-close aria-label="Close modal">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="modal-content">
+        <h4 class="modal__title text-uppercase text-center font-weight-bold mt-0">Add to Cart</h4>
+        <div class="modal__product-list loadingAddingToCart">
+
+            <div id='notAvailable' class="modal-sizes pt-0">
+                    <div class="modal-sizes__icon">
+                        <icon glyph="ic-success" class="icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86"><path d="M43 0a43 43 0 10.1 86.2A43 43 0 0043 0zM26 24c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6zm34 0c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6 2.7-6 6-6zM43 49c9.8 0 18.5 5.1 23.7 13a2 2 0 01-.3 2.7 2 2 0 01-2.8-.3l-.2-.3c-4.5-6.7-11.9-11-20.3-11s-15.8 4.3-20.3 11c-.5 1-1.8 1.3-2.7.8-1-.5-1.3-1.8-.8-2.7l.2-.3C24.5 54.1 33.2 49 43 49z"/></svg>
+                    </div>
+                    <h5 class="modal-sizes__title mt-0">The selected size is out of stock !!!</h5>
+                    <div class="modal-sizes__btn-grp mx-auto d-flex">
+                        <button type="button" class="button button--tertiary" data-reveal-close aria-label="Close modal">Close</button>
+                    </div>
+                
+            </div>
+
+            <div id='addingError' class="modal-sizes pt-0">
+                <div class="modal-sizes__icon">
+                        <icon glyph="ic-success" class="icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86"><path d="M43 0a43 43 0 10-.1 86A43 43 0 0043 0zM26 36c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6zm17 35.6c-6.8 0-12.3-6.6-12.3-14.8S36.2 42 43 42s12.3 6.6 12.3 14.8S49.8 71.6 43 71.6zM60 36c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>
+                </div>
+                    <h5 class="modal-sizes__title mt-0">Error processing the request. Please try again later !!!</h5>
+                    <div class="modal-sizes__btn-grp mx-auto  d-flex">
+                        <button type="button" class="button button--tertiary" data-reveal-close aria-label="Close modal">Close</button>
+                    </div>
+                
+            </div>
+
+            <div id='addingSuccess' class="modal-sizes pt-0">
+                    <div class="modal-sizes__icon">
+                        <icon glyph="ic-success" class="icon" aria-hidden="true">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 86"><path d="M43 0a43 43 0 10.1 86.2A43 43 0 0043 0zM26 24a6 6 0 016 6 6 6 0 01-6 6 6 6 0 01-6-6 6 6 0 016-6zm34 0a6 6 0 016 6 6 6 0 01-6 6 6 6 0 01-6-6 6 6 0 016-6zm5 28.8c2 .3 2.5 1.8 1.7 3.2-5.2 7.8-13.9 13-23.7 13s-18.5-5.2-23.7-13c-.8-1 .1-3 1.4-3a2 2 0 011.9.8C27.1 60.5 34.5 65 42.9 65s15.8-4.4 20.3-11c.5-.6 1.1-1 1.8-1z"/></svg>
+                    </div>
+                    <h5 class="modal-sizes__title mt-0">
+                        Selected product size is added to cart !!!</h5>
+                    <div class="modal-sizes__btn-grp d-flex mx-auto">
+                    
+                        <a href="/cart.php" class="button button--small button--action my-0 mx-2">View Cart</a>
+                        <a href="/checkout" class="button button--small button--primary my-0  mx-2">Check out now</a>
+                    </div>
+                    <div class="modal-sizes__btn mt-3 mx-auto">
+                        <button type="button" class="button button--small button--tertiary my-0 modal-sizes__btn-continue" data-reveal-close aria-label="Close modal">Continue Browsing</button>
+                    </div>
+                
+            </div>
+
+            <div id="isAvailable" class="modal-sizes">
+                <form class="form mb-0" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+                    
+                    <h5 class="modal-sizes__title mt-0">Do you want to add the size <span id="clickedSize" class="font-weight-bold clr-pink"></span> to the Cart?</h5>
+                    <input type="hidden" name="action" value="add" />
+                    <input type="hidden" name="product_id" id="product_id" value=""/>
+                    <input type="hidden" id="qty[]" name="qty[]" value="1" />
+                    <!-- <input type="radio" id="attribute_rectangle__555_126" name="attribute[555]" value="126"  data-state="false"> -->
+                    <input type="hidden" class="product_attrib_to_add" id="" name="" value=""  data-state="false">
+                    <div class="modal-sizes__btn-grp mx-auto d-flex">
+                        <div class="form-action mx-2" role="status" aria-live="polite">
+                            <input id="form-action-addToCart" data-wait-message="{{lang 'products.adding_to_cart'}}" class="button button--small button--primary my-0"  type="submit"
+                                value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}">
+                        </div>
+                        <div class="form-action mx-2" role="status" aria-live="polite">
+                            <button type="button" class="button button--small button--tertiary mb-0" data-reveal-close aria-label="Close modal">Don't Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

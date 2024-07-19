@@ -1,0 +1,34 @@
+{{!-- {{#each carousel.slides}} {{> components/common/responsive-img image=stencil_image class="heroCarousel-image home-hero-banner__image"
+fallback_size='1280w' lazyload='disabled' otherAttributes="height='771' width='1905'" }} {{/each}} --}}
+
+<section class="home-hero-banner position-relative">
+  <a href="{{carousel.slides.0.url}}">
+    <picture>
+      <source
+        media="(max-width: 767.98px)"
+        srcset="https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/80w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/160w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/320w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/640w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/960w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/1080w/carousel/10/miracle-pant-mobile-2024.jpg?c=1 1080w"
+        height="564"
+        width="375"
+      />
+      <source
+        media="(min-width: 768px)"
+        srcset="https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/80w/carousel/9/miracle-pant-2024.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/160w/carousel/9/miracle-pant-2024.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/320w/carousel/9/miracle-pant-2024.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/640w/carousel/9/miracle-pant-2024.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/960w/carousel/9/miracle-pant-2024.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/1280w/carousel/9/miracle-pant-2024.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/1920w/carousel/9/miracle-pant-2024.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/2558w/carousel/9/miracle-pant-2024.jpg?c=1 2558w"
+        height="771"
+        width="1905"
+      />
+      <img
+        srcset="https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/80w/carousel/9/miracle-pant-2024.jpg?c=1 80w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/160w/carousel/9/miracle-pant-2024.jpg?c=1 160w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/320w/carousel/9/miracle-pant-2024.jpg?c=1 320w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/640w/carousel/9/miracle-pant-2024.jpg?c=1 640w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/960w/carousel/9/miracle-pant-2024.jpg?c=1 960w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/1280w/carousel/9/miracle-pant-2024.jpg?c=1 1280w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/1920w/carousel/9/miracle-pant-2024.jpg?c=1 1920w, https://cdn11.bigcommerce.com/s-kjhln4rc46/images/stencil/2558w/carousel/9/miracle-pant-2024.jpg?c=1 2558w"
+        alt="{{carousel.slides.0.heading}}"
+        height="771"
+        width="1905"
+        class="home-hero-banner__image"
+      />
+    </picture>
+
+    <div class="home-hero-banner__wrapper">
+      <h3 data-test-id="hero-image-title">NEW ARRIVALS</h3>
+      {{#if text}}<p>{{carousel.slides.0.text}}</p>{{/if}}
+      <div data-test-id="hero-image-button">SHOP NOW</div>
+    </div>
+  </a>
+</section>

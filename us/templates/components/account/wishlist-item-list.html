@@ -1,0 +1,22 @@
+<ul class="productGrid ww wishListProductGrid productGrid--listing">
+  {{#each wishlist.items}}
+  <li class="product" data-product-id="{{product_id}}" data-item-id="{{id}}" data-remove-url="{{remove_url}}">
+    {{> components/products/card id=product_id theme_settings=../theme_settings}}
+
+    <div class="d-flex row btn-grp-list row--custom-one justify-content-start">
+      <!-- <div class="col--custom-one col-auto">
+        <a href="#" class="btn btn-md btn-py-1 btn-outline-primary ssa"> Add to cart </a>
+       
+      </div> -->
+      {{#if ../show_remove}}
+      <div class="col--custom-one col-auto">
+        <form action="{{remove_url}}" class="form form--remove" method="post">
+          <input type="submit" class="btn btn-md btn-py-1 btn-outline-primary" value="{{lang 'account.wishlists.remove_item'}}" />
+        </form>
+      </div>
+
+      {{/if}}
+    </div>
+  </li>
+  {{/each}}
+</ul>

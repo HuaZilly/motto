@@ -1,0 +1,37 @@
+<div id="modal-review-form" class="modal" data-reveal>
+  {{inject 'reviewRating' (lang 'forms.validate.reviews.rating')}} {{inject
+  'reviewSubject' (lang 'forms.validate.reviews.title')}} {{inject
+  'reviewComment' (lang 'forms.validate.reviews.comment')}} {{inject
+  'reviewEmail' (lang 'forms.validate.common.email_address')}}
+  <div class="modal-header pl-custom-one">
+    <h2 class="modal-header-title modal-header-title--custom-one">
+      {{lang 'products.reviews.write_a_review'}}
+    </h2>
+    {{> components/common/modal/modal-close-btn}}
+  </div>
+  <div class="modal-body pl-custom-one">
+    <div class="row row--custom-two">
+      <div class="writeReview-productDetails col--custom-two">
+        <div class="writeReview-productImage-container">
+          {{> components/common/responsive-img image=product.main_image
+          fallback_size=theme_settings.product_size
+          lazyload=theme_settings.lazyload_mode
+          default_image=theme_settings.default_image_product }}
+        </div>
+        <h6 class="product-brand d-none">{{ product.brand.name }}</h6>
+        <h5 class="product-title mt-3 mt-lg-4 text-center">
+          {{ product.title }}
+        </h5>
+      </div>
+      <!-- form to write the review -->
+      <div class="writeReview-form col--custom-two">
+        <div
+          id="judgeme_product_reviews__onpopup"
+          class="jdgm-widget jdgm-review-widget"
+          data-product-title="{{product.title}}"
+          data-id="{{product.id}}"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+{{#with theme_settings}}
+    {{#or show_accept_amex show_accept_discover show_accept_mastercard show_accept_paypal show_accept_visa show_accept_amazonpay show_accept_googlepay show_accept_directdeposit show_accept_afterpay show_accept_zippay show_accept_klarna}}
+    <div class="footer-options__list">
+        {{#if show_accept_amex}}
+        <div class="footer-options__items">
+            <svg class="footer-payment-icon"><use xlink:href="#icon-logo-american-express"></use></svg>
+        </div>
+      
+        {{/if}}
+        {{#if show_accept_discover}}
+        <div class="footer-options__items">
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-discover"></use></svg>
+        </div>
+        {{/if}}
+        {{#if show_accept_visa}}
+        <div class="footer-options__items">
+       <svg class="footer-options__icn icn-visa"><use xlink:href="#icon-logo-visa"></use></svg>
+   </div>
+       {{/if}}
+        {{#if show_accept_mastercard}}
+         <div class="footer-options__items">
+        <svg class="footer-options__icn icn-mastercard"><use xlink:href="#icon-logo-mastercard"></use></svg>
+    </div>
+        {{/if}}
+        {{#if show_accept_paypal}}
+         <div class="footer-options__items">
+        <svg class="footer-options__icn icn-paypal"><use xlink:href="#icon-logo-paypal"></use></svg>
+    </div>
+        {{/if}}
+       
+        {{#if show_accept_amazonpay}}
+         <div class="footer-options__items">
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-amazonpay"></use></svg>
+    </div>
+        {{/if}}
+        {{#if show_accept_googlepay}}
+         <div class="footer-options__items">
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-googlepay"></use></svg>
+    </div>
+        {{/if}}
+        <!-- {{#if show_accept_directdeposit}}
+         <div class="footer-options__items">
+            <svg class="footer-options__icn icn-directdeposit"><use xlink:href="#icon-logo-directdeposit"></use></svg>
+        </div>
+        {{/if}} -->
+        {{#if show_accept_afterpay}}
+         <div class="footer-options__items">
+        <svg class="footer-options__icn icn-afterpay"><use xlink:href="#icon-logo-afterpay"></use></svg>
+    </div>
+        {{/if}}
+        {{#if show_accept_zippay}}
+         <div class="footer-options__items">
+        <!-- <svg class="footer-options__icn icn-zippay"><use xlink:href="#icon-logo-zippay"></use></svg> -->
+        <img class="lazyload footer-options__icn icn-paypal-interest" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" data-src="{{cdn 'img/icn-paypal-interest.png'}}" alt="">
+    </div>
+        {{/if}}
+   
+        {{#if show_accept_klarna}}
+         <div class="footer-options__items">
+        <svg class="footer-payment-icon"><use xlink:href="#icon-logo-klarna"></use></svg>
+    </div>
+        {{/if}}
+    </div>
+    {{/or}}
+{{/with}}

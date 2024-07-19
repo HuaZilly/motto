@@ -1,0 +1,123 @@
+<a href="#main-content" class="skip-to-main-link">{{lang 'header.skip_to_main'}}</a>
+{{!--if banners.top}}
+<div class="banners aaaa" data-banner-location="top">
+    {{#each (limit banners.top_metadata 1)}}
+    <div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+        <div data-event-type="promotion-click">
+            {{{this.content}}}
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if--}}
+<header class="header" role="banner">
+   <div class="header__wrapper">
+    <div class="header__promotion">
+        <div class="container text-center">
+         Members Enjoy 10% Off Everything: JOIN NOW | Shipping is FREE on orders over $100 ♡
+        </div>
+     </div>
+    <div class="header__mainnav">
+       <div class="container aa">
+        <div class="header__mainnav-row">
+            <div class="header__mainnav-menu">
+                <a href="#" class="mobileMenu-toggle" data-mobile-menu-toggle="menu">
+                    <span class="mobileMenu-toggleIcon">Toggle menu</span>
+                </a>
+            </div>
+            <div class="header__mainnav-quicksearch d-md-none">
+                <button class="quicksearch__mob"
+                type="button"
+                id="quick-search-expand"
+                data-search="quickSearch"
+                aria-controls="quickSearch"
+                aria-label="{{lang 'common.search'}}"
+              >
+                <i class="icon icon--searchnav mob">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use>
+                    </svg>  
+                </i>
+              </button>
+            </div>
+            <div class="header__mainnav-ph-order ph-order">
+                Phone Orders Welcome
+                <span class="ph-order__text">We'd love to hear from you</span>
+                <span class="ph-order__tel"><a href="tel:03 94451288">03 94451288</a></span>
+            </div>
+            <div class="header__mainnav-logo">      
+                {{#if page_type '===' 'default'}}
+                    <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">
+                        {{> components/common/store-logo}}
+                    </h1>
+                {{else}}
+                    <div class="header-logo header-logo--{{theme_settings.logo-position}}">
+                        {{> components/common/store-logo}}
+                    </div>
+                {{/if}}
+            </div>
+            <div class="header__mainnav-actions">
+                {{> components/common/navigation}}
+            </div>
+        </div>
+      
+       </div>
+       <div class="dropdown dropdown--quickSearch" id="quickSearch" aria-hidden="true" data-prevent-quick-search-close>
+            {{> components/common/quick-search name='nav-quick-search'}}
+        </div>
+    </div>
+    <nav class="navPages navPages--mini  d-md-none">
+        <ul class="navPages-list">
+            <li class="navPages-item navPages-item--mini"><a class="navPages-action navPages-action--mini"  href="/shop-all/whats-new/">What's New</a></li>
+            <li class="navPages-item navPages-item--mini">
+                <!-- <a class="navPages-action navPages-action--mini"  href="#">
+                    Clothing
+                </a> -->
+                <a class="navPages-action navPages-action--mini"
+                data-clothing-preview
+                data-dropdown="cloting-dropdown"
+                href="#">   
+                 Clothing
+                 <i class="icon icon--down" aria-hidden="true">
+                    <svg>
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-chevron-down"></use>
+                    </svg>
+                </i>
+             </a>
+ 
+            
+                {{> components/header/dropdown-products}}
+            
+             <!-- <a data-dropdown="drop1" aria-controls="drop1" aria-expanded="false">Has Dropdown</a>
+             <ul id="drop1" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+               <li><a href="#">This is a link</a></li>
+               <li><a href="#">This is another</a></li>
+               <li><a href="#">Yet another</a></li>
+             </ul> -->
+            
+            </li>
+            <li class="navPages-item navPages-item--mini"><a class="navPages-action navPages-action--mini"  href="/magazine/">Magazine</a></li>
+        </ul>
+    </nav>
+    <div class="navPages-container" id="menu" data-menu>
+        {{> components/common/navigation-menu}}
+    </div>
+    <div class="header__search d-none d-md-block">
+        <button class="navUser-action navUser-action--quickSearch"
+        type="button"
+        id="quick-search-expand"
+        data-search="quickSearch"
+        aria-controls="quickSearch"
+        aria-label="{{lang 'common.search'}}"
+    >
+    <i class="icon icon--searchnav">
+        <svg>
+            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-search"></use>
+        </svg>  
+    </i>
+    </button>
+    </div>
+   </div>
+</header>
+{{{region name="header_bottom--global"}}}
+{{{region name="header_bottom"}}}

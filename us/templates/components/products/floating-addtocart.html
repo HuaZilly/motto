@@ -1,0 +1,64 @@
+<div class="floating-addtocart product-sticky-bar__wrapper">
+
+  <div class="product-sticky-bar__form">
+    <form id="addToCart-form-floating" class="product-sticky-bar__form-left">
+      <div class="product-sticky-bar__details-wrapper">
+        <div class="product-sticky-bar__txtholder">
+          <h4 class="product-sticky-bar__txtholder-txt mb-0" {{#if
+            schema}}itemprop="name"{{/if}}>{{product.title}}</h4>
+        </div>
+        <div class="productView-price product-sticky-bar__price mb-0">
+          <div class="productView-price__wrap productView-price--custom">
+            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+              {{> components/products/price/price-floating price=product.price}}
+            {{else}}
+              {{> components/common/login-for-pricing}}
+            {{/or}}
+          </div>
+        </div>
+      </div>
+
+      <div class="productView-price d-flex product-sticky-bar__price m-2 d-xl-none">
+        <div class="productView-price__wrap productView-price--custom d-flex flex-row align-items-center justify-content-center">
+          {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+            {{> components/products/price/price-floating price=product.price}}
+          {{else}}
+            {{> components/common/login-for-pricing}}
+          {{/or}}
+        </div>
+      </div>
+
+      {{#if product.options}}
+        {{> components/products/gql-floating-sizes}}
+      {{/if}}
+
+      <div
+        class="form-action form-action--addtocart product-sticky-bar__button-wrapper"
+        role="status" aria-live="polite">
+        <input
+          {{#unless product.can_purchase}} disabled="disabled"{{/unless}}
+          id="addToCart-floating"
+          data-wait-message="{{lang 'products.adding_to_cart'}}"
+          class="btn btn-dark btn--addtocart mb-0 w-100"
+          type="submit"
+          value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+          data-product-details='{
+            "item_id" : "{{ product.id }}",
+            "item_name" : "{{ product.title }}",
+            "item_brand" : "{{ product.brand.name }}",
+            "item_variant" : "{{ product.sku }}",
+            "currency" : "{{ product.price.with_tax.currency }}",
+            "price" : "{{ product.price.with_tax.value }}"
+          }'
+          />
+
+      </div>
+
+    </form>
+
+    {{#if settings.show_wishlist}} 
+      {{> components/common/wishlist-dropdown}}
+    {{/if}}
+  </div>
+
+</div>

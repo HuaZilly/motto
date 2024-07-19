@@ -1,0 +1,144 @@
+<div class="previewCartWrapper">
+    <div class="previewCart-header">
+        <h4 class="previewCart-header__title h4">My Bag</h4>
+        <h4 class="previewCart-header__count h4">3 items</h4>
+    </div>
+  <div class="previewCart">
+    {{#if cart.items.length}}
+        <ul class="previewCartList">
+            {{#each (limit cart.items 4)}}
+                <li class="previewCartItem">
+                    <div class="previewCartItem-image">
+                        {{#if type '==' 'GiftCertificate'}}
+                            <img
+                                alt="GiftCertificate"
+                                title="GiftCertificate"
+                                src="{{cdn ../theme_settings.default_image_gift_certificate}}"
+                            >
+                        {{else}}
+                            {{> components/common/responsive-img
+                                image=image
+                                fallback_size=../theme_settings.productthumb_size
+                                lazyload=../theme_settings.lazyload_mode
+                                default_image=../theme_settings.default_image_product
+                            }}
+                        {{/if}}
+                    </div>
+                        <div class="previewCartItem-content">
+                         
+                            <h6 class="previewCartItem-name h6">
+                                <a href="{{url}}" alt="{{name}}" title="{{name}}">{{name}}</a>
+                            </h6>
+
+                            <span class="previewCartItem-price h6 text-black-40 ff-bold ">
+                                {{#if quantity '>' 1}}
+                                    {{quantity}} &times;
+                                {{/if}}
+                                {{#or ../customer (if ../theme_settings.restrict_to_login '!==' true)}}
+                                    <span{{#if price_discounted}} class="price--discounted"{{/if}}>{{price.formatted}}</span>
+                                    {{#if price_discounted}}
+                                        {{price_discounted.formatted}}
+                                    {{/if}}
+                                {{else}}
+                                    {{> components/common/login-for-pricing}}
+                                {{/or}}
+                            </span>
+                            <div class="previewCartItem-spec">
+                                <div class="previewCartItem-spec__items">
+                                    <div class="previewCartItem-spec__select">
+                                        <select class="previewCartItem-spec__select-tag" name="" id="">
+                                            <option value="1">Size 1</option>
+                                            <option value="2">Size 2</option>
+                                            <option value="3">Size 3</option>
+                                        </select>
+                                        <span class="icon-svg icon--select-arw">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg-full previewCartItem-spec__select-svg" viewBox="0 0 11.86 6.43"><path d="M5.93 6.43a.47.47 0 01-.35-.15L.15.85c-.2-.2-.2-.51 0-.71s.51-.2.71 0l5.08 5.08L11.02.14c.2-.2.51-.2.71 0s.2.51 0 .71L6.29 6.29c-.1.09-.23.14-.36.14z" fill="#bababa"/></svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="previewCartItem-spec__items">
+                                    <div class="previewCartItem-spec__select">
+                                        <select class="previewCartItem-spec__select-tag" name="" id="">
+                                            <option value="1">Qty 1</option>
+                                            <option value="2">Qty 2</option>
+                                            <option value="3">Qty 3</option>
+                                        </select>
+                                        <span class="icon-svg icon--select-arw">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg-full previewCartItem-spec__select-svg" viewBox="0 0 11.86 6.43"><path d="M5.93 6.43a.47.47 0 01-.35-.15L.15.85c-.2-.2-.2-.51 0-.71s.51-.2.71 0l5.08 5.08L11.02.14c.2-.2.51-.2.71 0s.2.51 0 .71L6.29 6.29c-.1.09-.23.14-.36.14z" fill="#bababa"/></svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="previewCartItem-spec__links">
+                                <a href="#" class="text-muted-two">Move to Favourites</a> / <a href="#" class="text-muted-two">Remove</a>
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            <div class="previewCartAction">
+                <ul class="previewCartAction__cartinfo">
+                    <li class="previewCartAction__items">
+                        <span class="previewCartAction__label">{{lang 'cart.checkout.subtotal'}}:</span>  
+                        <span class="previewCartAction__value">
+                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            <span>{{cart.sub_total.formatted}}</span>
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                        </span>   
+                    </li>
+                    <li class="previewCartAction__items">
+                        <span class="previewCartAction__label">{{lang 'cart.checkout.shipping'}}:</span>
+                        <span class="previewCartAction__value">
+                           Free
+                        </span>
+                    </li>
+                    <li class="previewCartAction__items">
+                        <span class="previewCartAction__label">{{lang 'cart.checkout.grand_total'}}:</span>
+                        <span class="previewCartAction__value">
+                            {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                            <strong>{{cart.grand_total.formatted}}</strong>
+                        {{else}}
+                            {{> components/common/login-for-pricing}}
+                        {{/or}}
+                        </span>
+                    </li>
+                  
+                </ul>
+                {{#if cart.show_primary_checkout_button}}
+                    <div class="previewCartAction-checkout">
+                        <a href="{{urls.checkout.single_address}}" class="btn btn-primary w-100">
+                            {{lang 'cart.preview.checkout_now'}}
+                        </a>
+                    </div>
+                {{/if}}
+
+                <!-- <div class="previewCartAction-viewCart{{#unless cart.show_primary_checkout_button}} previewCartAction-viewCart--sole{{/unless}}">
+                    <a href="{{urls.cart}}" class="button button--small button--action">
+                        {{lang 'cart.preview.view_cart'}}
+                    </a>
+                </div> -->
+
+                {{#if cart.show_multiple_address_shipping}}
+                    <div class="previewCartAction-checkoutMultiple">
+                        <a href="{{urls.checkout.multiple_address}}">
+                            {{lang 'cart.preview.checkout_multiple'}}
+                        </a>
+                    </div>
+                {{/if}}
+            </div>
+            {{#if cart.additional_checkout_buttons}}
+                <div class="previewCart-additionalCheckoutButtons">
+                    {{#each cart.additional_checkout_buttons}}
+                        {{{this}}}
+                    {{/each}}
+                </div>
+            {{/if}}
+        {{else}}
+            <div class="previewCart-emptyBody">
+                {{lang 'cart.checkout.empty_cart'}}
+            </div>
+        {{/if}}
+    </div>
+</div>

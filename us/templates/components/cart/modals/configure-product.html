@@ -1,0 +1,23 @@
+<div class="modal-header">
+    <h2 class="modal-header-title">{{lang 'cart.reconfigure_product' name=product_name}}</h2>
+</div>
+<div class="modal-body" data-product-option-change>
+    <div class="alertMessageBox" hidden>
+        {{> components/common/alert/alert-info}}
+    </div>
+
+    <form id="CartEditProductFieldsForm" method="post" action="cart.php" enctype="multipart/form-data" >
+        <input type="hidden" name="action" value="EditProductFieldsInCart">
+        <input type="hidden" name="item_id" value="{{quote_item_id}}">
+        <div class="c-configure-sizes p-0 w-100" >
+            {{#each options}}
+            {{{dynamicComponent 'components/products/options'}}}
+            {{/each}}
+        </div>
+        
+
+        <div class="form-actions w-100">
+            <input class="btn btn-dark btn-mn-w-20" type="submit" value="{{lang 'common.save'}}">
+        </div>
+    </form>
+</div>

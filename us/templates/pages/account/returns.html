@@ -1,0 +1,20 @@
+{{#partial "page"}}
+<div class="container">
+  <div class="common-block form--block">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+    <div class="page-heading__wrap">
+      <h2 class="page-heading h3 mb-0">{{lang 'account.returns.heading' }}</h2>
+    </div>
+    {{> components/account/navigation account_page='returns'}}
+
+    <div class="account mb-0">
+      <div class="account-body">
+        {{#if customer.returns}} {{> components/account/returns-list returns=customer.returns}} {{else}} {{> components/common/alert/alert-info (lang
+        'account.returns.none')}} {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+
+{{/partial}} {{> layout/base}}

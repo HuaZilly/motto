@@ -1,0 +1,338 @@
+<footer class="footer d-flex flex-column" role="contentinfo">
+  <div class="footer-top-block">
+    <div class="container container--form text-center">
+      <article class="footer-newsletter test" data-section-type="newsletterSubscription">
+        {{{region name="footer_bottom"}}}
+        {{#or
+          (if page_type '===' 'product')
+          (if page_type '===' 'category')
+          (if page_type '===' 'default')
+        }}
+        <div class="klaviyo-default-form klaviyo-form-VhWf6f" style="display: none"></div>
+        {{/or }}
+      </article>
+    </div>
+  </div>
+  <div class="footer-btm-block">
+    <div class="footer-btm-block__top d-none">
+      <div class="container text-center">{{{region name="footer_bottom--global"}}}</div>
+    </div>
+
+    <div class="footer-btm-block__btm">
+      <div class="container container--footer">
+        <div class="footer-btm__wrapper">
+          <section class="row row--custom-four">
+            <div class="col-12 col--custom-four">
+              <ul class="accordion accordion--footer list-unstyled row" data-accordion="myAccordionGroup">
+                <li class="footer-info-col--accordion col-md-3 d-none" data-section-type="footer-webPages">
+                  <a href="#panelpayment" class="footer-info-heading footer-info-heading--accordion h4">
+                    Payment Options
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+                  <div id="panelpayment" class="footer-info__content content footer-info--payment d-md-block">
+                    {{> components/common/payment-icons}}
+                  </div>
+                </li>
+
+                <li class="footer-info-col--accordion col-md-3 order-1" data-section-type="footer-webPages">
+                  {{#each pages}} {{#if name '==' "Customer Service"}}
+                  <a href="#panel1c" class="footer-info-heading footer-info-heading--accordion h4"
+                    >{{name}}
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+                  {{/if}} {{/each}}
+
+                  <ul id="panel1c" class="footer-info__content content d-md-block">
+                    {{#each pages}} {{#if name '==' "Customer Service"}} {{#each children}}
+                    <li>
+                      <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                    </li>
+                    {{/each}} {{/if}} {{/each}}
+                  </ul>
+                </li>
+
+                <li class="footer-info-col--accordion col-md-3 order-2" data-section-type="footer-categories">
+                  <a href="#panel2c" class="footer-info-heading footer-info-heading--accordion h4"
+                    >Account
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+                  <ul id="panel2c" class="footer-info__content content d-md-block">
+                    {{#if customer}}
+                    <li>
+                      <a class="footer-info__list d-inline-block" href="{{urls.auth.logout}}" aria-label="{{lang 'common.logout'}}">
+                        {{lang 'common.logout'}}
+                      </a>
+                    </li>
+                    {{else}}
+                    <li>
+                      <a class="footer-info__list d-inline-block" href="{{urls.auth.login}}" aria-label="{{lang 'common.login'}}">
+                        {{lang 'common.login'}}
+                      </a>
+                      {{#if settings.account_creation_enabled}} /
+                      <a class="footer-info__list d-inline-block" href="{{urls.auth.login}}" aria-label="{{lang 'common.sign_up'}}">
+                        {{lang 'common.sign_up'}}
+                      </a>
+
+                      {{/if}}
+                    </li>
+                    {{/if}}
+                    <li>
+                      <a class="footer-info__list" href="{{urls.account.wishlists.all}}" aria-label="{{lang 'account.mobile_nav.wishlists'}}">
+                        {{lang 'account.mobile_nav.wishlists'}}
+                      </a>
+                    </li>
+                    {{#each pages}} {{#if name '==' "Sign Up to become a VIP"}}
+                    <li>
+                      <a
+                        href="https://motto.us6.list-manage.com/subscribe?u=8cce018f76598e5a3a705b07f&id=dd4a7852f5"
+                        target="_blank"
+                        class="footer-info__list"
+                        >{{name}}</a
+                      >
+                    </li>
+                    {{/if}} {{/each}}
+                  </ul>
+                </li>
+
+                <li class="footer-info-col--accordion col-md-3 order-3" data-section-type="footer-categories">
+                  <a href="#panel3c" class="footer-info-heading footer-info-heading--accordion h4"
+                    >Motto Fashions
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+                  <ul id="panel3c" class="footer-info__content content d-md-block">
+                    {{#each pages}} {{#if name '==' "Motto Fashions"}} {{#each children}}
+                    <li>
+                      <a href="{{url}}" class="footer-info__list">{{name}}</a>
+                    </li>
+                    {{/each}} {{/if}} {{/each}}
+                  </ul>
+                </li>
+
+                <li class="footer-info-col--accordion col-md-3 d-md-block order-4" data-section-type="footer-categories">
+                  <a href="#panel4c" class="footer-info-heading footer-info-heading--accordion h4 d-md-block"
+                    >{{lang 'footer.info'}}
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+                  <div id="panel4c" class="footer-info__content content footer-info--mb d-md-block">
+                    <address class="footer-info__list footer-info--address teest22">{{nl2br settings.address}}</address>
+                  </div>
+
+                  <a href="#panel2cc" class="footer-info-heading footer-info-heading--accordion h4"
+                    >Social
+                    <i class="icon navPages-action-moreIcon icon--plus d-md-none" aria-hidden="true"></i>
+                  </a>
+
+                  <div id="panel2cc" class="footer-info__content content d-md-block">{{> components/common/social-links}}</div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </div>
+
+        {{#if theme_settings.geotrust_ssl_common_name}}
+        <div class="footer-geotrust-ssl-seal">{{> components/common/geotrust-ssl-seal}}</div>
+        {{/if}} {{#if settings.paypal_commerce_credit_message}}
+        <div class="footer-copyright tes11">
+          <p class="paypal-credit">{{nl2br settings.paypal_commerce_credit_message}}</p>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-mid-block">
+    <div class="container container--footer">
+      {{#if theme_settings.show_copyright_footer}}
+      <div class="footer-copyright tes1122">
+        <p class="powered-by vvkk">
+          &copy; {{moment format="YYYY"}} {{settings.store_name}} Site 
+        </p>
+      </div>
+      {{/if}}
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-options">{{> components/common/payment-icons}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- load more colors products -->
+<div id="load-more-colors" class="modal modal--default" data-reveal>
+  <button type="button" class="button--close" data-reveal-close aria-label="Close modal">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="modal-content">
+    <h4 class="modal__title text-uppercase text-center font-weight-bold mt-0">MORE COLOURS</h4>
+    <div class="modal__product-list loadingMoreColors modal--also-available"></div>
+    <div id="loaderimageMoreColor" class="loadingOverlay" style="display: none; position: relative !important; top: 22px !important"></div>
+  </div>
+</div>
+
+<!-- Add to Cart -->
+<div id="add-from-size" class="modal modal--addtocart modal--small" data-reveal>
+  <button type="button" class="button--close" data-reveal-close aria-label="Close modal">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+  <!-- not available -->
+  <div id="notAvailable" class="modal-content">
+    <div class="modal-header modal-header--custom-one border-bottom-0">
+      <h3 class="modal-header-title h3 text-center">The selected size is out of stock !!!</h3>
+    </div>
+    <div class="modal-body modal-body--addtocart loadingAddingToCart">
+      <div class="previewCart">
+        <div class="modal-sizes__btn-grp mx-auto d-flex">
+          <button type="button" class="btn btn-dark" data-reveal-close aria-label="Close modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- adding error -->
+  <div id="addingError" class="modal-content">
+    <div class="modal-header modal-header--custom-one border-bottom-0">
+      <h3 class="modal-header-title h3 text-center stockNotAvailable">Error processing the request. Please try again later!!!</h3>
+    </div>
+    <div class="modal-body modal-body--addtocart loadingAddingToCart">
+      <div class="previewCart">
+        <div class="modal-sizes__btn-grp mx-auto d-flex">
+          <button type="button" class="btn btn-dark" data-reveal-close aria-label="Close modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- adding success -->
+  <div id="addingSuccess" class="modal-content">
+    <div class="modal-header modal-header--custom-one border-bottom-0">
+      <h3 class="modal-header-title h3 text-left">Added to Cart</h3>
+    </div>
+    <div class="modal-body modal-body--addtocart modal-body--addtocart-list loadingAddingToCart">
+      <div class="previewCart">
+        <div class="row row--productView">
+          <div class="col-12 col--productView-image">
+            <figure class="productView-image">
+              <div class="productView-img-container">
+                <img id="addedProductImage" class="productView-image--cart" />
+              </div>
+            </figure>
+          </div>
+          <div class="col-12 col--productView-content">
+            <div class="productView-details">
+              <h3 class="productView-title h3 mb-0" id="addedProductName"></h3>
+              <ul class="productView-price ml-0 test11">
+                <li>
+                  <span class="text-black-40">RRP:</span>
+                  <span class="text-dark" id="addedActualPrice"></span>
+                </li>
+                <!-- <li>
+                  <span class="text-black-40">Member Price:</span>
+                  <span class="text-black-80" id="addedMemberPrice"></span>
+                </li> -->
+              </ul>
+              <dl class="productView-info">
+                <dt class="productView-info-name text-black-40 addedDispSizeText">Size:</dt>
+                <dd class="productView-info-value text-black" id="addedProductSize"></dd>
+              </dl>
+              <div class="productView-details__checkout test222">
+                <!-- <a href="/cart.php" class="btn btn-outline-primary w-100"">View Cart</a>
+                <a href="/checkout" class="btn btn-primary w-100 px-1">Check out now</a> -->
+                <a href="#" class="btn btn-md btn-outline-primary w-100" role="button" data-reveal-close>
+                  {{lang 'cart.added_to_cart.continue_shopping'}}
+                </a>
+
+                <a href="/cart.php" class="btn btn-md btn-primary w-100 px-1"> View Cart </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- available -->
+  <div id="isAvailable" class="modal-content">
+    <div class="modal-header modal-header--custom-one border-bottom-0">
+      <h3 class="modal-header-title h3">Add to Cart</h3>
+    </div>
+    <div class="modal-body modal-body--addtocart modal-body--addtocart-list loadingAddingToCart">
+      <div class="previewCart">
+        <form class="form mb-0" method="post" action="{{product.cart_url}}" enctype="multipart/form-data" data-cart-item-add>
+          <input type="hidden" name="action" value="add" />
+          <input type="hidden" name="product_id" id="product_id" value="" />
+          <input type="hidden" id="qty[]" name="qty[]" value="1" />
+          <div class="row row--productView">
+            <div class="col-12 col--productView-image">
+              <figure class="productView-image">
+                <div class="productView-img-container">
+                  <img id="addedImage" class="productView-image--cart" />
+                </div>
+              </figure>
+            </div>
+            <div class="col-12 col--productView-content">
+              <div class="productView-details">
+                <h3 class="productView-title h3 mb-0" id="productName"></h3>
+                <ul class="productView-price ml-0 test22">
+                  <li>
+                    <span class="text-black-40">RRP:</span>
+                    <span class="text-dark" id="actualPrice"></span>
+                  </li>
+                  <!-- <li>
+                    <span class="text-black-40">Member Price:</span>
+                    <span class="text-black-80" id="memberPrice"></span>
+                  </li> -->
+                </ul>
+                <dl class="productView-info">
+                  <dt class="productView-info-name text-black-40 dispSizeText">Size:</dt>
+                  <dd class="productView-info-value text-black" id="productSize"></dd>
+                </dl>
+                <input type="hidden" class="product_attrib_to_add" id="" name="" value="" data-state="false" />
+
+                <div class="productView-details__checkout twst">
+                  <input
+                    id="form-action-addToCart"
+                    data-wait-message="{{lang 'products.adding_to_cart'}}"
+                    class="btn btn-primary w-100"
+                    type="submit"
+                    value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- klaviyo -->
+{{#if theme_settings.enable_restock_notify}}
+<div id="manual-bis" class="manual-bis-popup js-manual-popup d-none">
+  <div class="popup-overlay" data-close-modal=""></div>
+  <div class="popup-content">
+    <h4 class="manual-bis-popup__heading">
+      <span class="manual-bis-popup__product" id="manual-bis-product-name"></span>
+      <span class="manual-bis-popup__variant"></span>
+    </h4>
+    <p>Register to be notified if this style comes back in your size.</p>
+    <form id="manual-bis-form" method="post" action="">
+      <input type="hidden" id="manual-bis-account" name="a" value="Yn47WU" />
+      <input type="hidden" id="manual-bis-product" name="product" value="" />
+      <input type="hidden" id="manual-bis-variant" name="variant" value="" />
+      <input type="hidden" id="manual-bis-platform" name="platform" value="bigcommerce" />
+      <input type="email" id="manual-bis-email" name="email" placeholder="Email" value="" required="" />
+      <input type="hidden" name="subscribe_for_newsletter" value="false" />
+      <div class="manual-bis-message d-none"></div>
+      <div class="manual-bis-success d-none">You're in! We'll let you know if it comes back.</div>
+      <button type="submit" class="btn btn--submit" style="display: block">Notify me when available</button>
+    </form>
+    <button type="button" id="manual-bis-form-close" class="btn popup-close" data-close-modal="">x</button>
+  </div>
+</div>
+{{/if}}
+<!-- <div class="klaviyo-form-VhWf6f"></div> -->
+<!-- <div class="klaviyo-form-XB3nu3"></div> -->
+<!-- <div class="klaviyo-form-RuK9i9"></div> -->

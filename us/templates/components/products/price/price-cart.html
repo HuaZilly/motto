@@ -1,0 +1,30 @@
+<div class="d-flex flex-column cart-table-member --price-cart-html">
+
+  {{#if theme_settings.enable_member_discount_banner}}
+    <span class="text-success text-uppercase">{{theme_settings.member_discount_banner}}</span>
+  {{else}}
+    {{#filter custom_fields 'Flag' property='name' }}
+    <span class="text-success text-uppercase">{{value}}</span>
+    {{/filter}}
+  {{/if}}
+
+  
+  {{#filter custom_fields 'Flag Black' property='name' }}
+  <span class="text-uppercase">{{value}}</span>
+  {{/filter}} 
+  
+  {{#filter custom_fields 'Flag Red' property='name' }}
+  <span class="text-uppercase">{{value}}</span>
+  {{/filter}} 
+  
+  {{#if theme_settings.enable_member_discount_banner}}
+  {{#unless customer}}
+  <span class="font-weight-bold">
+    <a href="/login.php" class="text-decoration-none">Login</a>
+    or
+    <a href="/login.php?action=create_account" class="text-decoration-none">Signup</a>
+  </span>
+  {{/unless}}
+  {{/if}}
+  
+</div>

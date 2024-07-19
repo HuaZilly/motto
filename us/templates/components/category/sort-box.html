@@ -1,0 +1,25 @@
+<fieldset class="form-fieldset  actionBar-section actionBar-section--sort d-block">
+    <div class="form-field faceted--list">
+        <label class="form-label" for="sort">{{lang 'common.sorter.sort_by'}}</label>
+        <select class="form-select form-select--small px-0 " name="sort" id="sort" role="listbox">
+            <option value="featured" {{#if sort '==' 'featured'}}selected{{/if}}>{{lang 'common.sorter.featured'}}</option>
+            <option value="newest" {{#if sort '==' 'newest'}}selected{{/if}}>{{lang 'common.sorter.newest'}}</option>
+            <option value="bestselling" {{#if sort '==' 'bestselling'}}selected{{/if}}>{{lang 'common.sorter.top_sellers'}}</option>
+            <option value="alphaasc" {{#if sort '==' 'alphaasc'}}selected{{/if}}>{{lang 'common.sorter.alpha_asc'}}</option>
+            <option value="alphadesc" {{#if sort '==' 'alphadesc'}}selected{{/if}}>{{lang 'common.sorter.alpha_desc'}}</option>
+            <option value="avgcustomerreview" {{#if sort '==' 'avgcustomerreview'}}selected{{/if}}>{{lang 'common.sorter.reviews'}}</option>
+            <option value="priceasc" {{#if sort '==' 'priceasc'}}selected{{/if}}>{{lang 'common.sorter.price_asc'}}</option>
+            <option value="pricedesc" {{#if sort '==' 'pricedesc'}}selected{{/if}}>{{lang 'common.sorter.price_desc'}}</option>
+            {{#if result_count}}
+                <option value="relevance" {{#if sort '==' 'relevance'}}selected{{/if}}>{{lang 'common.sorter.relevance'}}</option>
+            {{/if}}
+        </select>
+        <span class="toggle__arw">
+           {{!--  <svg><use xlink:href="#icon-add" /></svg> --}}
+            <svg viewBox="0 0 7.1 7.2" id="icon-add" >
+                <path fill="#121212" d="M4.1,0v3.1h3v1h-3v3.1h-1V4.1H0v-1h3.1V0H4.1z"/>
+               </svg>
+        </span>
+    </div>
+</fieldset>
+

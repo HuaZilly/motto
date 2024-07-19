@@ -1,0 +1,38 @@
+{{inject "token" settings.storefront_api.token}}
+{{#partial "page"}}
+<div class="container">
+  <div class="common-block form--block kk">
+    {{#if wishlist.is_editable}} {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} {{/if}}
+    <div class="page pagelist--row accountlist--row pb-0">
+      <aside class="page-sidebar page-sidebar--custom" id="faceted-search-container">
+        <h3 class="page-sidebar__title">{{lang 'account.wishlists.heading' }}</h3>
+        {{#if wishlist.is_editable}} {{> components/account/navigation account_page='wishlists'}} {{/if}}
+      </aside>
+      <main class="page-content product-listing pb-0 yyy">
+        <div class="account-body aa">
+          {{#if wishlist.is_editable}} {{#if wishlist.is_public '>' 0}}
+          <!-- <div class="panel share-wishlist">
+            <div class="panel-body">
+              <h5>{{lang 'account.wishlists.share_intro'}}</h5>
+              <input class="form-input" value="{{settings.base_url}}{{wishlist.share_url}}" readonly />
+            </div>
+          </div> -->
+
+          <div class="form-share mb-5">
+            <label class="form-label form-label--custom form-field__title text-dark mb-3">{{lang 'account.wishlists.share_intro'}}</label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-input bg-white px-4" value="{{settings.base_url}}{{wishlist.share_url}}" readonly />
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="copywishlist" data-copy="{{settings.base_url}}{{wishlist.share_url}}">COPY</button>
+              </div>
+            </div>
+          </div>
+
+          {{/if}} {{/if}} {{#if wishlist.items}} {{> components/account/wishlist-item-list show_remove=wishlist.is_editable}} {{else}} {{>
+          components/common/alert/alert-info (lang 'account.wishlists.empty_wishlist')}} {{/if}}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{{/partial}} {{> layout/base}}

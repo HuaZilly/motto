@@ -1,0 +1,288 @@
+//form
+
+/*Change text in autofill textbox*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $clr-grey-light-seven inset !important;
+}
+
+.coupon-code-cancel,
+.shipping-estimate-show[aria-expanded="true"] {
+  font-style: normal;
+}
+
+.form-row {
+  @media (max-width: $screen-medium) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.form-input,
+.form-select {
+  background-color: $clr-grey-light-seven;
+  border-radius: 0px;
+  border-color: $clr-grey-light-seven;
+  height: remCalc(45px);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  @media (max-width: $screen-medium) {
+    font-size: 0.9rem;
+    padding: 0.55rem 1rem;
+    height: remCalc(40px);
+  }
+  .cart-total & {
+    height: remCalc(40px);
+    padding-right: 1rem;
+    padding-left: 1rem;
+    @media (max-width: $screen-medium) {
+      font-size: 0.9rem;
+    }
+  }
+
+  &--incrementTotal {
+    height: auto;
+    background-color: transparent;
+  }
+}
+
+.form-select {
+  background-position: calc(100% - 0.5em) 50%;
+  .cart-total & {
+    padding-right: remCalc(30px);
+  }
+}
+
+.form-label {
+  @media (max-width: $screen-medium) {
+    font-size: 0.9rem;
+  }
+  small {
+    float: right;
+    margin-top: 0.41667rem;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+}
+
+.form-label,
+.new-customer-intro {
+  color: black;
+  letter-spacing: 0.03em;
+}
+
+.form-actions--login {
+  display: flex;
+  align-items: center;
+  // flex-direction: column;
+  // @media (min-width: $screen-large) {
+  //   flex-direction: row;
+  // }
+  .btn-login,
+  .forgot-password {
+    width: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.forgot-password {
+  margin-left: auto;
+}
+
+.form-field__body {
+  background-color: transparent;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: baseline;
+}
+
+.form-field__title {
+  font-size: 0.96rem;
+}
+
+.login {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 3rem;
+  @media (min-width: $screen-medium) {
+    padding-bottom: 3.5rem;
+  }
+  @media (min-width: $screen-large) {
+    padding-bottom: 5rem;
+  }
+}
+
+.login-row {
+  width: auto;
+
+  @media (min-width: $screen-medium) {
+    margin-top: remCalc(20px);
+  }
+
+  @media (min-width: $screen-large) {
+    margin-top: remCalc(30px);
+  }
+}
+
+.login-form,
+.new-customer {
+  width: 100%;
+  float: none;
+  padding: 0;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.panel--newcustomer {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.estimator-form-label .form-label {
+  min-height: remCalc(39px);
+  line-height: remCalc(39px);
+}
+
+.login-form {
+  margin-bottom: 2rem;
+  @media (min-width: $screen-medium) {
+    margin-bottom: 0;
+  }
+}
+
+.form-label--custom {
+  font-size: 1rem;
+  @media (min-width: $screen-medium) {
+    font-size: 1rem;
+  }
+}
+
+.form-field--input {
+  margin-bottom: 1rem;
+  @media (min-width: $screen-medium) {
+    margin-bottom: 2rem;
+  }
+}
+
+.g-recaptcha {
+  @media (max-width: $screen-medium) {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+}
+
+.form-actions {
+  &.create {
+    @media (max-width: $screen-medium) {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+  }
+}
+
+.account--fixed {
+  width: 100%;
+  max-width: 100%;
+  @media (min-width: $screen-medium) {
+    max-width: 1436px;
+    // width: 86.66667%;
+  }
+  @media (min-width: $screen-large) {
+    // width: 66.66667%;
+    max-width: 1436px;
+  }
+}
+
+.account--login {
+  width: 100%;
+  max-width: 100%;
+  @media (min-width: $screen-medium) {
+    max-width: 800px;
+    // width: 86.66667%;
+  }
+  @media (min-width: $screen-large) {
+    // width: 66.66667%;
+    max-width: 800px;
+  }
+}
+
+.wishlists-table {
+  max-width: 100%;
+}
+
+.navBar--sub .navBar-item {
+  font-size: 1rem;
+}
+
+.navBar--account {
+  display: block;
+
+  &.navBar--sub {
+    margin-bottom: 0;
+    padding: 1.4rem 0;
+    // @media (max-width: $screen-medium) {
+
+    //   margin-bottom: 2rem;
+    // }
+  }
+}
+
+.navBar--sub.navBar--account .navBar-section {
+  float: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.account-body {
+  @media (max-width: $screen-medium) {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.panel--newAddress {
+  &:hover,
+  &:focus {
+    color: black;
+    .address-title {
+      color: black;
+    }
+  }
+}
+
+.panel--address .form-actions {
+  .btn {
+    width: auto;
+  }
+}
+
+.new-customer-fact-list {
+  margin-left: 0;
+  padding-left: 20px;
+}
+.new-customer-intro {
+  margin-left: 0;
+}
+.account-body--custom-one,
+.login-row {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.common-block.form--block {
+}
+
+.form-label.form-label--custom small {
+  margin-top: 0;
+  // font-size: 0.6rem;
+}

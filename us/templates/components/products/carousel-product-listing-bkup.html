@@ -1,0 +1,31 @@
+<div class="card-img-container card-img-container--listing">
+    <div class="card-img-container--slide"
+        data-list-name="{{list}}"
+        data-slick='{
+            "dots": false,
+            "infinite": false,
+            "mobileFirst": true,
+            "slidesToShow": 1,
+            "slidesToScroll": 1,
+            "slide": ".prodImgSlider",
+            "prevArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-prev-arrow",
+            "nextArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-next-arrow"
+        }'>
+        {{#if images.length '>' 1}}
+        <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{images.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-prev-arrow slick-prev slick-arrow slick-prev--listing"></button>
+        {{/if}}
+        {{#each images}}
+        <div class="prodImgSlider" >
+                {{> components/common/responsive-img
+                    image=this
+                    class="card-image card-image--listing"
+                    fallback_size=theme_settings.category_card_size
+                    default_image=theme_settings.default_image_product
+                }}
+        </div>
+        {{/each}}
+        {{#if images.length '>' 1}}
+        <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{images.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-next-arrow slick-next slick-arrow slick-next--listing"></button>
+        {{/if}}
+    </div>
+</div>

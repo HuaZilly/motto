@@ -1,0 +1,58 @@
+{{#partial "page"}}
+
+{{#if head.title "==" "Live stream on demand"}}
+<link rel="stylesheet" type="text/css" href="https://cdn.getshogun.com/css-2023-10-18-1121/6554420315b91600e14f0f92.css">
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato:400|Roboto:|Montserrat:500|IBM+Plex+Serif:400|Sarabun:">
+{{/if}}
+
+<div class="page-seo-title d-none">{{ head.title }}</div>
+
+<div class="container">
+    <div class="common-block">
+        {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<main class="page">
+    {{#unless theme_settings.hide_page_heading }}
+    <div class="page-heading__wrap">
+        <h1 class="page-heading h3 mb-0">{{ page.title }}</h1>
+    </div>
+       
+    {{/unless}}
+
+    {{#if page.sub_pages}}
+    <nav class="navBar navBar--sub test22">
+        <ul class="navBar-section account-navigation">
+        {{#each page.sub_pages}}
+            <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+        {{/each}}
+        </ul>
+    </nav>
+    {{/if}}
+
+    {{{region name="page_builder_content"}}}
+
+    <div class="page-content page-content--centered page-content--cms">
+        {{#replace '%%Syndicate%%' page.content}}
+            {{> components/page/rss_feed}}
+        {{else}}
+            {{{page.content}}}
+        {{/replace}}
+    </div>
+
+    {{#if page.feed}}
+        <ul>
+            {{#each page.feed}}
+                <li>
+                    <h6><a href="{{url}}" target="_blank">{{title}}</a></h6>
+                    <p>{{content}}</p>
+                </li>
+            {{/each}}
+        </ul>
+    {{/if}}
+</main>
+    </div>
+</div>
+
+{{/partial}}
+
+{{> layout/base}}

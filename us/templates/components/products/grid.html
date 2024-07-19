@@ -1,0 +1,8 @@
+<ul class="productGrid productGrid--listing ss">
+    {{#each products}}
+    <li class="product" data-productId="{{ id }}">
+            {{>components/products/card settings=../settings show_compare=../show_compare show_rating=../settings.show_product_rating theme_settings=../theme_settings page_type=../page_type customer=../customer event=../event position=(add @index 1)}}
+    </li>
+    {{/each}}
+</ul>
+    

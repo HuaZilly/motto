@@ -1,0 +1,31 @@
+<!-- <div
+  class="header-dropdown dropdown-menu dropdown-menu-style-{{theme_settings.header-menu-style}} desktop-view"
+  data-dropdown-menu>
+  {{#if theme_settings.header-menu-style '==' 'mega-menu'}}
+    {{#each categories}}
+     {{!--#if name '!==' 'Magazine'--}}
+      {{> components/header/dropdown-partial-mega-menu}}
+      {{!--/if--}}
+    {{/each}}
+  {{else}}
+    {{> components/header/dropdown-partial-drill-down}}
+  {{/if}}
+</div> -->
+
+
+
+  <div class="dropdown-menu dropdown-menu--hdr-mobile" id="cloting-dropdown" data-dropdown-content aria-hidden="true">
+    {{#if theme_settings.header-menu-style '==' 'mega-menu'}}
+    {{#each categories}}
+     {{#if name '==' 'Shop All'}}
+      {{> components/header/dropdown-partial-mega-menu}}
+      {{/if}}
+    {{/each}}
+  {{else}}
+    {{> components/header/dropdown-partial-drill-down}}
+  {{/if}}
+  <!-- {{#each categories}}
+    {{> components/header/link-partial-nested }}
+  {{/each}} -->
+
+ </div>

@@ -1,0 +1,91 @@
+<a href="#main-content" class="skip-to-main-link d-none">{{lang 'header.skip_to_main'}}</a>
+
+<header class="header" role="banner">
+  <div class="header__wrapper">
+    <div class="header__promotion">
+      <div class="container text-center">{{{region name="header_top--global"}}}</div>
+    </div>
+
+    <div class="header__mainnav">
+      <div class="container container--header">
+        <div class="header__mainnav-row">
+          <div class="header__mainnav-menu header__mainnav-universal d-lg-none">
+            <a href="#" class="mobileMenu-toggle header__mainnav-btn" data-mobile-menu-toggle="menu">
+              <span class="mobileMenu-toggleIcon">
+                <svg class="icon-svg-full" viewBox="0 0 13 13">
+                  <path d="m7.2 6.5 5.8 5.8-.7.7-5.8-5.8L.7 13l-.7-.7 5.8-5.8L0 .7.7 0l5.8 5.8L12.3 0l.7.7z" />
+                </svg>
+              </span>
+            </a>
+          </div>
+
+          <div class="header__mainnav-mob-search header__mainnav-universal d-lg-none">
+            <button type="button" class="js-btn-search-mob">
+              <span class="icon-svg icon--search-header">
+                <svg class="svg-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.96 19.78">
+                  <path
+                    d="M20.74 18.61l-7.36-6.66c1.15-1.54 1.73-3.51 1.43-5.56-.59-4.07-4.36-6.9-8.43-6.31C2.32.66-.52 4.44.07 8.51s4.37 6.89 8.43 6.31a7.39 7.39 0 003.96-1.86l7.37 6.66a.68.68 0 00.91-1.01zM11.42 12c-.84.76-1.91 1.27-3.11 1.44-3.31.49-6.39-1.82-6.86-5.13C.97 5 3.27 1.92 6.58 1.45c3.32-.48 6.39 1.83 6.87 5.14.24 1.64-.2 3.2-1.1 4.43-.27.36-.58.69-.93.98z"
+                  ></path>
+                </svg>
+              </span>
+            </button>
+          </div>
+
+          <div class="header__mainnav-logo">
+            {{#if page_type '===' 'default'}}
+            <h1 class="header-logo header-logo--{{theme_settings.logo-position}}">{{> components/common/store-logo}}</h1>
+            {{else}}
+            <div class="header-logo header-logo--{{theme_settings.logo-position}}">{{> components/common/store-logo}}</div>
+            {{/if}}
+          </div>
+          <div class="header__mainnav-navigation">
+            <div class="navPages-container" id="menu" data-menu>{{> components/common/navigation-menu}}</div>
+          </div>
+          <div class="header__mainnav-actions">{{> components/common/navigation}}</div>
+        </div>
+
+        <div class="navPages-quickSearch">{{> components/common/quick-search name='nav-quick-search'}}</div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .tooltip_title {
+      position: relative;
+      display: inline-block;
+      /*   border-bottom: 1px dotted black; */
+    }
+
+    .tooltip_title .tooltiptext_content {
+      visibility: hidden;
+      width: 100%;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 10px;
+      position: absolute;
+      z-index: 1;
+      left: 0%;
+      bottom: 100%;
+      /*   white-space: nowrap; */
+    }
+
+    .tooltip_title:hover .tooltiptext_content {
+      visibility: visible;
+    }
+
+    .tooltip_title .tooltiptext_content::after {
+      content: " ";
+      position: absolute;
+      top: 100%; /* At the bottom of the tooltip */
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+  </style>
+</header>
+
+{{{region name="header_bottom--global"}}}

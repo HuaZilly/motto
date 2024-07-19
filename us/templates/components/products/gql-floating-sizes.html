@@ -1,0 +1,30 @@
+{{!-- <div class="product-sticky-bar__size-wrapper">
+    {{#each product.options}}
+    <select name="options-floating"
+    class="border-0 h6 text-uppercase product-sticky-bar__select" required
+    data-product-option-change-floating>
+    <option value>{{this.display_name}}</option>
+    {{#each this.values}}
+    <option value="{{id}}">{{this.label}}</option>
+    {{/each}}
+    </select>
+    {{/each}}
+</div> --}}
+
+<div class="product-sticky-bar__size-wrapper">
+    <select name="options-floating"
+            class="border-0 h6 text-uppercase product-sticky-bar__select" required
+            data-product-option-change-floating >
+
+            <option value>Size</option>
+
+            {{#each gql.data.site.product.variants.edges}}
+                {{#each node.options.edges}}
+                    {{#each node.values.edges}}
+                        <option {{#unless ../../node.inventory.isInStock}}disabled{{/unless}} value="{{node.entityId}}">{{node.label}}</option>
+                    {{/each}}
+                {{/each}}
+            {{/each}}
+
+    </select>
+</div>

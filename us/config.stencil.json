@@ -1,0 +1,11 @@
+{
+  "customLayouts": {
+    "brand": {},
+    "category": {},
+    "page": {},
+    "product": {}
+  },
+  "normalStoreUrl": "https://moto--us-1581451.mybigcommerce.com/",
+  "port": "3004",
+  "packageManager": "npm"
+}

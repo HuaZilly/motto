@@ -1,0 +1,13 @@
+<div class="product-related__wrap">
+  {{lang 'products.related_products'}}
+  <div class="product-related__slide">
+    {{#if settings.data_tag_enabled}}
+    {{> components/products/carousel-related products=product.related_products columns=3 customArrowClass='js-related-product-arrow' list="Related Products"}}
+{{else}}
+    {{> components/products/carousel-related products=product.related_products columns=3 customArrowClass='js-related-product-arrow'}}
+{{/if}}
+  </div>
+
+</div>
+
+

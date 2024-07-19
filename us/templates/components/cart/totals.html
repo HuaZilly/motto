@@ -1,0 +1,122 @@
+<div class="row cart-options">
+    <div class="col-12 col-md-5 col-lg-6 cart-options__list coupon">
+        {{#if cart.coupons}}
+                {{#each cart.coupons}}
+                    <div class="cart-total">
+                        <div class="cart-total-label">
+                            {{lang 'cart.coupons.code_label' code=code}}
+                            <div>
+                                <a href="{{remove_url}}">{{lang 'cart.coupons.remove'}}</a>
+                            </div>
+                        </div>
+                        <div class="cart-total-value">
+                            <span>{{discount.formatted}}</span>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                <div class="cart-total d-none">
+                    <div class="cart-total-label">
+                        {{lang 'cart.coupon_code'}}:
+                    </div>
+                    {{> components/cart/coupon-input}}
+                </div>
+            {{/if}}
+
+    </div>
+    <div class="col-12  col-md-7 col-lg-6 cart-options__list total">
+        <ul class="cart-totals">
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    Cart overview
+                </div>
+            </li>
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    {{lang 'cart.checkout.subtotal'}}:
+                </div>
+                <div class="cart-total-value text-black-40">
+                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                        <span>{{cart.sub_total.formatted}}</span>
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}}
+                </div>
+            </li>
+            {{#if cart.gift_wrapping_cost.amount}}
+                <li class="cart-total">
+                    <div class="cart-total-label">
+                        {{lang 'cart.checkout.gift_wrapping'}}:
+                    </div>
+                    <div class="cart-total-value text-black-40">
+                        <span>{{cart.gift_wrapping_cost.formatted}}</span>
+                    </div>
+                </li>
+            {{/if}}
+            {{#each cart.taxes}}
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    {{name}}:
+                </div>
+                <div class="cart-total-value text-black-40">
+                    <span>{{cost.formatted}}</span>
+                </div>
+            </li>
+        {{/each}}
+            {{#if cart.shipping_handling.show_estimator}}
+                <li class="cart-total">
+                    <div class="cart-total-label shipping">
+                        {{lang 'cart.checkout.shipping'}}:
+                    </div>
+                    {{> components/cart/shipping-estimator cart.shipping_handling}}
+                </li>
+            {{/if}}
+           
+            {{#if cart.discount }}
+                <li class="cart-total test d-none">
+                    <div class="cart-total-label">
+                        {{lang 'cart.discount'}}:
+                    </div>
+                    <div class="cart-total-value">
+                        {{cart.discount.formatted}}
+                    </div>
+                </li>
+            {{/if}}
+            
+            {{#if settings.gift_certificates_enabled}}
+                {{#each cart.gift_certificates}}
+                    <li class="cart-total">
+                        <div class="cart-total-label">
+                            {{lang 'cart.gift_certificates.code_label' code=code}}
+                            <span>
+                                {{remaining.formatted}} | <a href="{{remove_url}}">{{lang 'cart.gift_certificates.remove'}}</a>
+                            </span>
+                        </div>
+                        <div class="cart-total-value">
+                            {{used.formatted}}
+                        </div>
+                    </li>
+                {{/each}}
+                <li class="cart-total d-none">
+                    <div class="cart-total-label">
+                        {{lang 'cart.gift_certificates.gift_certificate'}}:
+                    </div>
+                    {{> components/cart/gift-certificate-input}}
+                </li>
+            {{/if}}
+            <li class="cart-total">
+                <div class="cart-total-label">
+                    {{lang 'cart.checkout.grand_total'}}:
+                </div>
+                <div class="cart-total-value cart-total-grandTotal">
+                    {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
+                        <strong>{{cart.grand_total.formatted}}</strong>
+                    {{else}}
+                        {{> components/common/login-for-pricing}}
+                    {{/or}}
+                </div>
+            </li>
+        </ul>
+        
+    </div>
+</div>

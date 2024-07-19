@@ -1,0 +1,1 @@
+{"components/faceted-search/selected-facets":"<a href=\"{{remove_all_url}}\" data-faceted-search-facet class=\"btn btn-outline-primary w-100\">\n    {{lang 'search.faceted.selected.clear-all'}}\n</a>\n"}

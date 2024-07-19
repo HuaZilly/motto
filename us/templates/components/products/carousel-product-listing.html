@@ -1,0 +1,39 @@
+
+<div class="card-img-container card-img-container--listing product-image-{{id}}">
+    <div class="card-img-container--slide"
+    data-list-name="{{list}}"
+    data-slick='{
+        "dots": false,
+        "infinite": true,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "arrows":true,
+        "slide": ".prodImgSlider",
+        "prevArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-prev-arrow-{{id}}",
+        "nextArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-next-arrow-{{id}}"
+    }'>
+    {{#if images.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{images.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-prev-arrow-{{id}}  slick-prev slick-btn--inside slick-arrow slick-prev--listing"></button>
+    {{/if}}
+      
+        {{#each images}}
+        
+            <div class="prodImgSlider" >
+                <a href="{{../url}}"  class="data-product-image-{{../id}}">
+                    {{> components/common/responsive-img
+                        image=this
+                        class="card-image card-image--listing"
+                        fallback_size=theme_settings.category_card_size
+                        default_image=theme_settings.default_image_product
+                    }}
+                </a>
+            </div>
+        
+        {{/each}}
+        
+        {{#if images.length '>' 1}}
+        <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{images.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-next-arrow-{{id}} slick-next slick-btn--inside slick-arrow slick-next--listing"></button>
+        {{/if}}
+    </div>
+</div>

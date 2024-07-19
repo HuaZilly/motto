@@ -1,0 +1,75 @@
+// @font-face {
+//   font-family: 'zurich_lt_btlight';
+//   src: url('../fonts/zurich-lt-bt-light-webfont.woff2') format('woff2'),
+//     url('../fonts/zurich-lt-bt-light-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+// @font-face {
+//   font-family: 'zurich_btroman';
+//   src: url('../fonts/zurich_bt_roman-webfont.woff2') format('woff2'),
+//     url('../fonts/zurich_bt_roman-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+
+// @font-face {
+//   font-family: 'zurichbold';
+//   src: url('../fonts/zurich-bold-bt-webfont.woff2') format('woff2'),
+//     url('../fonts/zurich-bold-bt-webfont.woff') format('woff');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+
+/**
+ * @license
+ * MyFonts Webfont Build ID 4347388, 2022-02-04T04:20:12-0500
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: ZurichBT-Light by Bitstream
+ * URL: https://www.myfonts.com/fonts/bitstream/zurich/std-light-176111/
+ * 
+ * Webfont: ZurichBT-Regular by Bitstream
+ * URL: https://www.myfonts.com/fonts/bitstream/zurich/std-roman-176111/
+ * 
+ * Webfont: ZurichBT-Bold by Bitstream
+ * URL: https://www.myfonts.com/fonts/bitstream/zurich/std-bold-176111/
+ * 
+ * 
+ * Webfonts copyright: Copyright &amp;#x00A9; 1990-2016 MyFonts Inc. All rights reserved.
+ * 
+ * © 2022 MyFonts Inc
+*/
+
+
+
+  
+@font-face {
+  font-family: "ZurichBT-Light";
+  src: url('../fonts/ZurichBTLight/font.woff2') format('woff2'), url('../fonts/ZurichBTLight/font.woff') format('woff');
+    font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ZurichBT-Bold";
+  src: url('../fonts/ZurichBTBold/font.woff2') format('woff2'), url('../fonts/ZurichBTBold/font.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "ZurichBT-Regular";
+  src: url('../fonts/ZurichBTRegular/font.woff2') format('woff2'), url('../fonts/ZurichBTRegular/font.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
