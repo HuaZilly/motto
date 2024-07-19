@@ -1,7 +1,7 @@
 <div class="price-wrap-whole d-flex flex-column --price-product-detail-html">
     <div class="price-wrap d-flex align-items-center flex-row">
         {{#if price.with_tax}}
-        <span class="currency">AUD</span>
+        <span class="currency">USD</span>
         <div class="price-section price-section--withTax 1 rrp-price--withTax" {{#unless price.rrp_with_tax}}style="display: none;"{{/unless}}>
             <span class="d-none">
                 {{theme_settings.pdp-retail-price-label}}
@@ -43,7 +43,7 @@
     {{/if}}
     
     {{#if price.without_tax}}
-        <span class="currency">AUD</span>
+        <span class="currency">USD</span>
         <div class="price-section mx-1 price-section--withoutTax 3  rrp-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" {{#unless price.rrp_without_tax}}style="display: none;"{{/unless}}>
             <span>
                 {{theme_settings.pdp-retail-price-label}}
@@ -100,7 +100,7 @@
     {{#if theme_settings.enable_member_discount_banner}}
     <div class="price-section--withTax-guest 6 font-weight-bold" data-productid="{{product.id}}">
         <div class="price-section price-section--withTax mr-0">
-            <span class="price-label-withTax-guest-member">Member AUD</span>
+            <span class="price-label-withTax-guest-member">Member USD</span>
             <span class="price-price-withTax-guest-member">${{toFixed (multiply price.with_tax.value theme_settings.member_discount_percentage) 2}}</span>
         </div>
     </div>

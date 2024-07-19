@@ -45,7 +45,7 @@
           <span class="previewCartAction__label">{{lang 'cart.checkout.subtotal'}}:</span>
           <span class="previewCartAction__value">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-            <span>AUD {{cart.sub_total.formatted}}</span>
+            <span>USD {{cart.sub_total.formatted}}</span>
             {{else}} {{> components/common/login-for-pricing}} {{/or}}
           </span>
         </li>
@@ -57,7 +57,7 @@
           <span class="previewCartAction__label">{{lang 'cart.checkout.grand_total'}}:</span>
           <span class="previewCartAction__value">
             {{#or customer (if theme_settings.restrict_to_login '!==' true)}}
-            <strong>AUD {{cart.grand_total.formatted}}</strong>
+            <strong>USD {{cart.grand_total.formatted}}</strong>
             {{else}} {{> components/common/login-for-pricing}} {{/or}}
           </span>
         </li>

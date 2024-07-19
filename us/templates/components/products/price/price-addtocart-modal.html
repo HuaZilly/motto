@@ -1,6 +1,6 @@
 <ul class="productView-price ml-0 --price-addtocart-html">
   <li>
-    <span class="text-dark">AUD</span>
+    <span class="text-dark">USD</span>
     <span class="text-dark">
       <span class=""> {{price.formatted}} </span>
     </span>
@@ -10,14 +10,14 @@
   {{#if theme_settings.enable_member_discount_banner}}
     {{#if price_discounted}}
     <li class="font-weight-bold">
-      <span class="text-dark">Member AUD</span>
+      <span class="text-dark">Member USD</span>
       <span class="text-dark">
         <span class="cart-item-value">{{price_discounted.formatted}}</span>
       </span>
     </li>
     {{else}}
     <li class="font-weight-bold">
-      <span class="text-dark">Member AUD</span>
+      <span class="text-dark">Member USD</span>
       <span class="text-dark">
         <span class="cart-item-value">${{toFixed (multiply price.value theme_settings.member_discount_percentage) 2}}</span>
       </span>
