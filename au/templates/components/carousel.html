@@ -1,0 +1,97 @@
+
+    <!-- <div class="banners banners--main" data-banner-location="top">
+        <div class="banner">
+            {{{limit banners.top 1}}}
+        </div>
+    </div> -->
+<section class="home-adbanner sasd">
+    <div class="container">
+        <div class="home-adbanner__top">
+            <div class="gr-dropzone" data-gr-zone="gr-dropzone-top">
+                <p><a href="https://www.motto.com.au/shop-all/whats-new/"><img class="__mce_add_custom__ lazyload" title="New Arrivals" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="HOMEPAGE_NEW_29-11.jpg" width="1200" height="600" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/homepage-new-06-01.jpg" /></a></p>
+                </div>
+        </div>
+        <div class="home-adbanner__child">
+            <div class="home-adbanner__childlist">
+                <div class="gr-dropzone" data-gr-zone="gr-dropzone-2">
+                    <p><a href="https://www.motto.com.au/shop-by-occasion/vacation-must-packs/"><img class="__mce_add_custom__ lazyload" title="Vacay Styles" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Box-A_GOING-OUT_29-11.jpg" width="280" height="350" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/box-c-vaycay-07-01.jpg" /></a></p>
+                    </div>
+            </div>
+            <div class="home-adbanner__childlist">
+                <div class="gr-dropzone" data-gr-zone="gr-dropzone-3">
+                    <p><a href="https://www.motto.com.au/shop-all/sale/"><img class="__mce_add_custom__ lazyload" title="SALE" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Box-B-TOPS_29-11" width="280" height="350" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/box-a-sale-70-.jpg" /></a></p>
+                    </div>
+            </div>
+            <div class="home-adbanner__childlist">
+                <div class="gr-dropzone" data-gr-zone="gr-dropzone-4">
+                    <p><a href="https://www.motto.com.au/shop-all/dresses/"><img class="__mce_add_custom__ lazyload" title="Summer Dresses" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Box-C-LACE_29-11.jpg" width="280" height="350" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/box-b-dresses-07-01.jpg" /></a></p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="heroCarousel sss"
+    data-slick='{
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "autoplay": true,
+        "autoplaySpeed": {{carousel.swap_frequency}},
+        "lazyLoad": "anticipated",
+        "slide": ".js-hero-slide",
+        "prevArrow": ".js-hero-prev-arrow",
+        "nextArrow": ".js-hero-next-arrow"
+    }'>
+    {{#and arrows (if carousel.slides.length '>' 1)}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{carousel.slides.length}}" class="js-hero-prev-arrow slick-prev slick-arrow">hero-prev-arrow</button>
+    {{/and}}
+    {{#each carousel.slides}}
+    <a href="{{url}}" class="js-hero-slide" aria-label="{{#if this.alt_text.length '!=' 0}}{{this.alt_text}}{{else}}{{lang 'common.carousel_slide_number' slide_number=(add @index 1)}}{{/if}}">
+        <div class="heroCarousel-slide {{#if ../theme_settings.homepage_stretch_carousel_images}}stretch{{/if}} {{#if @first}}heroCarousel-slide--first{{/if}}">
+            <div class="heroCarousel-image-wrapper">
+            {{#if @first}}
+                {{> components/common/responsive-img
+                    image=stencil_image
+                    class="heroCarousel-image"
+                    fallback_size='1280w'
+                    lazyload='disabled'
+                }}
+            {{else}}
+                {{> components/common/responsive-img
+                    image=stencil_image
+                    class="heroCarousel-image"
+                    fallback_size='1280w'
+                    lazyload='lazyload'
+                }}
+            {{/if}}
+            </div>
+            {{#if heading}}
+                {{> components/carousel-content show_background=true}}
+            {{else}}
+                {{#if text}}
+                    {{> components/carousel-content show_background=true}}
+                {{else}}
+                    {{#if button_text}}
+                        {{> components/carousel-content show_background=false}}
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </a>
+    {{/each}}
+    {{#and arrows (if carousel.slides.length '>' 1)}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{carousel.slides.length}}" class="js-hero-next-arrow slick-next slick-arrow">hero-next-arrow</button>
+    {{/and}}
+</section>
+
+<section>
+  <div class="container">
+      <div class="home-adbanne__bottom">
+        <div class="gr-dropzone" data-gr-zone="gr-dropzone-bottom">
+            <p><a href="https://www.motto.com.au/outfit-ideas/"><img class="__mce_add_custom__ lazyload" title="Outfit Inspo" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="HOMEPAGE_Oufit-Ideas_29-11.jpg" width="1000" height="1200" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/homepage-outfits-24-12v2.jpg" /></a></p>
+            </div>
+      </div>
+
+  </div>
+</section>

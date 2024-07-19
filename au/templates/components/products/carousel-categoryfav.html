@@ -1,0 +1,199 @@
+{{#if products.length '>' 1}}
+
+<div class="product-customerviewed lll">
+  <div class="container">
+    <h4 class="product-customerviewed__title text-center mt-0">Category Favorites</h4>
+
+    <section
+      class="productCarousel productCarousel--cab  productCarousel--caf test33 mx-0"
+      data-list-name="Category Favourites"
+      data-slick='{
+        "dots": false,
+        "infinite": true,
+        "arrows":true,
+        "slidesToShow": 4,
+        "slidesToScroll": 1,
+        "slide": ".js-product-slide",
+        "prevArrow": ".js-product-prev-arrow-catfav",
+        "nextArrow": ".js-product-next-arrow-catfav",
+        "responsive": [
+            {
+                "breakpoint": 1024,
+                "settings": {
+                  "arrows":true,
+                  "infinite": true,
+                    "slidesToShow": 3,
+                    "slidesToScroll": 1
+                   
+                }
+            },
+            {
+                "breakpoint": 575,
+                "settings": {
+                  "arrows":true,
+                  "infinite": true,
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1
+                 
+                }
+            }
+        ]
+    }'>
+      <button
+        aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}"
+        class="js-product-prev-arrow-catfav slick-prev slick-arrow "></button>
+
+      {{#each products}}
+      <div class="productCarousel-slide js-product-slide">
+        <article class="card kk pb-0  {{#if alternate}}card--alternate{{/if}}"
+          {{#if settings.data_tag_enabled}} data-event-type="{{event}}"
+          data-entity-id="{{node.entityId}}" data-position="{{position}}"
+          data-name="{{node.name}}"
+          data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}"
+          data-product-brand="{{brand.name}}"
+          data-product-price="{{node.prices.price.value}}"
+          {{/if}}>
+          <figure class="card-figure aa">
+            <a href="javascript:void(0);"
+              class="addToWishListFromList addToWishListFromList-{{node.entityId}} card-wishlisticn"
+              data-pro-id="{{node.entityId}}">
+              <div
+                class="loaderimageWishList-{{node.entityId}} loadingOverlay loadingOverlay--wishlist">
+                <svg class="svg-full" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 19.96 17.97">
+                  <style type="text/css">
+                            .svgAnime { 
+                              transform-origin: center center;
+                              animation: x .5s ease infinite; 
+                            }
+                        
+                            @keyframes x {
+                               from { transform: scale(.8); }
+                                 to { transform: scale(1); }
+                            }
+                        </style>
+                  <path class="svgAnime"
+                    d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                    fill="none" stroke="#fffff" stroke-width="1.5"
+                    stroke-miterlimit="10" /></svg>
+              </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg"
+                class="icn-wishlist list-page" viewBox="0 0 19.96 17.97">
+                <path
+                  d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                  class="icn-wishlist__heart" stroke-width="1.5"
+                  stroke-miterlimit="10" /></svg>
+            </a>
+            <a href="javascript:void(0);"
+              class="removeFromWishListFromList removeFromWishListFromList-{{node.entityId}} card-wishlisticn wishlisted"
+              data-pro-id="{{node.entityId}}" style="display: none;">
+
+              <div class="loaderimageRemoveWishList-{{id}} loadingOverlay loadingOverlay--wishlist">
+                <svg class="svg-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.96 17.97">
+                    <style type="text/css">
+                      .svgAnime { 
+                        transform-origin: center center;
+                        animation: x .5s ease infinite; 
+                      }
+                  
+                      @keyframes x {
+                         from { transform: scale(.8); }
+                           to { transform: scale(1); }
+                      }
+                    </style>
+                    <path class="svgAnime"
+                      d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                      fill="none" stroke="#fffff" stroke-width="1.5" stroke-miterlimit="10" />
+                </svg>
+            </div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" class="icn-wishlist test3"
+                viewBox="0 0 19.96 17.97">
+                <path
+                  d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                  class="icn-wishlist__heart" stroke-width="1.5"
+                  stroke-miterlimit="10" /></svg>
+            </a>
+
+            <div
+              class="card-img-container card-img-container--listing product-image-{{node.entityId}}">
+              <div class="card-img-container--slide"
+                data-list-name="Category Favourites"
+                data-slick='{
+                  "dots": false,
+                  "infinite": true,
+                  "mobileFirst": true,
+                  "slidesToShow": 1,
+                  "slidesToScroll": 1,
+                  "arrows":true,
+                  "slide": ".prodImgSlider",
+                  "prevArrow": ".js-product-prev-arrow-{{node.entityId}}",
+                  "nextArrow": ".js-product-next-arrow-{{node.entityId}}"
+              }'>
+                {{#if node.images.edges.length '>' 1}}
+                <button
+                  aria-label="{{lang 'carousel.arrowAriaLabel'}} {{node.images.edges.length}}"
+                  class="js-product-prev-arrow-{{node.entityId}}  slick-prev slick-btn--inside slick-arrow slick-prev--listing"></button>
+                {{/if}}
+
+                {{#each node.images.edges}}
+                <div class="prodImgSlider">
+                  <a href="{{../node.path}}"
+                    class="data-product-image-{{../../entityId}}">
+
+                    {{> components/common/responsive-img
+                    image=node.url
+                    class="card-image card-image--listing"
+                    fallback_size=theme_settings.category_card_size
+                    default_image=theme_settings.default_image_product
+                    }}
+                  </a>
+                </div>
+                {{/each}}
+
+                {{#if node.images.edges.length '>' 1}}
+                <button
+                  aria-label="{{lang 'carousel.arrowAriaLabel'}} {{node.images.edges.length}}"
+                  class="js-product-next-arrow-{{node.entityId}} slick-next slick-btn--inside slick-arrow slick-next--listing"></button>
+                {{/if}}
+              </div>
+            </div>
+
+          </figure>
+
+          <div class="card-body align-items-center card-body--cav">
+            <h3 class="card-title">
+              <a class="card-title-{{node.entityId}}"
+                aria-label="{{node.name}},{{> components/products/product-aria-label}}"
+                href="{{node.path}}"
+                {{#if settings.data_tag_enabled}}
+                data-event-type="product-click" {{/if}}>{{node.name}}</a>
+            </h3>
+
+            <div class="card-info sss text-center">
+              <div
+                class="card-text card-text--price card--row justify-content-center flex-row gap-1em"
+                data-test-info-type="price">
+                {{> components/products/price/price-card productid=node.entityId price=node.prices.price.value}}
+              </div>
+              <a href="{{node.path}}" class="btn--cav btn btn-outline-primary">
+                shop now
+              </a>
+            </div>
+
+          </div>
+          
+        </article>
+      </div>
+      {{/each}}
+
+      <button
+        aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}"
+        class="js-product-next-arrow-catfav slick-next slick-arrow "></button>
+
+    </section>
+  </div>
+</div>
+
+{{/if}}

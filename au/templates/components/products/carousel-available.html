@@ -1,0 +1,47 @@
+<div class="productCarousel productCarousel--available"
+    data-list-name="{{list}}"
+    data-slick='{
+        "dots": false,
+        "infinite": true,
+        "mobileFirst": true,
+        "slidesToShow": 2,
+        "slidesToScroll": 1,
+        "slide": ".js-product-slide",
+        "prevArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-prev-arrow-desk",
+        "nextArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-next-arrow-desk",
+        "responsive": [
+            {
+                "breakpoint": 1261,
+                "settings": {
+                    "slidesToShow": 4,
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 992,
+                "settings": {
+                    "slidesToShow": 3,
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 768,
+                "settings": {
+                    "slidesToShow": 2,
+                    "slidesToScroll": 1
+                }
+            }
+        ]
+    }'>
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-prev-arrow-desk slick-prev slick-prev--available slick-arrow"></button>
+    {{/if}}
+    {{#each products}}
+    <div class="productCarousel-slide available js-product-slide">
+        {{> components/products/card-prdtdtl-available settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    </div>
+    {{/each}}
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-next-arrow-desk slick-next slick-next--available  slick-arrow"></button>
+    {{/if}}
+</div>

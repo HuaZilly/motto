@@ -1,0 +1,169 @@
+---
+products:
+    new:
+        limit: {{theme_settings.homepage_new_products_count}}
+    featured:
+        limit: {{theme_settings.homepage_featured_products_count}}
+    top_sellers:
+        limit: {{theme_settings.homepage_top_products_count}}
+carousel: {{theme_settings.homepage_show_carousel}}
+blog:
+    recent_posts:
+        limit: {{theme_settings.homepage_blog_posts_count}}
+---
+{{#partial "hero"}}
+    {{{region name="home_below_menu"}}}
+    {{#if carousel}}
+        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
+    {{/if}}
+    <!-- {{{region name="home_below_carousel"}}} -->
+{{/partial}}
+
+{{#partial "page"}}
+
+    {{#each shipping_messages}}
+        {{> components/common/alert/alert-info message}}
+    {{/each}}
+
+    <section class="home-adbanner">
+
+        {{#each banners.top_metadata}}
+            {{#if id '===' '407'}}    
+            <div class="home-adbanner__top__modified d-none d-md-block" data-banner-location="top"> 
+                {{{content}}}
+            </div>
+            {{/if}}
+        {{/each}}
+
+        {{#each banners.top_metadata}}
+            {{#if id '===' '497'}}    
+            <div class="home-adbanner__top__modified d-md-none" data-banner-location="top"> 
+                {{{content}}}
+            </div>
+            {{/if}}
+        {{/each}}
+
+        {{{region name="home_below_carousel"}}}
+      
+        <div class="home-adbanner__container">
+            <div class="home-adbanner__child row justify-content-between">
+                {{#each banners.top_metadata}}
+                    {{#if id '===' '408'}}  
+                    <div class="home-adbanner__child-list col-12  col-sm-4" data-banner-location="top">
+                        {{{content}}}
+                    </div>
+                    {{/if}}  
+                {{/each}}
+                {{#each banners.top_metadata}}
+                    {{#if id '===' '409'}}  
+                        <div class="home-adbanner__child-list col-12  col-sm-4" data-banner-location="top">
+                            {{{content}}}  
+                        </div>
+                    {{/if}}  
+                {{/each}}
+                {{#each banners.top_metadata}}
+                    {{#if id '===' '410'}}  
+                        <div class="home-adbanner__child-list col-12  col-sm-4" data-banner-location="top">
+                            {{{content}}}  
+                        </div>
+                    {{/if}}  
+                {{/each}}
+               
+            </div>
+        </div>
+
+     
+       <!-- 
+   <div class="home-adbanner__container">
+    <div class="home-adbanner__child row justify-content-between">
+        <div class="home-adbanner__child-list col-12  col-sm-4">
+            <div class="gr-dropzone second" data-gr-zone="gr-dropzone-2">
+                <p><a href="https://www.motto.com.au/shop-by-occasion/vacation-must-packs/"><img class="__mce_add_custom__" title="img-homepage-1.jpg" src="https://cdn11.bigcommerce.com/s-kjhln4rc46/product_images/uploaded_images/img-homepage-1.jpg" alt="img-homepage-1.jpg" width="474" height="620" /></a></p>
+                </div>
+        </div>
+        <div class="home-adbanner__child-list col-12  col-sm-4">
+            <div class="gr-dropzone third" data-gr-zone="gr-dropzone-3">
+                <p><a href="https://www.motto.com.au/shop-all/sale/"><img class="__mce_add_custom__" title="img-homepage-2.jpg" src="https://cdn11.bigcommerce.com/s-kjhln4rc46/product_images/uploaded_images/img-homepage-2.jpg" alt="img-homepage-2.jpg" width="473" height="620" /></a></p>
+                </div>
+        </div>
+        <div class="home-adbanner__child-list col-12  col-sm-4">
+            <div class="gr-dropzone fourth" data-gr-zone="gr-dropzone-4">
+                <p><a href="https://www.motto.com.au/shop-all/dresses/"><img class="__mce_add_custom__" title="img-homepage-3.jpg" src="https://cdn11.bigcommerce.com/s-kjhln4rc46/product_images/uploaded_images/img-homepage-3.jpg" alt="img-homepage-3.jpg" width="473" height="620" /></a></p>
+                </div>
+        </div>
+    </div>
+   </div> -->
+
+    </section>
+
+
+<!-- <section class="c-offers d-none d-md-block">
+    <div class="container">
+        <div class="c-offers__title">
+            <h3 class="c-offers__title-txt ff-regular m-0">10% OFF YOUR FIRST ORDER</h3>
+        </div>
+        <div class="c-offers__content ff-light">
+            <div class="c-offers__content-para ">
+                <p>
+                    Join now to receive 10% off full-priced styles, along with exclusive updates, rewards and offers.
+                </p>
+            </div>
+           
+            <h4 class="c-offers__content-title ff-regular mt-0">
+                <a href="https://motto.us6.list-manage.com/subscribe?u=8cce018f76598e5a3a705b07f&id=dd4a7852f5" target="_blank" class="c-offers__content-link text-decoration-none text-dark">Become a Member</a>
+            </h4>
+            <div class="c-offers__content-subpara">
+                <p>
+                    Discount applied at checkout. <br>
+                    For a limited time only. Conditions apply.
+                </p>
+            </div>
+            
+        </div>
+    </div>
+</section> -->
+
+
+<div class="main full">
+    {{{region name="home_below_featured_products"}}}
+    {{#if products.featured}}
+        {{> components/products/featured products=products.featured columns=theme_settings.homepage_featured_products_column_count}}
+    {{/if}}
+    
+</div>
+
+{{{region name="home_below_slider"}}}
+
+<section class="home-adbanner mb-0 test12">
+   
+     
+        {{#each banners.bottom_metadata}}
+            {{#if id '===' '412'}}    
+            <div class="home-adbanner__bottom" data-banner-location="bottom"> 
+                {{{content}}}   
+            </div>
+            {{/if}}  
+        {{/each}}
+  </section>
+  <div class="footer-top-block">
+    <div class="container text-center">
+        
+         
+              
+            <article class="footer-newsletter test" data-section-type="newsletterSubscription">
+                {{!-- #if settings.show_newsletter_box}}
+                    {{> components/common/subscription-form}}
+                {{/if --}}
+
+                <!--<div class="privy-embed-form" data-campaign="221870"></div> -->
+
+                <div class="klaviyo-form-VhWf6f"></div>
+
+               
+            </article>
+        
+    </div>
+</div>
+
+{{/partial}}
+{{> layout/base}}

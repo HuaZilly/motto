@@ -1,0 +1,82 @@
+<div class="modal-header modal-header--custom-one border-bottom-0 ">
+    <h3 class="modal-header-title h3">
+        {{lang 'cart.added_to_cart.what_next' num_products=cart.quantity}}
+    </h3>
+</div>
+
+<div class="modal-body modal-body--addtocart">
+    <div class="previewCart">
+        
+        <p class="d-none" data-cart-quantity="{{cart.quantity}}">
+            {{lang 'cart.added_to_cart.your_cart_contains' num_products=cart.quantity}}
+        </p>
+        <section class="productView productView--custom clearcontent">
+            {{#with cart.added_item}}
+                <div class="row row--productView">
+                    <div class="col-12 col--productView-image">
+                        <figure class="productView-image">
+                            <div class="productView-img-container">
+                                {{> components/common/responsive-img
+                                    image=image
+                                    class="productView-image--cart"
+                                    fallback_size=../theme_settings.product_size
+                                    lazyload=../theme_settings.lazyload_mode
+                                    default_image=../theme_settings.default_image_product
+                                }}
+                            </div>
+                        </figure>
+                    </div>
+                    <div class="col-12 col--productView-content">
+                        <div class="productView-details">
+                            <h3 class="productView-title h3 mb-0">
+                                {{name}}
+                            </h3>
+                            <div class="productView-brand d-none">
+                                {{brand.name}}
+                            </div>
+
+                            {{> components/products/price/price-addtocart-modal theme_settings=../theme_settings}}
+        
+                            {{#each options}}
+                                <dl class="productView-info">
+                                    <dt class="productView-info-name text-black-40 ">
+                                        {{name}}:
+                                    </dt>
+                                    <dd class="productView-info-value text-black">
+                                        {{{ sanitize value}}}
+                                    </dd>
+                                </dl>
+                            {{/each}}
+                            <div class="productView-details__checkout test123">
+                                <a href="#" class="btn btn-md btn-outline-primary w-100" role="button" data-reveal-close>
+                                    {{lang 'cart.added_to_cart.continue_shopping'}}
+                                </a>
+                                
+                                <a href="/cart.php" class=" btn btn-md btn-primary w-100 px-1">
+                                    View Cart
+                                </a>
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div>
+            {{/with}}
+        </section>
+    </div>
+
+    {{#if cart.suggested_products}}
+        <section class="suggestiveCart">
+            <h2>
+                {{lang 'cart.added_to_cart.you_might_also_like'}}&hellip;
+            </h2>
+
+            <ul class="productGrid aa">
+                {{#each cart.suggested_products}}
+                    <li class="product">
+                        {{> components/products/card settings=../settings hide_product_quick_view=true theme_settings=../theme_settings}}
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+    {{/if}}
+</div>

@@ -1,0 +1,33 @@
+---
+customer:
+  orders:
+    limit: 10
+---
+
+{{#partial "page"}}
+<div class="container">
+  <div class="common-block form--block oooo">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="page pagelist--row accountlist--row pb-0">
+      <aside class="page-sidebar page-sidebar--custom" id="faceted-search-container">
+        <h3 class="page-sidebar__title">{{lang 'account.orders.heading' }}</h3>
+        {{> components/account/navigation account_page='orders'}}
+      </aside>
+      <main class="page-content product-listing pb-0 yyy">
+        {{#if customer.store_credit.value '>' 0}}
+        <div class="account-head">
+          <div class="alertBox alertBox--storeCredit">{{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}</div>
+        </div>
+        {{/if}}
+
+        <div class="account-body">
+          <section class="account-content">
+            {{#if customer.orders.length}} {{> components/account/orders-list orders=customer.orders}} {{> components/common/small-paginator
+            pagination.orders}} {{else}} {{> components/common/alert/alert-info (lang 'account.orders.none')}} {{/if}}
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{{/partial}} {{> layout/base}}

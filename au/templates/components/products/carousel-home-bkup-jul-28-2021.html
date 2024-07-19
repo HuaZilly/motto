@@ -1,0 +1,57 @@
+<section class="producthomelist-wrap row">
+    
+    <div class ="col-divider col-12 col-md-6">
+        <div class="producthomelist__slider">
+            
+            <div class="productCarousel productCarousel--new "
+    data-list-name="{{list}}"
+    data-slick='{
+        "dots": true,
+        "infinite": true,
+        "mobileFirst": true,
+        "slidesToShow": 1,
+        "slidesToScroll": 1,
+        "slide": ".js-product-slide-home",
+        "prevArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-prev-arrow-home",
+        "nextArrow": "{{#if customArrowClass}}.{{customArrowClass}}{{/if}}.js-product-next-arrow-home",
+        "responsive": [
+            {
+                "breakpoint": 800,
+                "settings": {
+                    "slidesToShow": {{ columns }},
+                    "slidesToScroll": 1
+                }
+            },
+            {
+                "breakpoint": 550,
+                "settings": {
+                    "slidesToShow": 1,
+                    "slidesToScroll": 1
+                }
+            }
+        ]
+    }'>
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-prev-arrow-home slick-prev slick-arrow slick-arrow--rounded"></button>
+    {{/if}}
+    {{#each products}}
+    <div class="productCarousel-slide home js-product-slide-home">
+        {{> components/products/card-home settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    </div>
+    {{/each}}
+    {{#if products.length '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{products.length}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-next-arrow-home slick-next slick-arrow slick-arrow--rounded"></button>
+    {{/if}}
+</div>
+<h2 class="page-heading page-heading--latest text-uppercase">{{lang 'products.new' }}</h2>
+        </div>
+    </div>
+    <div class="producthomelist__ad  col-divider  col-12 col-md-6 text-center">
+        <div class="gr-dropzone gr-dropzone--newstyles" data-gr-zone="gr-dropzone-6">
+            <p><a href="https://www.facebook.com/mottofashions/videos" target="_blank"><img class="__mce_add_custom__ lazyload" title="New Styles Daily" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Box-C-LACE_29-11.jpg" data-src="https://cdn11.bigcommerce.com/s-sx2suthcbk/product_images/uploaded_images/24-12-right-static-facebook.jpg" /></a></p>
+            <h2><span style="font-size: x-large;">Watch LIVE releases 8.30pm daily on <span style="text-decoration: underline;"><span style="color: #000080;"><a href="https://www.facebook.com/mottofashions/videos" target="_blank"><span style="color: #000080; text-decoration: underline;">Motto Facebook Page</span></a></span><br /></span></span></h2>
+            </div>
+    </div>
+</section>
+
+

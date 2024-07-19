@@ -1,0 +1,1 @@
+{"components/header/link-partial-age":"{{#if name 'Shop by Age'}}\n{{#each children}}\n<li class=\"navPage-subMenu-item\">\n  <a href=\"{{url}}\" class=\"navPage-subMenu-action navPages-action\">{{name}}</a>\n</li>\n{{/each}}\n{{/if}}\n"}

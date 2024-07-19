@@ -1,0 +1,18 @@
+<form action="{{product.add_to_wishlist_url}}" class="form form-wishlist form-action" data-wishlist-add method="post">
+
+    {{#if customer.wishlists}}
+        {{#each (limit customer.wishlists 1)}}
+            <div>
+                <input class="btn btn-dark btn--wishlist {{#if this.num_items '!==' '0'}}button--has-items{{/if}}"
+                        formaction="{{this.add_url}}&product_id={{../product.id}}"
+                        type="submit"
+                        value="{{this.name}}"
+                >
+            </div>
+        {{/each}}
+    {{else}}
+        <div>
+            <input class="btn btn-dark btn--wishlist" type="submit" value="{{lang 'account.wishlists.add_to_default'}}">
+        </div>
+    {{/if}}
+</form>

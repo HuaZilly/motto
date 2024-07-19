@@ -1,0 +1,153 @@
+{{#if in_development}}
+
+<!-- klaviyo -->
+<script type="text/javascript" src='https://static.klaviyo.com/onsite/js/klaviyo.js?company_id={{#if settings.store_hash "==" "kjhln4rc46"}}Yn47WU{{else}}P47R2f{{/if}}' defer></script>
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+<script>
+  var klaviyo = klaviyo || [];
+  klaviyo.init({
+    account: {{#if settings.store_hash "==" "kjhln4rc46"}}"Yn47WU"{{else}}"P47R2f"{{/if}},
+    list: "QZC67B",
+    platform: "bigcommerce",
+    //exclude_on_tags: 'nobacktostock'
+  });
+  klaviyo.enable("backinstock", {
+    trigger: {
+      product_page_text: "NOTIFY ME",
+      product_page_class: "btn btn-dark btn--addtocart mb-0 w-100",
+      replace_anchor: true,
+    },
+    modal: {
+      headline: "{product_name}",
+      body_content: "Register to be notified if this style comes back in your size.",
+      email_field_label: "Email",
+      button_label: "Notify me when available",
+      subscription_success_label: "You're in! We'll let you know if it comes back.",
+      footer_content: "",
+      additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+      drop_background_color: "#000",
+      background_color: "#fff",
+      text_color: "#222",
+      button_text_color: "#fff",
+      button_background_color: "#000000",
+      close_button_color: "#ccc",
+      error_background_color: "#fcd6d7",
+      error_text_color: "#C72E2F",
+      success_background_color: "#d3efcd",
+      success_text_color: "#1B9500",
+      newsletter_subscribe_label: "I also want to subscribe to all Motto emails",
+      subscribe_checked: true,
+    },
+  });
+</script>
+
+<!-- MagicZoom -->
+<script src="/content/magiczoomplus/magiczoomplus.stencil.js" defer></script>
+
+<!-- Judgeme -->
+<script src="https://cdn.judge.me/widget_preloader.js" defer></script>
+{{#if settings.store_hash "==" "kjhln4rc46"}}
+<script>
+  jdgm = window.jdgm || {};
+  jdgm.SHOP_DOMAIN = "store-kjhln4rc46.mybigcommerce.com";
+  jdgm.PLATFORM = "bigcommerce";
+  jdgm.PUBLIC_TOKEN = "GaBoSC-uNOIrNr927zFiCxABbLg";
+</script>
+{{else}}
+<script>
+  jdgm = window.jdgm || {};
+  jdgm.SHOP_DOMAIN = "store-sx2suthcbk.mybigcommerce.com";
+  jdgm.PLATFORM = "bigcommerce";
+  jdgm.PUBLIC_TOKEN = "jKaKCbzYCz6z12voHVf_df6q0QA";
+</script>
+{{/if}}
+
+
+<!-- Preezie -->
+<script type="text/javascript" src="https://widget-cdn.preezie.com/production/preguide.min.js" defer></script>
+<script
+  type="text/javascript"
+  src="https://widget-cdn.preezie.com/production/preguide.min.js"
+  data-widgetid="PRE-4d9c667d-dc33-4cf8-d2d2-08dbd8dfe6ec,EPO-c8de4f81-afc0-4d84-f3e8-08dbd8fd1525"
+  data-targets="checkout-app,checkout-app"
+  data-isafter="true"
+  defer
+></script>
+
+<!-- Tolstoy -->
+<script>
+  tolstoyAppKey = "0d84be7b-3366-43eb-8206-6aeeb4b89739";
+</script>
+<script src="https://widget.gotolstoy.com/widget/widget.js" defer></script>
+
+{{#if template_file "==" "pages/order-confirmation"}}
+<script type="text/javascript">
+  fetch("/api/storefront/order/{{ checkout.order.id }}", {
+    credentials: "include",
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (orderDetails) {
+      const orderId = orderDetails.orderId;
+      const currency = orderDetails.currency;
+      const billingAddress = orderDetails.billingAddress;
+      const email = billingAddress.email;
+      const code = currency.code;
+      const decimalPlaces = currency.decimalPlaces;
+
+      const lineItems = [];
+      for (i = 0; i < orderDetails.lineItems.physicalItems.length; i++) {
+        var thisItem = orderDetails.lineItems.physicalItems[i];
+        var content_id = thisItem.productId;
+
+        if (thisItem.sku && thisItem.sku !== "") {
+          content_id = thisItem.sku;
+        }
+        lineItems.push({
+          content_id: content_id,
+          content_name: thisItem.name,
+          currency: orderDetails.currency.code,
+          price: thisItem.salePrice,
+          value: thisItem.extendedSalePrice,
+          quantity: thisItem.quantity,
+          content_type: "product_group",
+        });
+      }
+      window.tolstoyConversion = {
+        appKey: "0d84be7b-3366-43eb-8206-6aeeb4b89739",
+        orderId: orderId,
+        totalPrice: decimalPlaces,
+        currency: code,
+        email: email,
+        items: lineItems,
+      };
+      const s = document.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = "https://widget.gotolstoy.com/track/track.js";
+      const x = document.getElementsByTagName("script")[0];
+      x.parentNode.insertBefore(s, x);
+    });
+</script>
+{{/if}}
+
+<!-- WAIR -->
+<script type="text/javascript">
+  {{inject "predictProduct" product}}
+  var { predictProduct } = JSON.parse({{jsContext}});
+  window.addEventListener("onPredictLoad", function (event) {
+    event.detail.predict.render({
+      brandKey: "motto-416dcd0d-8371-44ee-ba9e-1da055a0abe9",
+      product: predictProduct ? {
+        key: predictProduct.id,
+        name: predictProduct.title,
+        image: '{{getImageSrcset product.main_image (cdn theme_settings.default_image_product) 1x=theme_settings.zoom_size}}',
+      } : null,
+    });
+  });
+</script>
+<script type="text/javascript" src="https://predict-v4.getwair.com/default/predict.js" defer></script>
+
+<!-- Any other scripts goes here -->
+{{/if}}

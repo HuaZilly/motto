@@ -1,0 +1,303 @@
+import jquerymatchheight from 'jquery-match-height';
+import Plyr from 'plyr';
+
+export default class Gql {
+
+    constructor(context) {
+        this.context = context;
+        // console.log(this.context);
+        this.loadGql();
+    }
+
+    loadGql(){
+        var cursor = this.context.cursor;
+        var catId = this.context.categoryId;
+        var token = this.context.token;
+        var getSortOrder = this.context.sortorder;
+        var sortOrder = 'DEFAULT';
+
+        if(getSortOrder == 'priceasc') {
+            sortOrder = 'LOWEST_PRICE';
+        } else if(getSortOrder == 'pricedesc'){
+            sortOrder = 'HIGHEST_PRICE';
+        } else if(getSortOrder == 'featured'){
+            sortOrder = 'FEATURED';
+        } else if(getSortOrder == 'newest'){
+            sortOrder = 'NEWEST';
+        } else if(getSortOrder == 'alphaasc'){
+            sortOrder = 'A_TO_Z';
+        } else if(getSortOrder == 'alphadesc'){
+            sortOrder = 'Z_TO_A';
+        }
+
+        if(!cursor || !catId || !token) {
+            console.log('No GQL Queries Fired');
+            return;
+        }
+
+        var query = `query productsInCategory(
+            $categoryId: Int = ${catId}
+            $pageSize: Int = 9
+        )
+        {
+            site {
+              category(
+                  entityId: $categoryId
+                ) {
+                name
+                entityId
+                products(
+                    first: $pageSize, after: "${cursor}", hideOutOfStock: true
+                    sortBy: ${sortOrder}
+                ) {
+                  pageInfo {
+                    hasNextPage
+                    startCursor
+                    endCursor
+                  }
+                  edges {
+                    cursor
+                    node {
+                        name
+                        sku
+                        entityId
+                        path
+                        availability
+                        variants {
+                            edges {
+                                node {
+                                    entityId
+                                    options {
+                                        edges {
+                                            node {
+                                                entityId
+                                                displayName
+                                                values {
+                                                    edges {
+                                                        node {
+                                                            entityId
+                                                            label
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    inventory {
+                                        isInStock
+                                    }
+                                }
+                            }
+                        }
+                        customFields {
+                            edges {
+                                node {
+                                    entityId
+                                    name
+                                    value
+                                }
+                            }
+                        }
+                        
+                    }
+                  }
+                }
+              }
+            }
+        }`;
+
+        fetch('/graphql', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify({
+                query: query
+            }),
+        })
+        .then(res => {
+            if (res.ok) {
+                return res.json();
+            } else {
+                return Promise.reject(res);
+            }
+        })
+        .then(json => {
+            var cursor = json.data.site.category.products.pageInfo.endCursor;
+            this.context.cursor = cursor;
+            var trimmedCursor = cursor.replace('=', '');
+            let products = json.data.site.category.products.edges;
+            // console.log('products', products);
+
+            for(var node of products){
+                var product = node.node;
+                var variants = this.getVariants(product.entityId, product.variants.edges);
+                var sizesSel = $('#loadQuickView-' + product.entityId);
+                sizesSel.addClass(trimmedCursor).html(variants);
+
+                var video = this.getVideoUrl(product.customFields.edges);
+                if(video) {
+                    let player = this.activateVideoThumbnail(product.entityId, product.path, video);
+                    this.autoplayForMobile(player);
+                }
+            }
+
+            $('.' + trimmedCursor).closest('article').find('.card-title').matchHeight();
+            $('.' + trimmedCursor).closest('article').find('.card-bottom').matchHeight();
+        });
+    }
+
+    getVideoUrl(customFields){
+        for(var customField of customFields){
+            var field = customField.node;
+            if(field.name == 'Video') {
+                return field.value;
+            }
+        }
+        return;
+    }
+
+    activateVideoThumbnail(prodId, prodPath, video){
+        let html = `
+        <div class="prodImgSlider playThisVideo-${prodId}">
+            <a href="${prodPath}" class="videoPlayerTrigger data-product-image-${prodId}">
+                <div class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="${video}"></div>
+            </a>
+        </div>`;
+
+        $(".card-img-container.card-img-container--listing.product-image-" + prodId + ' .card-img-container--slide').slick('slickAdd', html, 1).slick('slickGoTo', 2);
+
+        const player = new Plyr('.data-product-image-'+prodId+' .js-player', {
+            clickToPlay : false, 
+            resetOnEnd : true, 
+            autoplay: false,
+            autopause: false,
+            muted : true, 
+            controls : ['play-large','airplay'], 
+            ratio : "9:16"
+        });
+
+        $('.playThisVideo-'+prodId+' .videoPlayerTrigger').on('click touchstart', function(e){
+            if(window.matchMedia("(pointer: coarse)").matches) {
+                console.log('Touch !!');
+
+                if(player.playing) {
+                    console.log('Already playing. Time to move on!');
+                } else {
+                    player.play();
+                    e.preventDefault();
+                }
+
+            } else {
+                console.log('Desktop !!');
+            }
+        });
+
+        $('.playThisVideo-'+prodId).hover(playVideo, pauseVideo);
+        function playVideo(e){player.play();}
+        function pauseVideo(e){player.pause();}
+
+        player.on('ended', (event) => {
+            console.log('time to replay!!');
+            player.restart();
+        });
+
+        return player;
+    }
+
+    getYoutubeIdFromUrl(url){
+        var video_id = url.split('v=')[1];
+        var ampersandPosition = video_id.indexOf('&');
+        if(ampersandPosition != -1) {
+            video_id = video_id.substring(0, ampersandPosition);
+        }
+        return video_id;
+    }
+
+    autoplayForMobile(player){
+        var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+        var mobile = windowWidth < 768;
+        if(mobile) {
+            player.on('ready', (event) => {
+                player.play();
+            });
+        }
+        
+        $( window ).on('resize', function() {
+            var windowWidth = window.screen.width < window.outerWidth ? window.screen.width : window.outerWidth;
+            var mobile = windowWidth < 768;
+            if(mobile) {
+                player.play();
+            }
+        });
+    }
+
+    getVariants(prodId, variants){
+        var sizesHtml = "";
+        var sizesDropdown = `<a href="javascript:void(0)" class="btn btn-primary btn-sm toggle-choose-options">Choose Options</a>`;
+        sizesDropdown += `<ul class="product-options-list">`;
+
+        for(var node of variants) {
+            var variant = node.node;
+
+            if(variant.options.edges.length == 0) { return; }
+
+            for(var option of variant.options.edges) {
+                var variantId = option.node.entityId;
+                for(var val of option.node.values.edges) {
+                    var label = val.node.label;
+                    var labelId = val.node.entityId;
+
+                    if(option.node.displayName == "Size") {
+                        if(variant.inventory.isInStock) {
+                            sizesHtml += this.sizeHtmlInStock(prodId, variantId, label, labelId);
+                        } else {
+                            sizesHtml += this.sizeHtmlNotInStock(prodId, variantId, label, labelId);
+                        }
+                    } else {
+                        sizesDropdown += this.sizeHtmlDropdown(prodId, variantId, label, labelId);
+                        
+                    }
+                }
+            }
+        }
+        sizesDropdown += `</ul>`;
+
+        if(sizesHtml) {
+            return sizesHtml;
+        } else {
+            return sizesDropdown;
+        }
+    }
+
+    sizeHtmlInStock(prodId, variantId, label, labelId) {
+        let html = `
+        <label id="${prodId}" class="form-option IsProdAvailable-${prodId}-${labelId} add-me-to-cart" data-popup-type="add-to-bag" for="attribute_rectangle__${variantId}_${labelId}" data-product-attribute-value="${labelId}" name="attribute[${variantId}]">
+            <a href="javascript:void(0);" class="card-size-option" data-reveal-id="add-from-size">
+                <span class="form-option-variant">${label}</span>
+            </a>
+        </label>`;
+        return html;
+    }
+    
+    sizeHtmlNotInStock(prodId, variantId, label, labelId){
+        let html = `
+        <label id="${prodId}" class="form-option unavailableinList IsProdAvailable-${prodId}-${labelId} add-me-to-cart" data-popup-type="add-to-bag" for="attribute_rectangle__${variantId}_${labelId}" data-product-attribute-value="${labelId}" name="attribute[${variantId}]">
+            <a href="javascript:void(0);" class="card-size-option" data-reveal-id="add-from-size">
+                <span class="form-option-variant">${label}</span>
+            </a>
+        </label>`;
+        return html;
+    }
+    
+    sizeHtmlDropdown(prodId, variantId, label, labelId){
+        let html = `
+        <li id="${prodId}" data-popup-type="dropdown-options" class="form-option IsProdAvailable-${prodId}-${labelId} add-me-to-cart notASize" for="${labelId}" data-product-attribute-value="${labelId}" name="attribute[${variantId}]">
+            <a href="javascript:void(0);" class="card-size-option" data-reveal-id="add-from-size">${label}</a>
+        </li>`;
+        return html;
+    }
+
+}

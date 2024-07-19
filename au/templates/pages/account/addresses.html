@@ -1,0 +1,20 @@
+{{#partial "page"}}
+<div class="container">
+  <div class="common-block form--block">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="page pagelist--row accountlist--row pb-0">
+      <aside class="page-sidebar page-sidebar--custom" pb-0id="faceted-search-container">
+        <h3 class="page-sidebar__title">{{lang 'account.addresses.heading' }}</h3>
+        {{> components/account/navigation account_page='addresses'}}
+      </aside>
+
+      <main class="page-content product-listing pb-0 yyy">
+        <div class="account-body">
+          {{#if customer.error}} {{>components/common/alert/alert-error customer.error}} {{/if}} {{#if customer.success}}
+          {{>components/common/alert/alert-success customer.success}} {{/if}} {{> components/account/address-list }}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+{{/partial}} {{> layout/base}}

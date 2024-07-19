@@ -1,0 +1,46 @@
+---
+products:
+  new:
+    limit: { { theme_settings.homepage_new_products_count } }
+  featured:
+    limit: { { theme_settings.homepage_featured_products_count } }
+  top_sellers:
+    limit: { { theme_settings.homepage_top_products_count } }
+carousel: { { theme_settings.homepage_show_carousel } }
+blog:
+  recent_posts:
+    limit: { { theme_settings.homepage_blog_posts_count } }
+---
+
+{{#partial "head"}} {{#each carousel.slides}}
+  <link rel="preload" href="{{image}}" />
+{{/each}} {{/partial}}
+
+<!-- prettier-ignore -->
+{{#partial "page"}} 
+
+{{#each shipping_messages}} 
+  {{> components/common/alert/alert-info message}} 
+{{/each}}
+
+<!-- prettier-ignore -->
+{{!-- <section class="home-top-baner layout-pages-home">{{#each banners.top_metadata}} {{{content}}} {{/each}}</section> --}}
+
+<!-- prettier-ignore -->
+{{!-- <section class="home-hero-banner">{{{region name="hero_banner"}}}</section> --}}
+
+<!-- prettier-ignore -->
+{{> components/banner}}
+
+<section class="home-ad-banner">{{{region name="ad_banner"}}}</section>
+<section class="home-featured-categories">{{{region name="featured_categories"}}}</section>
+<section class="home-ad-banner-two">{{{region name="ad_banner2"}}}</section>
+<section class="home-featured-products">{{{region name="featured_products"}}}</section>
+<section class="home-ad-banner-three">{{{region name="ad_banner3"}}}</section>
+
+{{!-- <section class="home-bottom-baner layout-pages-home">{{#each banners.bottom_metadata}} {{{content}}} {{/each}}</section> --}}
+
+<!-- prettier-ignore -->
+{{/partial}} 
+{{> layout/base}}
+

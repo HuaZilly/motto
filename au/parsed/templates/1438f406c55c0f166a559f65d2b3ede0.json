@@ -1,0 +1,1 @@
+{"pages/delivery":"{{!-- #each pages}}\n  {{#if name \"Delivery And Returns\"}}\n  <div class=\"holder delivery\">\n      <div class=\"description\"></div>\n      <a href=\"javascript:void(0);\" rel=\"{{url}}\" class=\"btnAction\">&nbsp;</a>\n  </div>\n  {{/if}}\n{{/each --}}\n\n<div class=\"description delivery-content\">\n</div>\n"}

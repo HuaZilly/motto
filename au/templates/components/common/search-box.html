@@ -1,0 +1,17 @@
+<form class="form"  action="{{urls.search}}">
+    <fieldset class="form-fieldset">
+        <div class="form-field mb-0">
+            <label class="form-label is-srOnly" for="search_query_adv">{{lang 'search.results.form_label'}}</label>
+            <div class="form-prefixPostfix wrap">
+                <input 
+                    class="form-input form-input--search" 
+                    id="search_query_adv" 
+                    name="search_query_adv" 
+                    data-search="quickSearch"
+                    aria-controls="quickSearch"
+                    value="{{forms.search.query}}">
+                <!-- <input class="btn btn-primary form-prefixPostfix-button--postfix" type="submit" value="{{lang 'search.results.form_button_text'}}"> -->
+            </div>
+        </div>
+    </fieldset>
+</form>

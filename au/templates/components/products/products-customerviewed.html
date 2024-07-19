@@ -1,0 +1,6 @@
+<div class="product-customerviewed ss">
+  <h4 class="product-customerviewed__title text-center mt-0">{{lang 'products.similar_by_views'}}</h4>
+
+  {{> components/products/carousel-customerviewed products=product.similar_by_views columns=3 list="Customers Also Viewed"
+  customArrowClass='js-viewed-product-arrow' }}
+</div>

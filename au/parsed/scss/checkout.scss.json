@@ -1,0 +1,3 @@
+{
+  "checkout.scss": "// =============================================================================\n// Stencil Checkout  - Customize the checkout experience\n// =============================================================================\n//\n// This file is for checkout customizations for Default one-page checkout.\n//\n// -----------------------------------------------------------------------------\n\n.form-field--ccNumber,\n.form-field--ccName {\n  flex-basis: 50%;\n}\n"
+}

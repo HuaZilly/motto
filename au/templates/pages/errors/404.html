@@ -1,0 +1,72 @@
+{{#partial "page"}}
+<div class="bg-white">
+  <div class="container">
+    <div class="common-block common-block--custom-one">
+      <!-- {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}} -->
+
+      <main class="page">
+        <section class="page-content page-content--centered page-content--404">
+          <div class="page-heading__wrap page-heading--custom page-heading--custom-404 pt-0 pb-0">
+            <h1 class="page-heading page-heading--custom--404-title h1 mb-0 pb-0">{{lang 'page_not_found.page_heading'}}</h1>
+          </div>
+          <div class="text-center page__msg-404 mb-0 mx-auto">{{{lang 'page_not_found.message'}}}</div>
+
+          {{!-- {{> components/common/search-box}} --}}
+
+          <div class="page-link-wrap mx-auto">
+            <div class="page-link row row--custom-three">
+              <div class="col-12 col--custom-three">
+                <h3 class="page-link__maintitle text-center">What can you do?</h3>
+              </div>
+              <div class="page-link__item col-12 col-md-6 col--custom-three">
+                <a
+                  href="{{urls.home}}"
+                  class="page-link__wrap d-flex flex-column align-items-center justify-content-center p-2 p-md-5 text-decoration-none td-404"
+                >
+                  <div class="page-link__wrapper">
+                    <h4 class="page-link__title text-center">Return to the Catwalk</h4>
+                    <p class="page-link__para text-center">Navigate back to the homepage and rediscover our latest trends.</p>
+                  </div>
+                </a>
+              </div>
+              <div class="page-link__item col-12 col-md-6 col--custom-three">
+                <a
+                  href="mailto:customercare@motto.com.au"
+                  class="page-link__wrap d-flex flex-column align-items-center justify-content-center p-2 p-md-5 text-decoration-none td-404"
+                >
+                  <div class="page-link__wrapper">
+                    <h4 class="page-link__title text-center">Contact the Fashion Police</h4>
+                    <p class="page-link__para text-center">
+                      If the issue persists, report it to our dedicated fashion police at customercare@motto.com.au
+                    </p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="page-quote text-center">
+            <h6 class="page-quote__title">In the meantime, here's a fashion quote to keep you inspired:</h6>
+            <blockquote class="page-quote__block">
+              <p>
+                Fashion is about dressing according to what’s fashionable. Style is more about being yourself.
+                <span class="page-quote__author d-block">- Oscar de la Renta</span>
+              </p>
+            </blockquote>
+          </div>
+          <div class="page-summary text-center">
+            <h3 class="page-summary__title">Thank you for your patience</h3>
+            <p class="page-summary__para">We'll have you strutting down our virtual runway in no time. Stay fabulous, gorgeous!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+<!-- <div class="section-product-featured">
+  <div class="container">
+    <h4 class="product-customerviewed__title text-center ff-regular mt-0">Something else you might like</h4>
+    <div class="featured-products"></div>
+  </div>
+</div> -->
+
+{{/partial}} {{> layout/base}}

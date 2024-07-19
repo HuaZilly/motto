@@ -1,0 +1,51 @@
+{{#if settings.request.absolute_path "!=" "/currency-converter/"}}
+<div class="currencyConverterWrapper">
+  <a
+    data-currency-exchange
+    data-loaded="false"
+    href="#"
+    class="navUser-action navUser-action__icn"
+    data-dropdown="currency-converter-dropdown"
+    role="button"
+  >
+    <span class="icon-svg icon--currency">
+      <svg viewBox="0 0 800 720" class="bi bi-currency-exchange icon-svg-full">
+        <g>
+          <path
+            fill="#000"
+            d="M260,0C116.4,0,0,116.4,0,260s116.4,260,260,260s260-116.4,260-260S403.6,0,260,0z M260,40
+            c121.5,0,220,98.5,220,220s-98.5,220-220,220S40,381.5,40,260S138.5,40,260,40z M240,120v40c-32.9,0-60,27.1-60,60s27.1,60,60,60
+            h40c11.3,0,20,8.7,20,20s-8.7,20-20,20h-40h-60v40h60v40h40v-40c32.9,0,60-27.1,60-60s-27.1-60-60-60h-40c-11.3,0-20-8.7-20-20
+            s8.7-20,20-20h40h60v-40h-60v-40H240z M554.1,200.7c2.7,13.1,4.1,26.6,5,40.3C671.6,250.7,760,344.9,760,460
+            c0,121.5-98.5,220-220,220c-89.8,0-166.9-53.8-201.1-130.9c-13,3.6-26.3,6.3-39.9,8.1C337.5,652.6,430.8,720,540,720
+            c143.6,0,260-116.4,260-260C800,321.2,691.1,208.1,554.1,200.7z"
+          />
+          <g>
+            <path
+              fill="#000"
+              d="M567,426.5c0,10.8-8.8,19.5-19.5,19.5h-53.4c9.8-12.2,18.6-25.3,26.3-39h27.1C558.3,407,567,415.8,567,426.5z
+              "
+            />
+            <path
+              fill="#000"
+              d="M647.5,549.5l-0.2,0.4c-21.2,30.6-56,49.3-93.2,50.1H554c-53.5,0-100.1-39.2-117.2-98h-1.1
+              c15.9-11.5,30.6-24.6,43.9-39h68c10.8,0,19.5,8.8,19.5,19.5s-8.8,19.5-19.5,19.5h-69.7c14.5,36.1,43.7,59,76,59
+              c24.7-0.8,47.9-13.5,61.9-33.9l0.2-0.3l0.3-0.3c6.2-6.8,16.2-8.3,24.1-3.6C649.7,528.3,652.9,540.2,647.5,549.5z"
+            />
+            <path
+              fill="#000"
+              d="M651.3,376.7c-1.3,5-4.5,9.2-9,11.9c-4.5,2.6-9.8,3.3-14.8,2c-5-1.3-9.1-4.5-11.8-8.9
+              c-14-20.2-37.1-32.8-61.7-33.7c-2.8,0-5.6,0.2-8.3,0.5c4-12.8,7.1-26,9.3-39.5c36.7,1.1,71,19.6,92,49.8c0.8,1,1.6,2,2.2,3.1
+              C651.9,366.4,652.6,371.7,651.3,376.7z"
+            />
+          </g>
+        </g>
+      </svg>
+    </span>
+  </a>
+  <div class="dropdown-menu dropdown-menu--currency" id="currency-converter-dropdown" data-dropdown-content aria-hidden="true"></div>
+</div>
+{{/if}} {{!--
+<script type="text/javascript" src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer="defer"></script>
+
+<div class="commonninja_component pid-c241c3ca-d2da-49c9-8fff-52700ccb21a1">&nbsp;</div> --}}

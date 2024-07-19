@@ -1,0 +1,16 @@
+{{#partial "page"}} {{#if settings.show_wishlist}}
+<div class="container">
+  <div class="common-block form--block testacc">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="page pagelist--row accountlist--row pb-0">
+      <aside class="page-sidebar page-sidebar--custom" id="faceted-search-container">
+        <h3 class="page-sidebar__title">{{lang 'account.wishlists.heading' }}</h3>
+        {{> components/account/navigation account_page='wishlists'}}
+      </aside>
+      <main class="page-content product-listing yyy pb-0">
+        <div class="account-body">{{> components/account/wishlist-list}}</div>
+      </main>
+    </div>
+  </div>
+</div>
+{{/if}} {{/partial}} {{> layout/base}}

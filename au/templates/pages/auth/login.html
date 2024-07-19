@@ -1,0 +1,60 @@
+{{#partial "page"}}
+<div class="container">
+  <div class="login login123 common-block form--block mw-100">
+    {{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+    <div class="page-heading__wrap">
+      <h1 class="page-heading h3 mb-0">{{lang 'login.heading' }}</h1>
+    </div>
+
+    {{#if forms.login.error}} {{> components/common/alert/alert-error forms.login.error}} {{/if}} {{#if forms.login.success}} {{>
+    components/common/alert/alert-success forms.login.success}} {{/if}}
+    <div class="login-row row row--custom-two">
+      <div class="col-12 col-md-6 col--custom-two">
+        <form class="login-form form mt-0" action="{{urls.auth.check_login}}" method="post">
+          {{inject 'useValidEmail' (lang 'forms.validate.common.email_address')}} {{inject 'enterPass' (lang 'forms.validate.common.password')}}
+          <div class="form-field">
+            <div class="form-field__title my-0 text-uppercase font-weight-bold">Returning Customer?</div>
+          </div>
+          <div class="form-field">
+            <label class="form-label form-label--custom form-field__title text-dark" for="login_email">{{lang 'login.field_email'}}</label>
+            <input class="form-input" name="login_email" id="login_email" type="email" />
+          </div>
+          <div class="form-field">
+            <label class="form-label form-label--custom form-field__title text-dark" for="login_pass">{{lang 'login.field_password'}}</label>
+            <input class="form-input" id="login_pass" type="password" name="login_pass" autocomplete="off" />
+          </div>
+          <div class="form-actions form-actions--login">
+            <input type="submit" class="btn btn-dark btn-login mb-0" value="{{lang 'login.submit_value' }}" />
+            <a class="forgot-password ms-auto" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
+          </div>
+        </form>
+      </div>
+      <div class="col-12 col-md-6 col--custom-two">
+        {{#if settings.account_creation_enabled}}
+        <div class="new-customer">
+          <div class="panel panel--newcustomer">
+            <!-- <div class="panel-header">
+                            <h2 class="panel-title">{{lang 'login.new_customer.heading' }}</h2>
+                        </div> -->
+            <div class="form-field">
+              <div class="form-field__title my-0 text-uppercase font-weight-bold">{{lang 'login.new_customer.heading' }}</div>
+            </div>
+            <div class="form-field__body">
+              <p class="new-customer-intro pb-3 text-uppercase form-field__title text-dark">{{lang 'login.new_customer.intro' }}</p>
+              <ul class="new-customer-fact-list">
+                <li class="new-customer-fact">{{lang 'login.new_customer.fact1' }}</li>
+                <li class="new-customer-fact">{{lang 'login.new_customer.fact2' }}</li>
+                <li class="new-customer-fact">{{lang 'login.new_customer.fact3' }}</li>
+                <li class="new-customer-fact">{{lang 'login.new_customer.fact4' }}</li>
+                <li class="new-customer-fact">{{lang 'login.new_customer.fact5' }}</li>
+              </ul>
+              <a href="{{urls.auth.create_account}}" class="btn btn-dark mt-auto">{{lang 'login.new_customer.create_account' }}</a>
+            </div>
+          </div>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/partial}} {{> layout/base}}

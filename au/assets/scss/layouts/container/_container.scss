@@ -1,0 +1,18 @@
+// =============================================================================
+// GRID (CSS)
+// =============================================================================
+
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1368px;
+    padding: 0 $container-padding;
+    position: relative;
+    width: layout("fixed");
+
+    // @include breakpoint("large") {
+    //     padding: 0 ($container-padding * 4);
+    //     padding: 0 ($container-padding);
+    // }
+}

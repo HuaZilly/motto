@@ -1,0 +1,15 @@
+{{#if social_media}}
+<ul class="d-block list-unstyled ml-0">
+  {{#each social_media}}
+  <li>
+    <a class="footer-info__list" href="{{url}}" target="_blank" rel="noopener">
+      <!-- <svg class="icon-svg-full">
+        <use xlink:href="#icon-{{display_name}}" />
+      </svg> -->
+
+      {{#if display_name "==" "tumblr" }} Tiktok {{else}} {{display_name}} {{/if}}
+    </a>
+  </li>
+  {{/each}}
+</ul>
+{{/if}}

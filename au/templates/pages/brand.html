@@ -1,0 +1,65 @@
+---
+brand:
+    products:
+        limit: {{theme_settings.brandpage_products_per_page}}
+---
+{{inject "brandProductsPerPage" theme_settings.brandpage_products_per_page}}
+{{#partial "head"}}
+    {{#if pagination.brand.previous}}
+        <link rel="prev" href="{{pagination.brand.previous}}">
+    {{/if}}
+    {{#if pagination.brand.next}}
+        <link rel="next" href="{{pagination.brand.next}}">
+    {{/if}}
+{{/partial}}
+
+{{#partial "page"}}
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+{{#if brand.image}}
+    <div class="brand-image-container">
+        {{> components/common/responsive-img
+            image=brand.image
+            fallback_size=theme_settings.thumb_size
+            lazyload='disabled'
+        }}
+    </div>
+{{/if}}
+<h1 class="page-heading">{{brand.name}}</h1>
+{{{region name="brand_below_header"}}}
+<div class="page">
+    <aside class="page-sidebar" id="faceted-search-container">
+        {{> components/brand/sidebar}}
+    </aside>
+
+    <main class="page-content brandProductListing" id="product-listing-container">
+        {{#if brand.products}}
+            {{> components/brand/product-listing}}
+        {{else}}
+            <p>{{lang 'brands.no_products'}}</p>
+        {{/if}}
+        {{{region name="brand_below_content"}}}
+    </main>
+</div>
+
+
+
+<div id="brandproducts-slider" class="d-none">
+
+    {{#if brand.products '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{brand.products}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-prev-arrow-desk slick-prev slick-prev--available slick-arrow"></button>
+    {{/if}}
+
+    {{#each brand.products}}
+    <div class="productCarousel-slide available js-product-slide">
+        {{> components/products/card-prdtdtl-available settings=../settings theme_settings=../theme_settings customer=../customer event="list" position=(add @index 1)}}
+    </div>
+    {{/each}}
+
+    {{#if brand.products '>' 1}}
+    <button aria-label="{{lang 'carousel.arrowAriaLabel'}} {{brand.products}}" class="{{#if customArrowClass}}{{customArrowClass}} {{/if}}js-product-next-arrow-desk slick-next slick-next--available  slick-arrow"></button>
+    {{/if}}
+
+</div>
+
+{{/partial}}
+{{> layout/base}}

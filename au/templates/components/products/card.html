@@ -1,0 +1,142 @@
+{{inject "thisProdIdC" id}}
+
+<article class="card {{#if alternate}}card--alternate{{/if}}" {{#if settings.data_tag_enabled}} data-event-type="{{event}}" data-entity-id="{{id}}" data-position="{{position}}" data-name="{{name}}" data-product-category="{{#each category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{brand.name}}" data-product-price="{{#if price.with_tax}}{{price.with_tax.value}}{{else}}{{price.without_tax.value}}{{/if}}"  {{/if}}>
+    <figure class="card-figure aa">
+
+        <a href="javascript:void(0);" class="addToWishListFromList addToWishListFromList-{{id}} card-wishlisticn" data-pro-id="{{id}}" >
+            <div class="loaderimageWishList-{{id}} loadingOverlay loadingOverlay--wishlist">
+                <svg class="svg-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.96 17.97">
+                    <style type="text/css">
+                      .svgAnime { 
+                        transform-origin: center center;
+                        animation: x .5s ease infinite; 
+                      }
+                  
+                      @keyframes x {
+                         from { transform: scale(.8); }
+                           to { transform: scale(1); }
+                      }
+                    </style>
+                    <path class="svgAnime"
+                      d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                      fill="none" stroke="#fffff" stroke-width="1.5" stroke-miterlimit="10" />
+                </svg>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icn-wishlist list-page" viewBox="0 0 19.96 17.97">
+                <path d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"  class="icn-wishlist__heart"  stroke-width="1.5" stroke-miterlimit="10"/>
+            </svg>
+        </a>
+        <a href="javascript:void(0);" class="removeFromWishListFromList removeFromWishListFromList-{{id}} card-wishlisticn wishlisted" data-pro-id="{{id}}" style="display: none;">
+            <div class="loaderimageRemoveWishList-{{id}} loadingOverlay loadingOverlay--wishlist">
+                <svg class="svg-full" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.96 17.97">
+                    <style type="text/css">
+                      .svgAnime { 
+                        transform-origin: center center;
+                        animation: x .5s ease infinite; 
+                      }
+                  
+                      @keyframes x {
+                         from { transform: scale(.8); }
+                           to { transform: scale(1); }
+                      }
+                    </style>
+                    <path class="svgAnime"
+                      d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"
+                      fill="none" stroke="#fffff" stroke-width="1.5" stroke-miterlimit="10" />
+                </svg>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icn-wishlist test3" viewBox="0 0 19.96 17.97">
+                <path d="M9.98 3.17h0C10.94 1.56 12.19.6 14.24.6c3.07 0 5.12 2.44 5.12 5.26 0 2.71-1.46 5.26-3.49 7.26-1.96 1.92-4.21 3.3-5.88 4.18-1.68-.88-3.93-2.26-5.88-4.18-2.03-2-3.49-4.55-3.49-7.26C.62 3.04 2.67.6 5.74.6c2.03 0 3.28.96 4.24 2.57 0 0 0 0 0 0z"  class="icn-wishlist__heart"  stroke-width="1.5" stroke-miterlimit="10"/>
+            </svg>
+        </a>
+        {{#or price.sale_price_with_tax.value price.sale_price_without_tax.value}}
+            {{#if theme_settings.product_sale_badges '===' 'sash'}}
+                <div class="sale-flag-sash">
+                    <span class="sale-text">{{{theme_settings.pdp_sale_badge_label}}}</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'topleft'}}
+                <div class="sale-flag-side">
+                    <span class="sale-text">{{{theme_settings.pdp_sale_badge_label}}}</span>
+                </div>
+            {{else if theme_settings.product_sale_badges '===' 'burst'}}
+                <div class="starwrap">
+                    <div class="sale-text-burst">{{{theme_settings.pdp_sale_badge_label}}}</div>
+                    <div class="sale-flag-star"></div>
+                </div>
+            {{/if}}
+        {{/or}}
+       
+        {{> components/products/carousel-product-listing additional=additional images=images columns=3 customArrowClass='js-related-product-arrow'}}
+     
+        {{#filter custom_fields 'Flag' property='name' }}
+            <span class="card-stickers">{{value}}</span>
+        {{/filter}}
+        {{#filter custom_fields 'Flag Black' property='name' }}
+            <span class="card-stickers" style="background: black; color: white;">{{value}}</span>
+        {{/filter}}
+        {{#filter custom_fields 'Flag Red' property='name' }}
+            <span class="card-stickers" style="background: #751818; color: white;">{{value}}</span>
+        {{/filter}}
+        
+        {{#filter custom_fields 'Made' property='name' }}
+            <span class="card-stickers btm-left online-exclusive">{{value}}</span>
+        {{/filter}}
+       
+    </figure>
+
+    <div class="card-body">
+        {{#if brand.name}}
+            <p class="card-text d-none" data-test-info-type="brandName">{{brand.name}}</p>
+        {{/if}}
+        <h3 class="card-title">
+            <a class="card-title-{{id}}" aria-label="{{name}},{{> components/products/product-aria-label}}"
+               href="{{url}}" 
+               {{#if settings.data_tag_enabled}} data-event-type="product-click" {{/if}}>{{name}}
+            </a>
+        </h3>
+        <div class="card-info">
+            <div class="card-text card-text--price card--row" data-test-info-type="price">
+                {{> components/products/price/price-card price=price}}
+            </div>
+            
+            {{#if theme_settings.color_variation_display_type "==" "popup"}}
+                {{#filter custom_fields 'Relation' property='name' }}
+                    <span class="card-colors loadMoreColors" data-id="{{../id}}">
+                        <a href="javascript:void(0);" data-reveal-id="load-more-colors" >More Colours</a>
+                    </span>
+                    <span class='loadingBrandName-{{../id}}' style="display: none;">
+                        {{value}}
+                    </span>
+                {{/filter}}
+            {{/if}}
+
+            <div class="card-bottom">
+                <div class="card-colors__wrapper">
+                    <div class="card-colors-list uuuu" id="loadMoreColours-{{id}}">
+                    </div>
+                </div>
+                <span class="ProductIDsOnly card-sizes-status">{{id}}</span>
+                <span class="ProductIDs card-sizes-status">{{#if has_options}}{{id}}{{else}}NO{{/if}}</span>
+                <span data-category="{{ category }}" id="loadQuickView-{{id}}" class="card-sizes card-sizes--list test" ></span>
+                {{> components/products/bulk-discount-rates}}
+            </div>
+            <!-- <div class="card-rating" >
+                <div class="writejudgemereviews writejudgemereviews--list">
+                    <div class='jdgm-widget jdgm-preview-badge' data-id='{{product.id}}'></div>
+                </div>
+            </div> -->
+           {{#and rating show_rating}}
+                <div class="card-rating" data-test-info-type="productRating">
+                    <span class="rating--small">
+                        {{> components/products/ratings rating=rating}}
+                    </span>
+                </div>
+            {{/and}}
+        </div>
+    </div>
+</article>
+<style>.card-colors__wrapper{
+    height: auto !important;
+    min-height: auto !important;
+}
+</style>

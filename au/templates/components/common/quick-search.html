@@ -1,0 +1,60 @@
+<div class="form-searchbox">
+  {{> components/common/modal/modal-close-btn-search
+  additional_attr='data-drop-down-close' }}
+  <form
+    class="form"
+    onsubmit="return false"
+    data-url="{{urls.search}}"
+    data-quick-search-form
+  >
+    <div class="form-searchbox__top">
+      <div class="container px-0">
+        <fieldset class="form-fieldset form-fieldset--formsearch">
+          <div class="form-field form-field--group">
+            <label class="is-srOnly" for="{{name}}"
+              >{{lang "search.quick_search.input_label"}}</label
+            >
+            <input
+              class="form-input form-input--searchanise"
+              data-search-quick
+              name="{{name}}"
+              id="{{name}}"
+              data-error-message="{{lang 'search.error.empty_field'}}"
+              placeholder="{{lang 'search.quick_search.input_placeholder'}}"
+              autocomplete="off"
+            />
+            <button
+              type="submit"
+              class="form-search d-flex justify-content-center align-items-center"
+            >
+              <i class="icon icon--searchnav">
+                <svg>
+                  <use
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xlink:href="#icon-search"
+                  ></use>
+                </svg>
+              </i>
+            </button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="form-searchbox__btm">
+      <div
+        id="loaderimageQuickSearch"
+        class="loadingOverlay loadingOverlay--quicksearch"
+        style="display: none"
+      ></div>
+      <div class="container">
+        <section class="quickSearchResults" data-bind="html: results"></section>
+        <p
+          role="status"
+          aria-live="polite"
+          class="aria-description--hidden"
+          data-search-aria-message-predefined-text="{{{lang 'search.results.quick_count_live'}}}"
+        ></p>
+      </div>
+    </div>
+  </form>
+</div>

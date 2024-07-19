@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ locale_name }}">
+  <head>
+    <title>{{{ head.title }}}</title>
+    {{{ resourceHints }}} {{{ head.meta_tags }}} {{{ head.config }}}
+    <link href="{{ head.favicon }}" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
+    {{!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> --}}
+
+    <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
+
+    <!-- prettier-ignore -->
+    {{#block "head"}} {{/block}}
+    {{> components/common/polyfill-script }}
+    {{!-- {{> components/common/fonts }} --}}
+    {{> components/common/local-scripts-header }}
+    {{{head.scripts}}}
+    
+    {{#if in_development}}
+    {{{stylesheet '/assets/css/theme.css'}}} 
+    {{else}}
+    {{{stylesheet '/assets/css/theme.css' onload="this.onload=null;this.rel='stylesheet'" rel='preload' as="style"}}}
+    {{/if}}
+    
+    {{~inject 'showAdminBar' theme_settings.show-admin-bar}} 
+    {{~inject 'genericError' (lang 'common.generic_error')}} 
+    {{~inject 'maintenanceModeSettings' settings.maintenance}} 
+    {{~inject 'adminBarLanguage' (langJson 'admin')}} 
+    {{~inject 'urls' urls}} 
+    {{~inject 'secureBaseUrl' settings.secure_base_url}}
+    {{~inject 'cartId' cart_id}}
+    {{~inject 'customer' customer}}
+    {{~inject 'channelId' settings.channel_id}}
+    {{~inject 'template' template}}
+    {{~inject 'validationDictionaryJSON' (langJson 'validation_messages')}}
+    {{~inject 'validationFallbackDictionaryJSON' (langJson 'validation_fallback_messages')}} 
+    {{~inject 'validationDefaultDictionaryJSON' (langJson 'default_messages')}}
+    {{~inject "color_variation_display_type" theme_settings.color_variation_display_type}}
+    {{~inject "enable_restock_notify" theme_settings.enable_restock_notify}}
+  </head>
+
+  <body class="body-{{page_type}}">
+    <!-- prettier-ignore -->
+    {{> components/common/header }}
+    {{> components/common/body }}
+    {{> components/common/footer }}
+
+    <script>
+      window.__webpack_public_path__ = "{{cdn 'assets/dist/'}}";
+    </script>
+    <script src="{{cdn 'assets/dist/theme-bundle.main.js'}}"></script>
+    <script>
+      window.stencilBootstrap("{{page_type}}", {{ jsContext }}).load();
+      var jsContext = JSON.parse({{jsContext}});
+    </script>
+
+    <!-- prettier-ignore -->
+    {{#block "footer"}} {{/block}}
+    {{> components/common/icon-sprite }}
+    {{{footer.scripts}}}
+  </body>
+</html>

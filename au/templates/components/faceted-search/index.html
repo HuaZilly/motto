@@ -1,0 +1,75 @@
+<div id="facetedSearch" class="facetedSearch sidebarBlock">
+  <a href="#facetedSearch-navList" role="button" class="facetedSearch-toggle toggleLink faceted--list d-md-none" data-collapsible>
+    <span class="facetedSearch-toggle-text ttt">
+      {{#if facets.length '>' 2}} {{lang 'search.faceted.browse-by'}} {{else}} {{lang 'search.faceted.browse-by'}} {{/if}}
+    </span>
+    <span class="icon-svg icon--filter plus">
+      <svg viewBox="0 0 7.1 7.2" class="icon-svg-full">
+        <path fill="#121212" d="M4.1,0v3.1h3v1h-3v3.1h-1V4.1H0v-1h3.1V0H4.1z" />
+      </svg>
+    </span>
+    <span class="icon-svg icon--filter minus">
+      <svg viewBox="0 0 7.1 7.2" class="icon-svg-full">
+        <path fill="#121212" d="M0,3.1v1h7.1v-1H0z" />
+      </svg>
+    </span>
+  </a>
+
+  {{#any facets visible=true}}
+  <div id="facetedSearch-navList" class="facetedSearch-navList aa">
+    <div class="facetedSearch-navlist__content">
+      <div class="facetedSearch-navlist__content-centered">
+        {{!--
+        <div class="facetedSearch-navList__header d-md-none">
+          <div class="accordion-block__header">
+            <h6 class="accordion-block__title text-uppercase ff-regular">336 items</h6>
+          </div>
+        </div>
+        --}}
+        <div class="accordion accordion--navList accordion--filter border-0 round-0">
+          {{#if subcategories}}
+          <div class="accordion-block ss kk">
+            <div class="accordion-nav-clear-holder">
+              <button
+                type="button"
+                class="accordion-navigation toggleLink rounded-0 p-0 is-open"
+                data-collapsible="#facetedSearch-content--subcategories"
+                aria-label="SubCategories"
+                aria-controls="facetedSearch-content--subcategories"
+                aria-expanded="true"
+              >
+                <span class="accordion-title"> Product Types </span>
+                <span class="accordion-indicator">
+                  <svg class="icon accordion-indicator toggleLink-text toggleLink-text--off">
+                    <use xlink:href="#icon-add"></use>
+                  </svg>
+                  <svg class="icon accordion-indicator toggleLink-text toggleLink-text--on">
+                    <use xlink:href="#icon-remove"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div id="facetedSearch-content--subcategories" class="test2 m-md-0 accordion-content is-open" aria-hidden="false">
+              <ul id="facetedSearch-navList--subcategories" class="navList" data-has-more-results="false">
+                {{#each subcategories}}
+                <li class="navList-item">
+                  <a href="{{url}}" class="navList-action navList-action--custom-one" title="{{name}}">{{name}}</a>
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+          {{/if}} {{#each facets}} {{#if visible}} {{{dynamicComponent 'components/faceted-search/facets'}}} {{/if}} {{/each}}
+        </div>
+        {{!--
+        <div class="facetedSearch-navList__footer d-md-none">
+          <a href="#facetedSearch-navList" role="button" class="toggleLink btn btn-primary" data-collapsible> Done </a>
+          {{> components/faceted-search/selected-facets selected}}
+        </div>
+        --}}
+        <div class="blocker" style="display: none"></div>
+      </div>
+    </div>
+  </div>
+  {{/any}}
+</div>

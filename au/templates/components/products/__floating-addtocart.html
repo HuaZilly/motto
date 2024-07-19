@@ -1,0 +1,32 @@
+<div class="floating-addtocart d-none">
+  <section class="productView-details product-options">
+    <div class="productView-options position-relative">
+        <form id="addToCart-form-floating">
+        <!-- prettier-ignore -->
+        {{#each product.options}}
+        <select name="options-floating" required data-product-option-change-floating>
+          <option value="">Select a size</option>
+          {{#each this.values}}
+          <option value="{{id}}">{{this.label}}</option>
+          {{/each}}
+        </select>
+        {{/each}}
+
+        <div class="form-action form-action--addtocart" role="status" aria-live="polite">
+          <!-- prettier-ignore -->
+            <input 
+                {{#unless product.can_purchase}} disabled="disabled"{{/unless}} 
+                id="addToCart-floating" 
+                data-wait-message="{{lang 'products.adding_to_cart'}}" 
+                class="btn btn-dark btn--addtocart mb-0 w-100" 
+                type="submit" 
+                value="{{#if product.pre_order}}{{lang 'products.pre_order'}}{{else}}{{lang 'products.add_to_cart'}}{{/if}}" 
+            />
+        </div>
+
+    </form>
+
+      {{#if settings.show_wishlist}} {{> components/common/wishlist-dropdown}} {{/if}}
+    </div>
+  </section>
+</div>

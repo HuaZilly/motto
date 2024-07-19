@@ -1,0 +1,31 @@
+<div class="footer-newsletter__heading footer-newsletter__heading--pdtdtl">
+    <h3 class="footer-newsletter__title footer-newsletter__title--pdtdtl  h3 mb-0">{{lang 'newsletter.subscribe'}}!</h3>
+</div>
+
+<form class="form form--newsletter-prodtl mb-0" action="{{urls.subscribe.action}}" method="post">
+    <fieldset class="form-fieldset">
+        <input type="hidden" name="action" value="subscribe">
+        <input type="hidden" name="nl_first_name" value="bc">
+        <input type="hidden" name="check" value="1">
+        <div class="form-field mb-0">
+            <label class="form-label is-srOnly" for="nl_email-pdtdtl">{{lang 'common.email_address'}}</label>
+            <div class="form-prefixPostfix nowrap">
+                <input class="form-input form-input--sm mr-0"
+                       id="nl_email-pdtdtl"
+                       name="nl_email-pdtdtl"
+                       type="email"
+                       value="{{customer.email}}"
+                       placeholder="{{lang 'newsletter.email_placeholder'}}"
+                       aria-describedby="alertBox-message-text"
+                >
+                <input class="btn btn-primary text-uppercase ff-bold btn-subscribe--sm  form-prefixPostfix-button--postfix"
+                type="submit"
+                value="{{lang 'newsletter.subscribe_submit'}}"
+         >
+            </div>
+            {{#if settings.show_newsletter_summary }}
+                <div class="footer-newsletter-summary">{{settings.newsletter_summary}}</div>
+            {{/if}}
+        </div>
+    </fieldset>
+</form>
