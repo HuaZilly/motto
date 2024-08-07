@@ -1,10 +1,10 @@
 <!-- <div class="price-section price-section--withTax --price-card-html">
-  <span class="price-label">USD</span>
+  <span class="price-label">AUD</span>
   <span class="mainLoadedPrice price price--withTax">${{toFixed price 2}}</span>
 </div> -->
 
 {{#if price.with_tax}}
-        <span class="currency">USD</span>
+        <span class="currency">AUD</span>
         <div class="price-section price-section--withTax rrp-price--withTax" {{#unless price.rrp_with_tax}}style="display: none;"{{/unless}}>
             <span class="d-none">
                 {{theme_settings.pdp-retail-price-label}}
@@ -49,7 +49,7 @@
 
 {{#if theme_settings.enable_member_discount_banner}}
 <div class="price-section price-section--withTax font-weight-bold --price-card-html">
-  <span class="price-label">Member USD</span>
+  <span class="price-label">Member AUD</span>
   <span class="mainLoadedPrice price price--withTax">${{toFixed (multiply price theme_settings.member_discount_percentage) 2}}</span>
 </div>
 {{/if}}

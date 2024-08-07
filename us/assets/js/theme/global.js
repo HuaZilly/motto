@@ -121,6 +121,12 @@ export default class Global extends PageManager {
       $("html,body").animate({ scrollTop: $(event.target).offset().top - $("header").height() - 50 }, 1000);
     });
 
+    $( ".form-option" ).on( "click", function() {
+      debugger;
+      var index = $(".productView-options__block label").index($(this));
+      window.dataLayer.insiderid = 'SSH_173143_'+productId+'_'+variantData[index].node.entityId;
+    });
+
     // $('.country_select').val('Australia').trigger('change');
     // $('.state_select').val('Victoria').trigger('change');
   }
@@ -194,17 +200,19 @@ export default class Global extends PageManager {
   }
 
   reviewScroll() {
-    $(".review-scroll").on("click", function () {
+
+    let judeReviewContainer =  $('.productView-rating .writejudgemereviews');
+    judeReviewContainer.find('.jdgm-widget').css('pointer-events', 'none');
+    judeReviewContainer.css('cursor', 'pointer');
+
+    $(document).on('click','.review-scroll, .productView-rating .writejudgemereviews' , () => {
       if ($(".productView-reviewTabLink").is(":visible")) {
         console.log("We are in DESKTOP");
 
         $(".productView-reviewTabLink").trigger("click");
-        $("html, body").animate(
-          {
-            scrollTop: $("#tab-reviews").offset().top - 100,
-          },
-          500
-        );
+        $("html, body").animate({
+          scrollTop: $("#tab-reviews").offset().top - 100,
+        }, 500);
       } else {
         console.log("We are in MOBILE");
 
@@ -212,12 +220,9 @@ export default class Global extends PageManager {
           $("#panel-list-6-heading").trigger("click");
         }
 
-        $("html, body").animate(
-          {
-            scrollTop: $("#panel-list-6").offset().top - 180,
-          },
-          500
-        );
+        $("html, body").animate({
+          scrollTop: $("#panel-list-6").offset().top - 180,
+        }, 500);
       }
     });
   }
@@ -1094,8 +1099,10 @@ export default class Global extends PageManager {
     //  alert('test');
 
       if ($(window).width() > 1200) {
-        $(".accordion-navigation--description").addClass("active");
-        $(".content--description").addClass("active");
+        if ($('.product-dtl-page').length === 0) {
+          $(".accordion-navigation--description").addClass("active");
+          $(".content--description").addClass("active");
+        }
       }
 
   }

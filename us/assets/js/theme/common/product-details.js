@@ -179,7 +179,7 @@ export default class ProductDetails {
     const options = [];
 
     $.each($("[data-product-attribute]"), (index, value) => {
-      const optionLabel = value.children[0].innerText;
+      const optionLabel = value.children[0] ? value.children[0].innerText : "";
       const optionTitle = optionLabel.split(":")[0].trim();
       const required = optionLabel.toLowerCase().includes("required");
       const type = value.getAttribute("data-product-attribute");

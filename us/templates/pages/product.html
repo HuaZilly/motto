@@ -139,41 +139,102 @@ gql: 'query productById($productId: Int!) {
 </div>
 
 {{/partial}} {{> layout/base}}
+
+
+<script type="text/javascript" defer>
+// nest within any conditional, such as onload
+var query = `query getProductBySku($productId: Int!) {
+        site {
+          product(entityId: $productId) {
+            id
+            entityId
+            name
+            sku
+              variants {
+              edges {
+                node {
+                  id
+                  entityId
+                  options {
+                    edges {
+                      node {
+                        entityId
+                        displayName
+                        isRequired
+                        values {
+                          edges {
+                            node {
+                              entityId
+                              label
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  inventory {
+                    isInStock
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+`;
+
+
+var variantData = [];
+var productId = {{product.id}};
+ function setVariations(json){
+     variantData= json.data.site.product.variants.edges;
+     if(variantData.length ==1) {
+         window.dataLayer.insiderid = 'SSH_173143_'+{{product.id}}+'_'+variantData[0].node.entityId;
+     }
+ } 
+ 
+
+
+  fetch('/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer {{settings.storefront_api.token}}'
+    },
+     body: JSON.stringify({
+    "query": query,
+    "variables": {
+        "productId" : {{product.id}}
+    }
+  })
+})
+.then(res => res.json())
+.then(json => setVariations(json) );
+ 
+ 
+
+
+</script>
+
 <script type="text/javascript">
-  var _learnq = _learnq || [];
+  var klaviyo = klaviyo || [];
 
-  var item = {
-    Name: "{{product.title}}",
-    ProductID: "{{product.id}}",
-    ImageURL: "{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}",
-    URL: "{{product.url}}",
-    Brand: "{{product.brand.name}}",
-    Price: "{{product.price.without_tax.value}}",
-    CompareAtPrice: "{{product.price.rrp_without_tax.value}}",
-  };
 
-  _learnq.push(["track", "Viewed Product", item]);
 
-  _learnq.push([
+
+  klaviyo.push([
     "trackViewedItem",
     {
-      Title: item.Name,
-      ItemId: item.ProductID,
-      ImageUrl: item.ImageURL,
-      Url: item.URL,
-
+      Title: "{{product.title}}",
+      ItemId: "{{product.id}}",
+      Categories: "{{product.category}}",
+      ImageURL: "{{getImage product.main_image 'product_size' (cdn theme_settings.default_image_product)}}",
+      Url: "{{product.url}}",
       Metadata: {
-        Brand: item.Brand,
-        Price: item.Price,
-        CompareAtPrice: item.CompareAtPrice,
+        Brand: "{{product.brand.name}}",
+        Price: "{{product.price.with_tax.value}}",
+        CompareAtPrice: "{{product.price.rrp_without_tax.value}}",
       },
     },
   ]);
-</script>
-
-<script text="text/javascript">
-  var _learnq = _learnq || [];
-  document.getElementById("form-action-addToCart").addEventListener("click", function () {
-    _learnq.push(["track", "Added to Cart", item]);
-  });
 </script>

@@ -213,36 +213,6 @@
                 <!-- to show stars and number of reviews -->
     
                 <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
-                    {{#if settings.show_product_rating}}
-                        {{#if product.num_reviews '>' 0}}
-                            
-                            {{#if schema}}
-                                <meta itemprop="ratingValue" content="{{product.rating}}">
-                                <meta itemprop="ratingCount" content="{{product.num_reviews}}">
-                                <meta itemprop="reviewCount" content="{{product.num_reviews}}">
-                            {{/if}}
-                            <span class="productView-ratingWrapper"
-                                    title="{{lang 'products.reviews.rating_aria_label' current_rating=product.rating max_rating=5}}"
-                                    tabindex="0"
-                            >
-                                {{> components/products/ratings rating=product.rating}}
-                            </span>
-                            {{#if product.num_reviews '>' 0}}
-                                <a href="#tab-reviews" class="review-scroll mx-2">{{lang 'products.reviews.link_to_review' total=product.num_reviews}}</a>
-                            {{else}}<span>{{lang 'products.reviews.link_to_review' total=product.num_reviews}}</span>
-                            {{/if}}
-                            
-                        {{/if}}
-                    {{/if}}
-                    {{#if settings.show_product_reviews}}
-                        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}"
-                            class="productView-reviewLink productView-reviewLink--new link-grey ml-0"
-                            {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}}
-                            role="button"><span class="icn icn-write mr-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icn-svg-full" viewBox="0 0 525 525" style="enable-background:new 0 0 525 525" xml:space="preserve"><path d="M493.2 91.5 433.7 32c-11.8-11.8-27.8-18.4-44.5-18.4s-32.6 6.6-44.5 18.4L44.1 332.5c-14.5 14.4-21.6 34.8-19.2 55.1l8.8 78.9-15.1 15.1c-3.3 3.3-5.1 7.7-5.1 12.3 0 4.6 1.8 9.1 5.1 12.3 3.3 3.3 7.7 5.1 12.3 5.1 4.6 0 9.1-1.8 12.3-5.1l14.6-14.6 80.1 9h7.5c17.7 0 34.6-7.1 47.1-19.6l300.7-300.7c11.8-11.8 18.3-27.8 18.3-44.5 0-16.5-6.6-32.5-18.3-44.3zM167.8 456.6c-6.9 6.8-16.5 10.2-26.1 9.1l-73.2-8.3-.6-.1-.1-.6-8.2-73.2c-1.1-9.6 2.3-19.2 9.1-26.1l240.9-240.6 98.9 98.9-240.7 240.9zm300.7-300.8L433.3 191l-98.9-98.9 35.2-35.2c5.2-5.2 12.3-8.1 19.7-8.1s14.5 2.9 19.7 8.1l59.5 59.5c5.2 5.2 8.1 12.3 8.1 19.7s-2.9 14.4-8.1 19.7z"/><path d="m68.5 457.4-.6-.1-.1-.6zM17.5 262.5c-4.6 0-9.1-1.8-12.4-5.1C1.8 254.1 0 249.6 0 245V64.1c0-17 6.8-33.3 18.8-45.3S47.1 0 64.1 0H245c4.6 0 9.1 1.8 12.4 5.1s5.1 7.7 5.1 12.4-1.8 9.1-5.1 12.4S249.6 35 245 35H64.1c-7.7 0-15.1 3.1-20.5 8.5C38.1 49 35 56.3 35 64.1v181c0 4.6-1.8 9.1-5.1 12.4-3.3 3.2-7.8 5-12.4 5zM461 525H280c-4.6 0-9.1-1.8-12.4-5.1s-5.1-7.7-5.1-12.4c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1h181c7.7 0 15.1-3.1 20.5-8.5s8.5-12.8 8.5-20.5V280c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1 9.1 1.8 12.4 5.1 5.1 7.7 5.1 12.4v181c0 17-6.8 33.3-18.8 45.3S477.9 525 461 525z"/></svg>
-                            </span> {{lang 'products.reviews.new'}}</a>
-                        {{> components/products/modals/writeReview}}
-                    {{/if}}
     
                     <div class="writejudgemereviews kk">
                         <div class='jdgm-widget jdgm-preview-badge' data-id='{{product.id}}'></div>
@@ -471,9 +441,9 @@
         </section>
     
         <section class="productView-details product-afterpay d-none">
-            <p class="afterpay-paragraph mb-0" style="display:block; font-size:14px; text-transform:none;" data-currency="USD">
+            <p class="afterpay-paragraph mb-0" style="display:block; font-size:14px; text-transform:none;" data-currency="AUD">
                 or make 4 interest-free payments of 
-                <strong class="afterpay-instalments">$11.24&nbsp;USD</strong>
+                <strong class="afterpay-instalments">$11.24&nbsp;AUD</strong>
                 fortnightly with 
                 <a style="display:inline-block; margin-bottom:10px;" target="_blank" href="https://www.afterpay.com/terms">
                     <img style="vertical-align:middle;" src="https://static.afterpay.com/integration/product-page/logo-afterpay-colour.png" srcset="https://static.afterpay.com/integration/product-page/logo-afterpay-colour.png 1x, https://static.afterpay.com/integration/product-page/logo-afterpay-colour@2x.png 2x, https://static.afterpay.com/integration/product-page/logo-afterpay-colour@3x.png 3x" width="100" height="21" alt="Afterpay">
@@ -531,6 +501,8 @@
 </div>
 
 <script type="text/javascript">
+
+    
     var tag = document.createElement('script');
     tag.id = 'iframe-demo';
     tag.src = 'https://www.youtube.com/iframe_api';

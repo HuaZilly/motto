@@ -1,5 +1,5 @@
 {{#if price.with_tax}}
-    <span class="currency --price-floating-html">USD</span>
+    <span class="currency --price-floating-html">AUD</span>
     <div class="price-section price-section--withTax rrp-price--withTax" {{#unless price.rrp_with_tax}}style="display: none;"{{/unless}}>
         <span class="d-none">
             {{theme_settings.pdp-retail-price-label}}
@@ -28,7 +28,7 @@
 {{/if}}
 
 {{#if price.without_tax}}
-    <span class="currency --price-floating-html">USD</span>
+    <span class="currency --price-floating-html">AUD</span>
     <div class="price-section mx-1 price-section--withoutTax rrp-price--withoutTax{{#if price.with_tax}} price-section--minor{{/if}}" {{#unless price.rrp_without_tax}}style="display: none;"{{/unless}}>
         <span>
             {{theme_settings.pdp-retail-price-label}}

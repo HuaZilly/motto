@@ -6,6 +6,6 @@
     "product": {}
   },
   "normalStoreUrl": "https://moto--us-1581451.mybigcommerce.com/",
-  "port": "3004",
+  "port": "3000",
   "packageManager": "npm"
 }

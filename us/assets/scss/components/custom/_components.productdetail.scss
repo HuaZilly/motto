@@ -2573,7 +2573,8 @@ div[data-content-region="product_below_price"] {
   /* height: 10px; */
 }
 
-.jdgm-prev-badge__text {
+.jdgm-prev-badge__text,
+.productView-rating .jdgm-prev-badge:before {
   background: lightgrey;
   background: white;
   padding: 2px 9px 2px 9px;
@@ -2582,13 +2583,45 @@ div[data-content-region="product_below_price"] {
   font-size: remCalc(11px);
   text-decoration: none;
   border: 2px #dedede solid;
-  line-height: 1;
+  line-height: 1.4;
   display: -ms-inline-flexbox;
   display: inline-flex;
   -ms-flex-align: center;
   align-items: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.productView-rating {
+  .jdgm-prev-badge {
+    &:before {
+      content: 'Write a Review';
+      color: black;
+      font-size: remCalc(11px);
+      text-indent: initial;
+      order: 9;
+    }
+    .jdgm-prev-badge__text {
+      order: 10;
+      text-transform: capitalize;
+    }
+    &[data-number-of-reviews="0"] {
+      &:before {
+        content: unset;
+      }
+      .jdgm-prev-badge__text {
+        font-size: 0;
+        text-indent: -9px;
+
+        &:before {
+          content: 'Write a review';
+          color: black;
+          font-size: remCalc(11px);
+          text-indent: initial;
+        }
+      }
+    }
+  }
 }
 
 .jdgm-rev-widg__reviews {
