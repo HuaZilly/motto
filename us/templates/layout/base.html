@@ -7,10 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0" />
     {{!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> --}}
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+  
+
 
     <script async src="{{cdn 'assets/dist/theme-bundle.head_async.js'}}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-    <!-- prettier-ignore -->
+    <!-- prettier-ignore --> 
     {{#block "head"}} {{/block}}
     {{> components/common/polyfill-script }}
     {{!-- {{> components/common/fonts }} --}}
@@ -40,9 +47,9 @@
     {{~inject "enable_restock_notify" theme_settings.enable_restock_notify}}
   </head>
 
-  <body class="body-{{page_type}}">
+  <body class="body-{{page_type}}" id="{{page.id}}">
     <!-- prettier-ignore -->
-    {{> components/common/header }}
+    {{> components/common/header }} 
     {{> components/common/body }}
     {{> components/common/footer }}
 
@@ -54,6 +61,93 @@
       window.stencilBootstrap("{{page_type}}", {{ jsContext }}).load();
       var jsContext = JSON.parse({{jsContext}});
     </script>
+    <!-- product slider for new lp -->
+       <script>
+          jQuery(document).ready(function($){
+            $('.product-slider').each(function(){
+                $(this).slick({
+                    dots: false,
+                    arrows: true,
+                    infinite: true,
+                    variableWidth: true,
+                    adaptiveHeight: true,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    prevArrow:"<button type='button' class='slick-prev pull-left'><svg fill='#000000' width='64px' height='64px' viewBox='0 0 32 32' version='1.1' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'/><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'/><g id='SVGRepo_iconCarrier'> <path d='M23.505 0c0.271 0 0.549 0.107 0.757 0.316 0.417 0.417 0.417 1.098 0 1.515l-14.258 14.264 14.050 14.050c0.417 0.417 0.417 1.098 0 1.515s-1.098 0.417-1.515 0l-14.807-14.807c-0.417-0.417-0.417-1.098 0-1.515l15.015-15.022c0.208-0.208 0.486-0.316 0.757-0.316z'/> </g></svg></button>",
+                    nextArrow:"<button type='button' class='slick-next pull-right'><svg fill='#000000' width='64px' height='64px' viewBox='0 0 32 32' version='1.1' xmlns='http://www.w3.org/2000/svg'><g id='SVGRepo_bgCarrier' stroke-width='0'/><g id='SVGRepo_tracerCarrier' stroke-linecap='round' stroke-linejoin='round'/><g id='SVGRepo_iconCarrier'> <path d='M8.489 31.975c-0.271 0-0.549-0.107-0.757-0.316-0.417-0.417-0.417-1.098 0-1.515l14.258-14.264-14.050-14.050c-0.417-0.417-0.417-1.098 0-1.515s1.098-0.417 1.515 0l14.807 14.807c0.417 0.417 0.417 1.098 0 1.515l-15.015 15.022c-0.208 0.208-0.486 0.316-0.757 0.316z'/> </g></svg></button>"
+                });
+            });
+        
+            $('.product-outer-slider').slick({
+                dots: false,
+                arrows: true,
+                infinite: true,
+                adaptiveHeight: true,
+                centerMode: true,
+                slidesToShow: 5,
+                slidesToScroll: 1,
+                autoplaySpeed: 1000,
+                autoplay: true,
+                responsive: [
+                    {
+                      breakpoint: 1024,
+                      settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 1
+                      }
+                    },
+                    {
+                      breakpoint: 800,
+                      settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                      }
+                    },
+                   {
+                      breakpoint: 640,
+                      settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                      }
+                    }
+                  ]
+            });
+        });
+        
+        </script>
+    <!---Testimonial Slider-->
+        <script>
+                jQuery(document).ready(function($){
+                    $('.review-slider').slick({
+                        dots: false,
+                        infinite: true,
+                        speed: 500,
+                        centerMode: true,
+                        variableWidth: true,
+                        adaptiveHeight: true,
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                       responsive: [
+                        {
+                          breakpoint: 989,
+                          settings: {
+                            slidesToShow: 2,
+                            slidesToScroll: 2
+                          }
+                        },
+                        {
+                          breakpoint: 767,
+                          settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                          }
+                        }
+                      ]
+                    });
+                });
+        </script>
 
     <!-- prettier-ignore -->
     {{#block "footer"}} {{/block}}

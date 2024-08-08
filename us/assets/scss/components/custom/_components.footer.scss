@@ -379,8 +379,8 @@
   }
   &-btm__wrapper {
     padding: remCalc(45px 0 0 0);
-    border-top: 1px $clr-grey-light-eighteen solid;
-    border-bottom: 0px $clr-grey-light-eighteen solid;
+    //border-top: 1px $clr-grey-light-eighteen solid;
+    //border-bottom: 0px $clr-grey-light-eighteen solid;
     @media (max-width: $screen-medium-down) {
       border-top: none;
       border-bottom: none;

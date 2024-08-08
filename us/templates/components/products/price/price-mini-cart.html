@@ -2,12 +2,12 @@
   <span class="previewCartItem-price font-size-10 text-black-40 ff-bold mb-0 d-flex flex-column price-cart-mini">
 
     {{#if price_discounted}}
-      <span>AUD {{price_discounted.formatted}}</span>
+      <span>{{price_discounted.formatted}}</span>
     {{else}}
-      <span>AUD {{price.formatted}}</span>
+      <span>{{price.formatted}}</span>
 
       {{#if theme_settings.enable_member_discount_banner}}
-        <span class="cart-item-value font-weight-bold">Member AUD ${{toFixed (multiply price.value theme_settings.member_discount_percentage) 2}}</span>
+        <span class="cart-item-value font-weight-bold">Member ${{toFixed (multiply price.value theme_settings.member_discount_percentage) 2}}</span>
       {{/if}}
 
     {{/if}}

@@ -1393,7 +1393,7 @@
 
     @media (min-width: $screen-mini-large) {
       padding: remCalc(5px 4px);
-      font-size: remCalc(12px);
+      font-size: remCalc(11px);
       font-weight: normal;
 
       &.is-open {
@@ -1409,7 +1409,7 @@
 
     @media (min-width: $screen-large) {
       padding: remCalc(15px 0);
-      font-size: remCalc(13px);
+      font-size: remCalc(12px);
       font-weight: normal;
 
       &.is-open {

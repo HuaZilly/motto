@@ -73,6 +73,11 @@ export default class Global extends PageManager {
       _this.dynamicHeaderPadding();
     });
     window.dataLayer = window.dataLayer || [];
+
+    $( ".form-option" ).on( "click", function() {
+      var index = $(".productView-options__block label").index($(this));
+      window.dataLayer.insiderid = 'SSH_173143_'+productId+'_'+variantData[index].node.entityId;
+    });
   }
 
   runUtilities() {
@@ -119,12 +124,6 @@ export default class Global extends PageManager {
 
     $(document).on("click", ".accordion-navigation__title", function (event) {
       $("html,body").animate({ scrollTop: $(event.target).offset().top - $("header").height() - 50 }, 1000);
-    });
-
-    $( ".form-option" ).on( "click", function() {
-      debugger;
-      var index = $(".productView-options__block label").index($(this));
-      window.dataLayer.insiderid = 'SSH_173143_'+productId+'_'+variantData[index].node.entityId;
     });
 
     // $('.country_select').val('Australia').trigger('change');

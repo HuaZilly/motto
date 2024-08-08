@@ -1,5 +1,5 @@
 {
-  "name": "theme-push-testing-2024-08-01-us",
+  "name": "Motto-Theme-Production-Light-US-2024-08-0 (1)",
   "version": "5.7.1",
   "template_engine": "handlebars_v4",
   "meta": {
@@ -45,7 +45,6 @@
     "Firefox ESR"
   ],
   "settings": {
-    "v3_api_key": "2tj8jq3s7aucy3htj467e8ie6w6rkt2",
     "hide_breadcrumbs": false,
     "hide_page_heading": false,
     "hide_category_page_heading": false,
@@ -410,7 +409,6 @@
       "images": {
       },
       "settings": {
-        "v3_api_key": "2tj8jq3s7aucy3htj467e8ie6w6rkt2",
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
         "hide_category_page_heading": false,

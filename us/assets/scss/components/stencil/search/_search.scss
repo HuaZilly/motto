@@ -22,10 +22,88 @@
         margin-bottom: -(spacing("single"));
     }
 }
+@media screen and (max-width: 767px) {
+    .header__wrapper {
+        .form-searchbox__btm {
+            .container {
+                padding: 0;
+            }
+        }
+    }
+    .quickSearchResults {
+        .productGrid {
+            li.product {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.search-dropdown-open {
+    .body {
+        z-index: 2;
+        position: relative;
+    }
+}
 
 .quickSearchResults {
     margin-top: spacing("single");
+    .productGrid {
+        max-width: 760px;
+        margin: 0 auto;
+        padding-top: 0;
+        background: $color-white;
+        max-height: 500px;
+        overflow-y: auto;
 
+        .product {
+            width: calc(100% - 30px);
+            margin: 0 auto;
+            padding: 10px 0;
+            color: #000000;
+            display: block;
+            border-top: 1px solid #eeeeee;
+
+        }
+        .card-colors__wrapper {
+            display: none;
+        }
+        .card {
+            flex-direction: row;
+            justify-content: space-between;
+            .card-title {
+                a {
+                    font-weight: 600;
+                }
+            }
+            .loadMoreColors {
+                display: none;
+            }
+
+            &:hover {
+                background: #eeeeee;
+                border-color: #eeeeee;
+
+                .card-body {
+                    background: transparent;
+                }
+                a,
+                .price {
+                    color: #000000;
+                }
+            }
+        }
+        .card-figure {
+            padding: 5px 15px;
+            width: 90px;
+            max-width: 90px;
+            background: transparent;
+        }
+        .card-body {
+            width: calc(100% - 100px);
+            justify-content: center;
+        }
+    }
     @include breakpoint("medium") {
         margin-top: 0;
     }

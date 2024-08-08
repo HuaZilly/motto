@@ -1,5 +1,5 @@
 {
-  "name": "theme-push-testing-2024-07-2",
+  "name": "theme-push-testing-2024-07-22",
   "version": "5.7.1",
   "template_engine": "handlebars_v4",
   "meta": {
@@ -406,7 +406,8 @@
           "home_garden"
         ]
       },
-      "images": {},
+      "images": {
+      },
       "settings": {
         "hide_breadcrumbs": false,
         "hide_page_heading": false,
