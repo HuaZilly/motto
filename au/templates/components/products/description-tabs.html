@@ -1,238 +1,237 @@
 <ul class="accordion accordion--productdtl" data-accordion role="tablist">
   
-    <li class="accordion-navigation accordion-navigation--productdtl accordion-navigation--description pr-0 ">
-      <a
-        href="#panel-list-2"
-        class="accordion-navigation__title text-uppercase text-left"
-        role="tab"
-        id="panel-list-2-heading"
-        aria-controls="panel-list-2"
-        aria-expanded="false"
-        >description
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
-      </a>
-      <div
-        id="panel-list-2"
-        class="content content--productdtl content--description"
-        role="tabpanel"
-        aria-labelledby="panel-list-2-heading "
+  <li class="accordion-navigation accordion-navigation--productdtl accordion-navigation--description pr-0 ">
+    <a
+      href="#panel-list-2"
+      class="accordion-navigation__title text-uppercase text-left"
+      role="tab"
+      id="panel-list-2-heading"
+      aria-controls="panel-list-2"
+      aria-expanded="false"
+      >description
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div
+      id="panel-list-2"
+      class="content content--productdtl content--description"
+      role="tabpanel"
+      aria-labelledby="panel-list-2-heading "
+    >
+      {{{product.description}}}
+    </div>
+  </li>
+  <li class="accordion-navigation teest11 accordion-navigation--productdtl pr-0 more-colours-mobile slickonclick ">
+    <a
+      href="#panel-list-1"
+      class="accordion-navigation__title text-uppercase text-left"
+      role="tab"
+      id="panel-list-1-heading"
+      aria-controls="panel-list-1"
+      aria-expanded="false"
+      >More Colours
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div id="panel-list-1" class="content content--productdtl" role="tabpanel" aria-labelledby="panel1d-heading">
+
+      <div data-brand="{{gql.data.site.product.brand.name}}" class="loadavailableproducts-mob productCarousel--custom-one productCarousel--available-mob mb-0">
+        <ul class="card-colors-list">
+          {{#each gql.data.site.product.brand.products.edges}} {{#each node.customFields.edges}} {{#if ../../product.id '==' ../node.entityId}}
+          <li class="card-colors-list__items selected 2">
+            <a href="{{../node.path}}" title="{{../node.name}}">
+              <span class="card-colors-list__color" style="background:{{node.value}}"></span>
+            </a>
+          </li>
+          {{else}}
+          <li class="card-colors-list__items 1">
+            <a href="{{../node.path}}" title="{{../node.name}}">
+              <span class="card-colors-list__color" style="background:{{node.value}}"></span>
+            </a>
+          </li>
+          {{/if}} {{/each}} {{/each}}
+        </ul>
+      </div>
+      
+      
+      
+      {{!-- {{#if settings.data_tag_enabled}} {{> components/products/carousel-available-mob products=product.related_products columns=2
+      customArrowClass='js-related-product-arrow' list="Related Products"}} {{else}} {{> components/products/carousel-available-mob
+      products=product.related_products columns=2 customArrowClass='js-related-product-arrow'}} {{/if}} --}}
+    </div>
+  </li>
+  {{#filter product.custom_fields 'Fabrication Care' property='name' }}
+  <li class="accordion-navigation accordion-navigation--productdtl pr-0">
+    <a
+      href="#panel-list-5"
+      class="accordion-navigation__title text-uppercase text-left"
+      role="tab"
+      id="panel-list-5-heading"
+      aria-controls="panel-list-5"
+      >Fabrication + Care
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div id="panel-list-5" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-5-heading">
+      {{{region name="product-tab"}}}
+    </div>
+  </li>
+  {{/filter}}
+
+ 
+  
+  <li class="accordion-navigation accordion-navigation--productdtl pr-0">
+    <a
+      href="#panel-list-4"
+      class="accordion-navigation__title text-uppercase text-left"
+      role="tab"
+      id="panel-list-4-heading"
+      aria-controls="panel-list-4"
+      >Delivery and Returns
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div id="panel-list-4" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-4-heading">
+      {{{strReplace gql.data.site.deliveryandreturns.node.htmlBody "%%GLOBAL_ShopPathSSL%%" "https://www.motto.com.au" }}}
+    </div>
+  </li>
+  <li class="accordion-navigation accordion-navigation--productdtl pr-0 ">
+    <a
+      href="#panel-list-3"
+      class="accordion-navigation__title text-uppercase text-left"
+      role="tab"
+      id="panel-list-3-heading"
+      aria-controls="panel-list-3"
+      >Style Number
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div id="panel-list-3" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-3-heading">
+      <span class="product-information-value" itemprop="sku" data-product-sku>{{product.sku}}</span>
+    </div>
+  </li>
+  <li class="accordion-navigation accordion-navigation--productdtl pr-0 review">
+  
+    <a
+      href="#panel-list-6"
+      class="accordion-navigation__title text-uppercase text-left bg-transparent"
+      role="tab"
+      id="panel-list-6-heading"
+      aria-controls="panel-list-6"
       >
-        {{{product.description}}}
+       <!-- Reviews -->
+      <div class="writejudgemereviews on-tab-review">
+        <div class='jdgm-widget jdgm-preview-badge' data-id='{{product.id}}'></div>
+       </div>
+      <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+    </a>
+    <div id="panel-list-6" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-6-heading">
+
+      <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}" class="productView-reviewLink productView-reviewLink--new link-grey ml-0" {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}} role="button">
+        <span class="icn icn-write mr-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icn-svg-full" viewBox="0 0 525 525" style="enable-background:new 0 0 525 525" xml:space="preserve"><path d="M493.2 91.5 433.7 32c-11.8-11.8-27.8-18.4-44.5-18.4s-32.6 6.6-44.5 18.4L44.1 332.5c-14.5 14.4-21.6 34.8-19.2 55.1l8.8 78.9-15.1 15.1c-3.3 3.3-5.1 7.7-5.1 12.3 0 4.6 1.8 9.1 5.1 12.3 3.3 3.3 7.7 5.1 12.3 5.1 4.6 0 9.1-1.8 12.3-5.1l14.6-14.6 80.1 9h7.5c17.7 0 34.6-7.1 47.1-19.6l300.7-300.7c11.8-11.8 18.3-27.8 18.3-44.5 0-16.5-6.6-32.5-18.3-44.3zM167.8 456.6c-6.9 6.8-16.5 10.2-26.1 9.1l-73.2-8.3-.6-.1-.1-.6-8.2-73.2c-1.1-9.6 2.3-19.2 9.1-26.1l240.9-240.6 98.9 98.9-240.7 240.9zm300.7-300.8L433.3 191l-98.9-98.9 35.2-35.2c5.2-5.2 12.3-8.1 19.7-8.1s14.5 2.9 19.7 8.1l59.5 59.5c5.2 5.2 8.1 12.3 8.1 19.7s-2.9 14.4-8.1 19.7z"/><path d="m68.5 457.4-.6-.1-.1-.6zM17.5 262.5c-4.6 0-9.1-1.8-12.4-5.1C1.8 254.1 0 249.6 0 245V64.1c0-17 6.8-33.3 18.8-45.3S47.1 0 64.1 0H245c4.6 0 9.1 1.8 12.4 5.1s5.1 7.7 5.1 12.4-1.8 9.1-5.1 12.4S249.6 35 245 35H64.1c-7.7 0-15.1 3.1-20.5 8.5C38.1 49 35 56.3 35 64.1v181c0 4.6-1.8 9.1-5.1 12.4-3.3 3.2-7.8 5-12.4 5zM461 525H280c-4.6 0-9.1-1.8-12.4-5.1s-5.1-7.7-5.1-12.4c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1h181c7.7 0 15.1-3.1 20.5-8.5s8.5-12.8 8.5-20.5V280c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1 9.1 1.8 12.4 5.1 5.1 7.7 5.1 12.4v181c0 17-6.8 33.3-18.8 45.3S477.9 525 461 525z"/></svg>
+        </span> {{lang 'products.reviews.new'}}
+      </a>
+      {{> components/products/modals/writeReviewJudgeme}}
+      <style>
+        #panel-list-6 .toggle {
+          border: none !important;
+        }
+      </style>
+      {{!-- {{> components/products/reviews reviews=product.reviews product=product urls=urls}} --}}
+      <div id="tab-reviews-judgeme" class="tab-mob-judgeme">
+        <div
+          id="judgeme_product_reviews"
+          class="jdgm-widget jdgm-review-widget jdgm-widget--tab"
+          data-product-title="{{product.title}}"
+          data-id="{{product.id}}"
+        ></div>
       </div>
+    </div>
+  </li>
+</ul>
+
+<div class="d-none">
+  <ul class="tabs tabs--product-dtl d-none d-md-block" data-tab>
+    <li class="tab tab--product-dtl is-active">
+      <a class="tab-title tab-title--product-dtl text-uppercase" href="#tab-description">Size and fit</a>
     </li>
-    <li class="accordion-navigation teest11 accordion-navigation--productdtl pr-0 more-colours-mobile slickonclick ">
+    {{#if product.warranty}}
+    <li class="tab tab--product-dtl">
+      <a class="tab-title tab-title--product-dtl text-uppercase" href="#tab-warranty">{{lang 'products.warranty'}}</a>
+    </li>
+    {{/if}}
+
+    <li class="tab tab--product-dtl">
+      <a class="tab-title tab-title--product-dtl text-uppercase" href="#product-tab-information">Style Number</a>
+    </li>
+    <li class="tab tab--product-dtl">
+      <a class="tab-title tab-title--product-dtl text-uppercase" href="#delivery-return">Delivery And Returns</a>
+    </li>
+    {{!-- #all product.custom_fields theme_settings.show_custom_fields_tabs}}
+    <li class="tab tab--product-dtl">
       <a
-        href="#panel-list-1"
-        class="accordion-navigation__title text-uppercase text-left"
-        role="tab"
-        id="panel-list-1-heading"
-        aria-controls="panel-list-1"
+        class="tab-title tab-title--product-dtl text-uppercase"
+        href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}"
+        >{{sanitize theme_settings.pdp-custom-fields-tab-label}}</a
+      >
+    </li>
+    {{/all --}} {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
+    <li class="tab tab--product-dtl">
+      <a class="tab-title tab-title--product-dtl text-uppercase productView-reviewTabLink" href="#tab-reviews"
+        >{{lang 'products.reviews.header' total=product.reviews.total}}</a
+      >
+    </li>
+    {{/all }}
+    <li class="tab tab--product-dtl">
+      <a class="tab-title tab-title--product-dtl text-uppercase productView-reviewTabLink" href="#tab-reviews-judgeme">Reviews</a>
+    </li>
+    <li class="tab tab--product-dtl tab--sharethis">
+      <a
+        aria-controls="sharethis-dropdown"
         aria-expanded="false"
-        >More Colours
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
+        class="tab-title tab-title--product-dtl text-uppercase"
+        data-dropdown="sharethis-dropdown"
+        href="#"
+      >
+        <i aria-hidden="true" class="icon icon-sharethis">
+          <svg>
+            <use xlink:href="#icon-share" />
+          </svg>
+        </i>
+        <span>Share</span>
       </a>
-      <div id="panel-list-1" class="content content--productdtl" role="tabpanel" aria-labelledby="panel1d-heading">
-  
-        <div data-brand="{{gql.data.site.product.brand.name}}" class="loadavailableproducts-mob productCarousel--custom-one productCarousel--available-mob mb-0">
-          <ul class="card-colors-list">
-            {{#each gql.data.site.product.brand.products.edges}} {{#each node.customFields.edges}} {{#if ../../product.id '==' ../node.entityId}}
-            <li class="card-colors-list__items selected 2">
-              <a href="{{../node.path}}" title="{{../node.name}}">
-                <span class="card-colors-list__color" style="background:{{node.value}}"></span>
-              </a>
-            </li>
-            {{else}}
-            <li class="card-colors-list__items 1">
-              <a href="{{../node.path}}" title="{{../node.name}}">
-                <span class="card-colors-list__color" style="background:{{node.value}}"></span>
-              </a>
-            </li>
-            {{/if}} {{/each}} {{/each}}
-          </ul>
-        </div>
-        
-        
-        
-        {{!-- {{#if settings.data_tag_enabled}} {{> components/products/carousel-available-mob products=product.related_products columns=2
-        customArrowClass='js-related-product-arrow' list="Related Products"}} {{else}} {{> components/products/carousel-available-mob
-        products=product.related_products columns=2 customArrowClass='js-related-product-arrow'}} {{/if}} --}}
-      </div>
-    </li>
-    {{#filter product.custom_fields 'Fabrication Care' property='name' }}
-    <li class="accordion-navigation accordion-navigation--productdtl pr-0">
-      <a
-        href="#panel-list-5"
-        class="accordion-navigation__title text-uppercase text-left"
-        role="tab"
-        id="panel-list-5-heading"
-        aria-controls="panel-list-5"
-        >Fabrication + Care
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
-      </a>
-      <div id="panel-list-5" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-5-heading">
-        {{{region name="product-tab"}}}
-      </div>
-    </li>
-    {{/filter}}
-  
-   
-    
-    <li class="accordion-navigation accordion-navigation--productdtl pr-0">
-      <a
-        href="#panel-list-4"
-        class="accordion-navigation__title text-uppercase text-left"
-        role="tab"
-        id="panel-list-4-heading"
-        aria-controls="panel-list-4"
-        >Delivery and Returns
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
-      </a>
-      <div id="panel-list-4" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-4-heading">
-        {{{strReplace gql.data.site.deliveryandreturns.node.htmlBody "%%GLOBAL_ShopPathSSL%%" "https://www.motto.com.au" }}}
-      </div>
-    </li>
-    <li class="accordion-navigation accordion-navigation--productdtl pr-0 ">
-      <a
-        href="#panel-list-3"
-        class="accordion-navigation__title text-uppercase text-left"
-        role="tab"
-        id="panel-list-3-heading"
-        aria-controls="panel-list-3"
-        >Style Number
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
-      </a>
-      <div id="panel-list-3" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-3-heading">
-        <span class="product-information-value" itemprop="sku" data-product-sku>{{product.sku}}</span>
-      </div>
-    </li>
-    <li class="accordion-navigation accordion-navigation--productdtl pr-0 review">
-    
-      <a
-        href="#panel-list-6"
-        class="accordion-navigation__title text-uppercase text-left bg-transparent"
-        role="tab"
-        id="panel-list-6-heading"
-        aria-controls="panel-list-6"
-        >
-         <!-- Reviews -->
-        <div class="writejudgemereviews on-tab-review">
-          <div class='jdgm-widget jdgm-preview-badge' data-id='{{product.id}}'></div>
-         </div>
-        <i class="icon icon--productdtl icon--plus" aria-hidden="true"></i>
-      </a>
-      <div id="panel-list-6" class="content content--productdtl" role="tabpanel" aria-labelledby="panel-list-6-heading">
-  
-        <a href="{{product.url}}{{#if is_ajax}}#write_review{{/if}}" class="productView-reviewLink productView-reviewLink--new link-grey ml-0" {{#unless is_ajax}}data-reveal-id="modal-review-form"{{/unless}} role="button">
-          <span class="icn icn-write mr-1">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icn-svg-full" viewBox="0 0 525 525" style="enable-background:new 0 0 525 525" xml:space="preserve"><path d="M493.2 91.5 433.7 32c-11.8-11.8-27.8-18.4-44.5-18.4s-32.6 6.6-44.5 18.4L44.1 332.5c-14.5 14.4-21.6 34.8-19.2 55.1l8.8 78.9-15.1 15.1c-3.3 3.3-5.1 7.7-5.1 12.3 0 4.6 1.8 9.1 5.1 12.3 3.3 3.3 7.7 5.1 12.3 5.1 4.6 0 9.1-1.8 12.3-5.1l14.6-14.6 80.1 9h7.5c17.7 0 34.6-7.1 47.1-19.6l300.7-300.7c11.8-11.8 18.3-27.8 18.3-44.5 0-16.5-6.6-32.5-18.3-44.3zM167.8 456.6c-6.9 6.8-16.5 10.2-26.1 9.1l-73.2-8.3-.6-.1-.1-.6-8.2-73.2c-1.1-9.6 2.3-19.2 9.1-26.1l240.9-240.6 98.9 98.9-240.7 240.9zm300.7-300.8L433.3 191l-98.9-98.9 35.2-35.2c5.2-5.2 12.3-8.1 19.7-8.1s14.5 2.9 19.7 8.1l59.5 59.5c5.2 5.2 8.1 12.3 8.1 19.7s-2.9 14.4-8.1 19.7z"/><path d="m68.5 457.4-.6-.1-.1-.6zM17.5 262.5c-4.6 0-9.1-1.8-12.4-5.1C1.8 254.1 0 249.6 0 245V64.1c0-17 6.8-33.3 18.8-45.3S47.1 0 64.1 0H245c4.6 0 9.1 1.8 12.4 5.1s5.1 7.7 5.1 12.4-1.8 9.1-5.1 12.4S249.6 35 245 35H64.1c-7.7 0-15.1 3.1-20.5 8.5C38.1 49 35 56.3 35 64.1v181c0 4.6-1.8 9.1-5.1 12.4-3.3 3.2-7.8 5-12.4 5zM461 525H280c-4.6 0-9.1-1.8-12.4-5.1s-5.1-7.7-5.1-12.4c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1h181c7.7 0 15.1-3.1 20.5-8.5s8.5-12.8 8.5-20.5V280c0-4.6 1.8-9.1 5.1-12.4s7.7-5.1 12.4-5.1 9.1 1.8 12.4 5.1 5.1 7.7 5.1 12.4v181c0 17-6.8 33.3-18.8 45.3S477.9 525 461 525z"/></svg>
-          </span> {{lang 'products.reviews.new'}}
-        </a>
-        {{> components/products/modals/writeReviewJudgeme}}
-        <style>
-          #panel-list-6 .toggle {
-            border: none !important;
-          }
-        </style>
-        {{!-- {{> components/products/reviews reviews=product.reviews product=product urls=urls}} --}}
-        <div id="tab-reviews-judgeme" class="tab-mob-judgeme">
-          <div
-            id="judgeme_product_reviews"
-            class="jdgm-widget jdgm-review-widget jdgm-widget--tab"
-            data-product-title="{{product.title}}"
-            data-id="{{product.id}}"
-          ></div>
-        </div>
+      <div aria-hidden="true" class="dropdown-menu dropdown-menu--sharethis" data-dropdown-content id="sharethis-dropdown">
+        {{> components/common/share-product-dtl}}
       </div>
     </li>
   </ul>
-  
-  <div class="d-none">
-    <ul class="tabs tabs--product-dtl d-none d-md-block" data-tab>
-      <li class="tab tab--product-dtl is-active">
-        <a class="tab-title tab-title--product-dtl text-uppercase" href="#tab-description">Size and fit</a>
-      </li>
-      {{#if product.warranty}}
-      <li class="tab tab--product-dtl">
-        <a class="tab-title tab-title--product-dtl text-uppercase" href="#tab-warranty">{{lang 'products.warranty'}}</a>
-      </li>
-      {{/if}}
-  
-      <li class="tab tab--product-dtl">
-        <a class="tab-title tab-title--product-dtl text-uppercase" href="#product-tab-information">Style Number</a>
-      </li>
-      <li class="tab tab--product-dtl">
-        <a class="tab-title tab-title--product-dtl text-uppercase" href="#delivery-return">Delivery And Returns</a>
-      </li>
-      {{!-- #all product.custom_fields theme_settings.show_custom_fields_tabs}}
-      <li class="tab tab--product-dtl">
-        <a
-          class="tab-title tab-title--product-dtl text-uppercase"
-          href="#tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}"
-          >{{sanitize theme_settings.pdp-custom-fields-tab-label}}</a
-        >
-      </li>
-      {{/all --}} {{#all settings.show_product_reviews theme_settings.show_product_reviews product.reviews.total}}
-      <li class="tab tab--product-dtl">
-        <a class="tab-title tab-title--product-dtl text-uppercase productView-reviewTabLink" href="#tab-reviews"
-          >{{lang 'products.reviews.header' total=product.reviews.total}}</a
-        >
-      </li>
-      {{/all }}
-      <li class="tab tab--product-dtl">
-        <a class="tab-title tab-title--product-dtl text-uppercase productView-reviewTabLink" href="#tab-reviews-judgeme">Reviews</a>
-      </li>
-      <li class="tab tab--product-dtl tab--sharethis">
-        <a
-          aria-controls="sharethis-dropdown"
-          aria-expanded="false"
-          class="tab-title tab-title--product-dtl text-uppercase"
-          data-dropdown="sharethis-dropdown"
-          href="#"
-        >
-          <i aria-hidden="true" class="icon icon-sharethis">
-            <svg>
-              <use xlink:href="#icon-share" />
-            </svg>
-          </i>
-          <span>Share</span>
-        </a>
-        <div aria-hidden="true" class="dropdown-menu dropdown-menu--sharethis" data-dropdown-content id="sharethis-dropdown">
-          {{> components/common/share-product-dtl}}
-        </div>
-      </li>
-    </ul>
-    <div class="tabs-contents tabs-contents--dtl d-none d-md-block">
-      <div class="tab-content is-active" id="tab-description">{{{product.description}}}</div>
-      {{#if product.warranty}}
-      <div class="tab-content" id="tab-warranty">{{{product.warranty}}}</div>
-      {{/if}}
-  
-      <div class="tab-content" id="product-tab-information">
-        <div class="product-detail-item product-detail-sku">
-          <span class="product-information-value" itemprop="sku" data-product-sku>{{product.sku}}</span>
-        </div>
-      </div>
-      <div class="tab-content" id="delivery-return">
-        <div class="product-information-block">
-          {{{strReplace gql.data.site.deliveryandreturns.node.htmlBody "%%GLOBAL_ShopPathSSL%%" "https://www.motto.com.au" }}}
-        </div>
-      </div>
-      {{!-- #all product.custom_fields theme_settings.show_custom_fields_tabs}}
-      <div class="tab-content" id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
-        <dl class="productView-info">
-          {{#each product.custom_fields}}
-          <dt class="productView-info-name">{{name}}:</dt>
-          <dd class="productView-info-value">{{{value}}}</dd>
-          {{/each}}
-        </dl>
-      </div>
-      {{/all --}} {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
-      <div class="tab-content" id="tab-reviews">{{> components/products/reviews reviews=product.reviews product=product urls=urls}}</div>
-      {{/all}}
-  
-      <div class="tab-content" id="tab-reviews-judgeme">
-        <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-product-title="{{product.title}}" data-id="{{product.id}}"></div>
+  <div class="tabs-contents tabs-contents--dtl d-none d-md-block">
+    <div class="tab-content is-active" id="tab-description">{{{product.description}}}</div>
+    {{#if product.warranty}}
+    <div class="tab-content" id="tab-warranty">{{{product.warranty}}}</div>
+    {{/if}}
+
+    <div class="tab-content" id="product-tab-information">
+      <div class="product-detail-item product-detail-sku">
+        <span class="product-information-value" itemprop="sku" data-product-sku>{{product.sku}}</span>
       </div>
     </div>
+    <div class="tab-content" id="delivery-return">
+      <div class="product-information-block">
+        {{{strReplace gql.data.site.deliveryandreturns.node.htmlBody "%%GLOBAL_ShopPathSSL%%" "https://www.motto.com.au" }}}
+      </div>
+    </div>
+    {{!-- #all product.custom_fields theme_settings.show_custom_fields_tabs}}
+    <div class="tab-content" id="tab-{{dashcase (lowercase (sanitize theme_settings.pdp-custom-fields-tab-label))}}">
+      <dl class="productView-info">
+        {{#each product.custom_fields}}
+        <dt class="productView-info-name">{{name}}:</dt>
+        <dd class="productView-info-value">{{{value}}}</dd>
+        {{/each}}
+      </dl>
+    </div>
+    {{/all --}} {{#all settings.show_product_reviews theme_settings.show_product_reviews}}
+    <div class="tab-content" id="tab-reviews">{{> components/products/reviews reviews=product.reviews product=product urls=urls}}</div>
+    {{/all}}
+
+    <div class="tab-content" id="tab-reviews-judgeme">
+      <div id="judgeme_product_reviews" class="jdgm-widget jdgm-review-widget" data-product-title="{{product.title}}" data-id="{{product.id}}"></div>
+    </div>
   </div>
-  
+</div>

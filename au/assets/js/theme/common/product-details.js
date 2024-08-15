@@ -179,7 +179,7 @@ export default class ProductDetails {
     const options = [];
 
     $.each($("[data-product-attribute]"), (index, value) => {
-      const optionLabel = value.children[0] ? value.children[0].innerText : "";
+      const optionLabel = value.children[0].innerText;
       const optionTitle = optionLabel.split(":")[0].trim();
       const required = optionLabel.toLowerCase().includes("required");
       const type = value.getAttribute("data-product-attribute");
@@ -517,7 +517,7 @@ export default class ProductDetails {
         );
       } else {
         this.$overlay.show();
-        // if no modal, redirect to the cart page....
+        // if no modal, redirect to the cart page
         // this.redirectTo(response.data.cart_item.cart_url || this.context.urls.cart);
 
         this.getCartContent( response.data.cart_item.id, (err, response) => {

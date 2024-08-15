@@ -79,8 +79,6 @@ ol.breadcrumbs--custom {
     &.breadcrumbs--custom {
       display: block;
       text-align: left;
-      overflow-x: scroll;
-      white-space: nowrap;
       > li {
         display: inline;
         &:before {
