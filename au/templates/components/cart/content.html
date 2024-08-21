@@ -34,8 +34,8 @@
         <h2 class="cart-item-name"><a class="cart-item-name__label" href="{{url}}">{{name}}</a> <br /></h2>
         {{#if release_date}}
           <p>({{release_date}})</p>
-        {{/if}} 
-        
+        {{/if}}
+
         {{#if options}}
           <dl class="definitionList mb-0 mt-1">
             {{#each options}}
@@ -51,7 +51,7 @@
 
         <a href="#" data-item-edit="{{id}}" data-product-id="{{product_id}}" class="cart-edit">{{lang 'cart.checkout.change'}}</a>
 
-        {{> components/products/price/price-cart customer=../customer}} 
+        {{> components/products/price/price-cart customer=../customer}}
       </td>
 
       <td class="cart-item-block cart-item-info cart-item--price">
@@ -120,3 +120,90 @@
     {{/each}}
   </tbody>
 </table>
+<script type="text/javascript">
+  let query = `query ExtendedProductsById($productIds: [Int!]) {
+  site {
+    products(entityIds: $productIds) {
+      edges {
+        node {
+          id
+          entityId
+          name
+          sku
+          variants {
+            edges {
+              node {
+                id
+                entityId
+                options {
+                  edges {
+                    node {
+                      entityId
+                      displayName
+                      isRequired
+                      values {
+                        edges {
+                          node {
+                            entityId
+                            label
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+                inventory {
+                  isInStock
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`;
+  let dataProductSelector = document.querySelectorAll('.cart-list .cart-item'),
+      dataArray = [];
+  for(let i = 0; i <= dataProductSelector.length - 1; i++) {
+    let dataProductId = dataProductSelector[i].getAttribute('data-product-id');
+    if (dataArray.indexOf(Number(dataProductId)) === -1) {
+      dataArray.push(Number(dataProductId));
+    }
+  }
+
+  let variantData = [];
+  function setVariations(json){
+    variantData = json.data.site.products.edges;
+    if(variantData.length > 1) {
+      let insiderIdArray = [];
+      for (let i = 0; i <= dataArray.length - 1; i++) {
+        insiderIdArray.push('SSH_173143_'+ dataArray[i] + '_' + variantData[i].node.variants.edges[0].node.entityId)
+      }
+      window.dataLayer.insiderid = insiderIdArray;
+    }
+    else  {
+      window.dataLayer.insiderid = 'SSH_173143_'+ dataArray[0] + '_' + variantData[0].node.variants.edges[0].node.entityId;
+    }
+
+  }
+
+  fetch('/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer {{settings.storefront_api.token}}'
+    },
+    body: JSON.stringify({
+      "query": query,
+      "variables": {
+        "productIds" : dataArray
+  }
+  })
+  })
+  .then(res => res.json())
+  .then(json => setVariations(json) );
+
+
+</script>

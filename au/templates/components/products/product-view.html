@@ -208,10 +208,32 @@
                     data-pp-amount="{{ product.price.with_tax.value }}">
                         </div>
                 </div>
-                
+
                 {{{region name="product_below_price"}}}
                 <!-- to show stars and number of reviews -->
-    
+                <div class="size-fit-slider">
+                    <ul class="size-fit-container" data-slider-1="Run Small" data-slider-2="True to size" data-slider-3="Runs large">
+                        {{#filter product.custom_fields 'size_fit' property='name' }}
+                        {{#if value '==' 1}}
+                        <li class="vertical-bar" data-name="{{value}}">
+                            <i></i><p class="label">Runs small</p>
+                        </li>
+                        {{/if}}
+                        {{#if value '==' 2}}
+                        <li class="middle-bar" data-name="{{value}}">
+                            <i></i><p class="label">True to size</p>
+                        </li>
+                        {{/if}}
+                        {{#if value '==' 3}}
+                        <li class="vertical-bar" data-name="{{value}}">
+                            <i></i><p class="label">Runs large</p>
+                        </li>
+                        {{/if}}
+
+                        {{/filter}}
+
+                    </ul>
+                </div>
                 <div class="productView-rating"{{#if product.num_reviews '>' 0}}{{#if schema}} itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"{{/if}}{{/if}}>
                     {{#if settings.show_product_rating}}
                         {{#if product.num_reviews '>' 0}}

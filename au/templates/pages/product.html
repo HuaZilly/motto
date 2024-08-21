@@ -186,6 +186,7 @@ var variantData = [];
 var productId = {{product.id}};
  function setVariations(json){
      variantData= json.data.site.product.variants.edges;
+     console.log(json)
      if(variantData.length ==1) {
          window.dataLayer.insiderid = 'SSH_173143_'+{{product.id}}+'_'+variantData[0].node.entityId;
      }
@@ -249,4 +250,5 @@ var productId = {{product.id}};
   document.getElementById("form-action-addToCart").addEventListener("click", function () {
     _learnq.push(["track", "Added to Cart", item]);
   });
+
 </script>

@@ -70,6 +70,8 @@ export default class Product extends PageManager {
     }
 
     this.productReviewHandler();
+    this.createSizeSlider();
+
 
     // console.log('producttttttttttttttttttttt.js');
 
@@ -124,7 +126,13 @@ export default class Product extends PageManager {
         });
     });
   }
-
+  createSizeSlider() {
+    let sizeFitContainer = $('.size-fit-container'),
+        sizeFitList = sizeFitContainer.find('[data-name]');
+    if (sizeFitList.length > 0) {
+      sizeFitContainer.find('.middle-bar i').prepend('<input type="range" id="range-size" value="48" name="range-size" min="0" max="100" />');
+    }
+  }
   moreColoursCarousel() {
     var brandSelector = $("[data-brand]");
     var brandName = brandSelector.attr("data-brand");

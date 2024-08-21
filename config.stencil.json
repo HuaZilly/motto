@@ -5,7 +5,7 @@
     "page": {},
     "product": {}
   },
-  "normalStoreUrl": "https://moto--us-1581451.mybigcommerce.com/",
+  "normalStoreUrl": "https://motto-staging.mybigcommerce.com/",
   "port": "3000",
   "packageManager": "npm"
 }
